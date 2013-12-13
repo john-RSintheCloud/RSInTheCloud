@@ -18,4 +18,6 @@ Future:
 
 
 Note: 
-git master "IvoryPenguin/resourcespace" syncs frequently the Resource Space SVN: http://svn.montala.net/svn/resourcespace
+git master "IvoryPenguin/resourcespace" syncs frequently the original Resource Space SVN: http://svn.montala.net/svn/resourcespace
+
+We will try to keep backward compatibility as much as possible.
