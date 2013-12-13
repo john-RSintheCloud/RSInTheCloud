@@ -15,7 +15,7 @@ Future:
 - Make the code modular
 - Make the SQL calls and query independant, in a Class or Module
 - Use a PHP Framework
-- 
+
 
 Note: 
 git master "IvoryPenguin/resourcespace" syncs frequently the Resource Space SVN: http://svn.montala.net/svn/resourcespace
