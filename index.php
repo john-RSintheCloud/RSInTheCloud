@@ -2,8 +2,6 @@
 /**
  * index.php
  *
- * A rewrite of the old version to test refactor.
- *
  * @author John Brookes <john@RSintheClouds.com>
  * @package RSintheClouds
  * @subpackage Refactor
