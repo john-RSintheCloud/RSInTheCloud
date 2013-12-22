@@ -7,7 +7,7 @@
  * @subpackage Pages_Team
  * @author Brian Adams <wreality@gmail.com>
  */
-include "../../include/db.php";
+include "../../application/bootstrap.php";
 /**
  * Only accessable to users with 'a' permission.
  */

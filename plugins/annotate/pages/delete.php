@@ -1,7 +1,7 @@
 <?php
 
 
-include_once "../../../include/db.php";
+include_once "../../../application/bootstrap.php";
 include_once "../../../include/authenticate.php";
 include_once "../../../include/general.php";
 include_once "../../../include/resource_functions.php";

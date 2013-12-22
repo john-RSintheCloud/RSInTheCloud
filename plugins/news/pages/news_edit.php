@@ -5,7 +5,7 @@
  * @package ResourceSpace
  */
 
-include dirname(__FILE__)."/../../../include/db.php";
+include dirname(__FILE__)."/../../../application/bootstrap.php";
 include dirname(__FILE__)."/../../../include/authenticate.php";if (!checkperm("o")) {exit ("Permission denied.");}
 include dirname(__FILE__)."/../../../include/general.php";
 include_once dirname(__FILE__)."/../inc/news_functions.php";

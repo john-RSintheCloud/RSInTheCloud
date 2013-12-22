@@ -1,7 +1,7 @@
 <?php
-include "../include/db.php";
+include "../application/bootstrap.php";
 include "../include/authenticate.php"; if (checkperm("p")) {exit("Not allowed.");}
-include "../include/general.php";
+
 
 hook("preuserpreferencesform");
 

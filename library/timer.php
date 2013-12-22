@@ -19,11 +19,12 @@ protected $start;
 
     public function __construct() {
         $this->start = microtime(true);
+        return$this;
     }
 
     public function show() {
         $time = microtime(true);
         $total_time = round(($time - $this->start), 4);
-        echo $total_time . " sec";
+        return $total_time ;
     }
 }

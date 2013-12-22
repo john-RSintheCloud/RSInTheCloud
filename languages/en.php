@@ -372,7 +372,7 @@ $lang["selectcollection"]="Select collection";
 $lang["total"]="Total";
 $lang["ownedbyyou"]="owned by you";
 $lang["edit_theme_category"]="Edit theme category";
-$lang["emailthemecollectionmessageexternal"]="has e-mailed you collections of resources from $applicationname."; 
+$lang["emailthemecollectionmessageexternal"]="has e-mailed you collections of resources from $applicationname.";
 $lang["emailthememessage"]="has e-mailed you a selection of themes from $applicationname which have been added to your 'My collections' page.";
 $lang["clicklinkviewthemes"]="Click the link below to view the themes.";
 $lang["clicklinkviewcollections"]="Click the links below to view the collections.";
@@ -752,7 +752,7 @@ $lang["months"]=array("January","February","March","April","May","June","July","
 $lang["false-true"]=array("False","True");
 
 # Formatting
-$lang["plugin_field_fmt"]="%A (%B)"; // %A and %B are replaced by content defined by individual plugins. See, e.e., config_db_single_select in /include/plugin_functions.php
+$lang["plugin_field_fmt"]="%A (%B)"; // %A and %B are replaced by content defined by individual plugins. See, e.e., config_db_single_select in /_config/plugin_functions.php
 
 
 #Sharing
@@ -965,11 +965,11 @@ $lang["addresourcebatchlocalfolder"]="Add resource batch - fetch from local uplo
 $lang["phpextensions"]="PHP extensions";
 
 # Setup Script
-$lang["setup-alreadyconfigured"]="Your ResourceSpace installation is already configured.  To reconfigure, you may delete <pre>include/config.php</pre> and point your browser to this page again.";
+$lang["setup-alreadyconfigured"]="Your ResourceSpace installation is already configured.  To reconfigure, you may delete <pre>_config/config.php</pre> and point your browser to this page again.";
 $lang["setup-successheader"]="Congratulations!";
-$lang["setup-successdetails"]="Your initial ResourceSpace setup is complete.  Be sure to check out 'include/default.config.php' for more configuration options.";
+$lang["setup-successdetails"]="Your initial ResourceSpace setup is complete.  Be sure to check out '_config/default.config.php' for more configuration options.";
 $lang["setup-successnextsteps"]="Next steps:";
-$lang["setup-successremovewrite"]="You can now remove write access to 'include/'.";
+$lang["setup-successremovewrite"]="You can now remove write access to '_config/'.";
 $lang["setup-visitwiki"]='Visit the <a target="_blank" href="http://wiki.resourcespace.org/index.php/Main_Page">ResourceSpace Documentation Wiki</a> for more information about customizing your installation.';
 $lang["php-config-file"]="PHP config: '%phpinifile'"; # %phpinifile will be replaced, e.g. PHP config: '/etc/php5/apache2/php.ini'
 $lang["setup-checkconfigwrite"]="Write access to config directory:";
@@ -1026,7 +1026,7 @@ $lang["setup-err_apiscramblekey"]="If this is a public installation, setting the
 $lang["setup-err_path"]="Unable to verify location of";
 $lang["setup-emailerr"]="Not a valid email address.";
 $lang["setup-rs_initial_configuration"]="ResourceSpace: Initial Configuration";
-$lang["setup-include_not_writable"]="'/include' not writable. Only required during setup.";
+$lang["setup-include_not_writable"]="'/_config' not writable. Only required during setup.";
 $lang["setup-override_location_in_advanced"]="Override location in 'Advanced Settings'.";
 $lang["setup-advancedsettings"]="Advanced Settings";
 $lang["setup-binpath"]="%bin Path"; #%bin will be replaced, e.g. "Imagemagick Path"
@@ -1136,7 +1136,7 @@ $lang["alternativebatchupload"]="Batch upload alternative files";
 
 $lang["confirmdeletefieldoption"]="Are you sure you wish to DELETE this field option?";
 
-$lang["cannotshareemptycollection"]="This collection is empty and cannot be shared.";	
+$lang["cannotshareemptycollection"]="This collection is empty and cannot be shared.";
 $lang["cannotshareemptythemecategory"]="This theme category contains no themes and cannot be shared.";
 
 $lang["requestall"]="Request all";

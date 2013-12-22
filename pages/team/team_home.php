@@ -5,7 +5,7 @@
  * @package ResourceSpace
  * @subpackage Pages_Team
  */
-include "../../include/db.php";
+include "../../application/bootstrap.php";
 include "../../include/authenticate.php";if (!checkperm("t")) {exit ("Permission denied.");}
 include "../../include/general.php";
 include "../../include/resource_functions.php";

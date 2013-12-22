@@ -9,6 +9,10 @@
  * @subpackage Refactor
 */
 
+//  Make sure app path is defined.
+defined('APPLICATION_PATH')
+    || define('APPLICATION_PATH', realpath(dirname(__FILE__) ) . '/');
+
 // Define application environment
 defined('APPLICATION_ENV')
     || define('APPLICATION_ENV', (getenv('APPLICATION_ENV') ? getenv('APPLICATION_ENV') : 'production'));
@@ -36,10 +40,25 @@ if (!isset($suppress_headers) || !$suppress_headers)
 	header("Cache-Control: post-check=0, pre-check=0", false);
 	}
 
+# *** LOAD CONFIG ***
+# Load the default config first, if it exists,
+# so any new settings are present even if missing from config.php.
+# Throw an exception if not found
+require_once APPLICATION_PATH . "../_config/config.default.php";
+# Load the real config
+if (!file_exists(APPLICATION_PATH . "../_config/config.php")) {
+    header ("Location: pages/setup.php" );
+    die;
+}
+
+
+require_once APPLICATION_PATH . "../_config/config.php";
 
 
 require_once 'modules/database/wrapper.php';
 require_once 'modules/error/wrapper.php';
-include "db.php";
-include "general.php";
-include "collections_functions.php";
+
+require_once "db.php";
+require_once "general2.php";
+require_once "collections_functions2.php";
+

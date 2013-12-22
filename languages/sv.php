@@ -778,7 +778,7 @@ $lang["months"]=array("januari","februari","mars","april","maj","juni","juli","a
 $lang["false-true"]=array("Falskt","Sant");
 
 # Formatting
-$lang["plugin_field_fmt"]="%A (%B)"; // %A and %B are replaced by content defined by individual plugins. See, e.e., config_db_single_select in /include/plugin_functions.php
+$lang["plugin_field_fmt"]="%A (%B)"; // %A and %B are replaced by content defined by individual plugins. See, e.e., config_db_single_select in /_config/plugin_functions.php
 
 
 #Sharing
@@ -991,11 +991,11 @@ $lang["addresourcebatchlocalfolder"]="Lägg till material i grupp – överfrån
 $lang["phpextensions"]="PHP-utökningar";
 
 # Setup Script
-$lang["setup-alreadyconfigured"]="Installationen av ResourceSpace är redan konfigurerad. Om du vill göra om konfigurationen tar du bort <pre>’include/config.php’</pre> och pekar webbläsaren till den här sidan igen.";
+$lang["setup-alreadyconfigured"]="Installationen av ResourceSpace är redan konfigurerad. Om du vill göra om konfigurationen tar du bort <pre>’_config/config.php’</pre> och pekar webbläsaren till den här sidan igen.";
 $lang["setup-successheader"]="Gratulerar!";
-$lang["setup-successdetails"]="Den grundläggande delen av installationen av ResourceSpace är nu slutförd. Gå igenom filen ’include/default.config.php’ om du vill se fler konfigurationsmöjligheter.";
+$lang["setup-successdetails"]="Den grundläggande delen av installationen av ResourceSpace är nu slutförd. Gå igenom filen ’_config/default.config.php’ om du vill se fler konfigurationsmöjligheter.";
 $lang["setup-successnextsteps"]="Nästa steg:";
-$lang["setup-successremovewrite"]="Du bör nu avlägsna skrivrättigheten till katalogen ’include/’.";
+$lang["setup-successremovewrite"]="Du bör nu avlägsna skrivrättigheten till katalogen ’_config/’.";
 $lang["setup-visitwiki"]='Besök <a target="_blank" href="http://wiki.resourcespace.org/index.php/Main_Page">ResourceSpace Documentation Wiki</a> (engelskspråkig wiki) om du vill hitta mer information om hur du anpassar din installation.';
 $lang["php-config-file"]="Konfiguration för php: '%phpinifile'"; # %phpinifile will be replaced, e.g. PHP config: '/etc/php5/apache2/php.ini'
 $lang["setup-checkconfigwrite"]="Skrivrättighet till konfigurationskatalog:";
@@ -1052,7 +1052,7 @@ $lang["setup-err_apiscramblekey"]="Om installationen är nåbar från Internet r
 $lang["setup-err_path"]="Det går inte att verifiera sökvägen för";
 $lang["setup-emailerr"]="Ogiltig e-postadress.";
 $lang["setup-rs_initial_configuration"]="ResourceSpace: Inledande konfiguration";
-$lang["setup-include_not_writable"]="Skrivrättighet till katalogen ’/include’ saknas. Krävs bara under installationen.";
+$lang["setup-include_not_writable"]="Skrivrättighet till katalogen ’/_config’ saknas. Krävs bara under installationen.";
 $lang["setup-override_location_in_advanced"]="Sökvägen kan åsidosättas i Avancerade inställningar.";
 $lang["setup-advancedsettings"]="Avancerade inställningar";
 $lang["setup-binpath"]="Sökväg till %bin"; #%bin will be replaced, e.g. "Imagemagick Path"
@@ -1633,19 +1633,19 @@ $lang["owned_by_you-2"] = "(<strong>%mynumber</strong> ägda av dig)"; # %mynumb
 
 $lang["listresources"]= "Material:";
 $lang["action-log"]="Visa logg";
- 
+
 $lang["saveuserlist"]="Spara den här listan";
 $lang["deleteuserlist"]="Ta bort den här listan";
 $lang["typeauserlistname"]="Ange ett användarlistenamn…";
 $lang["loadasaveduserlist"]="Läs in en sparad användarlista";
- 
+
 $lang["searchbypage"]="Sök sida";
 $lang["searchbyname"]="Sök namn";
 $lang["searchbytext"]="Sök text";
 $lang["saveandreturntolist"]="Spara och återvänd till lista";
 $lang["backtomanagecontent"]="Tillbaka: Hantera webbplatsens innehåll";
 $lang["editcontent"]="Redigera innehåll";
- 
+
 $lang["confirmcollectiondownload"]="Vänta medan arkivet skapas. Detta kan ta en stund och tiden är beroende av den totala storleken av de ingående materialen.";
 $lang["collectiondownloadinprogress"]='Vänta medan arkivet skapas. Detta kan ta en stund och tiden är beroende av den totala storleken av de ingående materialen.<br /><br />Om du vill fortsätta arbeta kan du <a href=\"home.php\" target=\"_blank\">&gt; Öppna ett nytt webbläsarfönster</a><br /><br />';
 $lang["preparingzip"]="Förbereder …";
@@ -1657,27 +1657,27 @@ $lang["zipcomplete"]="Filhämtningen bör ha påbörjats. Du kan lämna den här
 $lang["starttypingkeyword"]="Ange nyckelord…";
 $lang["createnewentryfor"]="Skapa nytt nyckelord: ";
 $lang["confirmcreatenewentryfor"]="Vill du skapa en ny post i nyckelordslistan för ’%%’?";
- 
+
 $lang["editresourcepreviews"]="Redigera materialens förhandsgranskningar";
 $lang["can_assign_resource_requests"]="Kan tilldela andra användare begäranden av material";
 $lang["can_be_assigned_resource_requests"]="Kan bli tilldelad begäranden av material (kan även se tilldelade begäranden på sidan Hantera begäranden/beställningar)";
- 
+
 $lang["declinereason"]="Skäl för avslag";
 $lang["approvalreason"]="Skäl för bifall";
 
 $lang["requestnotassignedtoyou"]="Denna begäran är inte längre tilldelad dig. Den är nu tilldelad användare %.";
 $lang["requestassignedtoyou"]="Materialbegäran tilldelad dig";
 $lang["requestassignedtoyoumail"]="En materialbegäran har tilldelats dig. Klicka på länken nedan om du vill bifalla eller avslå den.";
- 
+
 $lang["manageresources-overquota"]="Materialhantering inaktiverad – du har överskridit din diskutrymmestilldelning";
 $lang["searchitemsdiskusage"]="Diskutrymme som används av resultatet";
 $lang["matchingresourceslabel"]="Matchande material";
- 
+
 $lang["saving"]="Sparar …";
 $lang["saved"]="Sparat";
- 
+
 $lang["resourceids"]="Materialnr";
- 
+
 $lang["warningrequestapprovalfield"]="Varning! Beträffande materialnr % – notera följande innan ett eventuellt bifallande!";
 
 $lang["yyyy-mm-dd"]="ÅÅÅÅ-MM-DD";

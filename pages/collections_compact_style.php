@@ -9,7 +9,7 @@
 // redirect - [0 or string] - redirect to this page after completion of the action
 // div [main or collections] - which div to redirect to (main or collections)
 // refresh [collections, main, both, or false]
-include_once(dirname(__FILE__)."/../include/db.php");
+include_once(dirname(__FILE__)."/../application/bootstrap.php");
 include_once(dirname(__FILE__)."/../include/general.php");
 include_once(dirname(__FILE__)."/../include/authenticate.php");
 include_once(dirname(__FILE__)."/../include/search_functions.php");

@@ -2,7 +2,7 @@
 
 $suppress_headers = true;
 
-include "../../include/db.php";
+include "../../application/bootstrap.php";
 include "../../include/general.php";
 
 # Check if we need to authorize this access

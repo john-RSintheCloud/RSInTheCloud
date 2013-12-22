@@ -4,7 +4,7 @@
 
 $inside_plugin=true;
 
-include "../../../include/db.php";
+include "../../../application/bootstrap.php";
 include "../../../include/general.php";
 include "../../../include/collections_functions.php";
 # External access support (authenticate only if no key provided, or if invalid access key provided)

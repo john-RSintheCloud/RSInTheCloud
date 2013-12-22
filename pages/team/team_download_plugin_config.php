@@ -9,7 +9,7 @@
  *		where <plugin-name> is the name of the plugin
  *
  */
-include '../../include/db.php';
+include '../../application/bootstrap.php';
 include '../../include/authenticate.php'; 
 if (!checkperm('a')) {exit ($lang['error-permissiondenied']);}
 

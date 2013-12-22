@@ -1,7 +1,7 @@
 <?php
 # Feeder page for AJAX filter auto-completion - pretty much a copy of autocomplete_search.php.
 
-include "../../../include/db.php";
+include "../../../application/bootstrap.php";
 include "../../../include/authenticate.php";
 include "../../../include/general.php";
 

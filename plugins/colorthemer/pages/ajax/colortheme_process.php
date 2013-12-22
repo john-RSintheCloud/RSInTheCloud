@@ -1,7 +1,7 @@
 <?php
 
 include ('../../../../include/config.php');
-include('../../../../include/db.php');
+include('../../../../application/bootstrap.php');
 include('../../../../include/general.php');
 include('../../../../include/authenticate.php');
 include('../../include/colorfunctions.php');

@@ -1,8 +1,8 @@
 <?php
-include "../include/db.php";
+include "../application/bootstrap.php";
 include "../include/authenticate.php"; #if (!checkperm("s")) {exit ("Permission denied.");}
-include "../include/general.php";
-include "../include/collections_functions.php";
+
+
 
 $offset=getvalescaped("offset",0);
 $find=getvalescaped("find",getvalescaped("saved_find",""));setcookie("saved_find",$find);

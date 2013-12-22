@@ -5,7 +5,7 @@
 # Cleans the database of unused / orphaned rows
 #
 
-include "../../include/db.php";
+include "../../application/bootstrap.php";
 include "../../include/general.php";
 include "../../include/authenticate.php"; if (!checkperm("a")) {exit("Permission denied");}
 if ($use_mysqli){$function="mysql_affected_rows";} else {$function="mysqli_affected_rows";}

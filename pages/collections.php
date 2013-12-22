@@ -1,5 +1,5 @@
 <?php
-include_once dirname(__FILE__)."/../include/db.php";
+include_once dirname(__FILE__)."/../application/bootstrap.php";
 include_once dirname(__FILE__)."/../include/general.php";
 include_once dirname(__FILE__)."/../include/collections_functions.php";
 # External access support (authenticate only if no key provided, or if invalid access key provided)

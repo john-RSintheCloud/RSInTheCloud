@@ -1,7 +1,7 @@
 <?php
-include "../include/db.php";
+include "../application/bootstrap.php";
 include "../include/authenticate.php"; if (!checkperm("g") && !checkperm("v")) {exit ("Permission denied.");} # Cannot e-mail if can't see hi-res images. To avoid loophole whereby users could email resources to an external address, and hence download hi-res versions.
-include "../include/general.php";
+
 include "../include/resource_functions.php";
 
 $ref=getvalescaped("ref","",true);

@@ -1,10 +1,10 @@
 <?php
-include "../include/db.php";
+include "../application/bootstrap.php";
 include "../include/authenticate.php"; if (! (checkperm("c") || checkperm("d"))) {exit ("Permission denied.");}
-include "../include/general.php";
+
 include "../include/image_processing.php";
 include "../include/resource_functions.php";
-include "../include/collections_functions.php";
+
 $status="";
 $resource_type=getvalescaped("resource_type","",true);
 $collection_add=getvalescaped("collection_add","",true);

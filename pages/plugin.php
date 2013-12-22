@@ -10,7 +10,7 @@
 # Define this page as an acceptable entry point.
 define('RESOURCESPACE', true);
 
-include '../include/db.php';
+include '../application/bootstrap.php';
 include '../include/general.php';
 
 $query = explode('&', $_SERVER['QUERY_STRING']);

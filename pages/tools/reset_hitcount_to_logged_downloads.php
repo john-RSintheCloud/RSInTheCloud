@@ -3,7 +3,7 @@
 ## for existing installations that have extensive resource view 
 ## hit counts and want to switch to tracking hit counts as downloads, rather than views.
 
-include "../../include/db.php";
+include "../../application/bootstrap.php";
 include "../../include/authenticate.php"; if (!checkperm("a")) {exit("Permission denied");}
 include "../../include/general.php";
 

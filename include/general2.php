@@ -1,7 +1,7 @@
 <?php
 # General functions, useful across the whole solution
 
-include_once ("language_functions.php");
+require_once ("language_functions.php");
 
 $GLOBALS['get_resource_path_fpcache'] = array();
 function get_resource_path($ref,$getfilepath,$size,$generate=true,$extension="jpg",$scramble=-1,$page=1,$watermarked=false,$file_modified="",$alternative=-1,$includemodified=true)
@@ -3370,9 +3370,8 @@ function format_display_field($value){
     return $sorted;
 }
 
-if (!function_exists("draw_performance_footer")){
 function draw_performance_footer(){
-	global $config_show_performance_footer,$querycount,$querytime,$querylog,$pagename;
+	global $config_show_performance_footer,$querycount,$querytime,$querylog,$pagename, $pageTimer;
 	$performance_footer_id=uniqid("performance");
 	if ($config_show_performance_footer){
 	$querylog=sortmulti ($querylog, "time", "desc", FALSE, FALSE);
@@ -3381,7 +3380,7 @@ function draw_performance_footer(){
 	<?php if ($pagename=="collections"){?><br/><br/><br/><br/><br/><br/><br/>
 	<br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><div style="float:left;"><?php } else { ?><div style="float:right; margin-right: 10px;"><?php } ?>
 	<table class="InfoTable" style="float: right;margin-right: 10px;">
-	<tr><td>Page Load</td><td><?php show_pagetime();?></td></tr>
+	<tr><td>Page Load</td><td><?php echo $pageTimer->show();?> secs</td></tr>
 	<tr><td>Query count</td><td><?php echo $querycount?></td></tr>
 	<tr><td>Query time</td><td><?php echo round($querytime,4)?></td></tr>
 	<?php $dupes=0;
@@ -3436,14 +3435,7 @@ function draw_performance_footer(){
 	<?php
 	}
 }
-}
 
-function show_pagetime(){
-	global $pagetime_start;
-	$time = microtime(true);
-	$total_time = round(($time - $pagetime_start), 4);
-	echo $total_time." sec";
-}
 
 function sql_affected_rows(){
 	global $use_mysqli;

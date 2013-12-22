@@ -18,18 +18,28 @@
  * @subpackage Includes
  */
 
-//  Start the timer
-$pagetime_start = microtime(true);
+// Define path to application directory and load bootstrap.
+
+//  Eventually this will be the only line in here.
+
+//  __FILE__ refers to this include - probably.
+//  LINUX ONLY - sort out your own separators if you want to run on MS servers
+
+$appPath = explode('/', dirname(__FILE__));
+if(end($appPath) == 'include' ) {
+    reset($appPath);
+    array_pop($appPath);
+}
+defined('APPLICATION_PATH')
+    || define('APPLICATION_PATH', realpath('/' . implode('/', $appPath) . '/application') . '/');
+
+require_once  APPLICATION_PATH . 'bootstrap.php';
+
+
 
 # Set some defaults
 $infobox=true;
 
-# *** LOAD CONFIG ***
-# Load the default config first, if it exists, so any new settings are present even if missing from config.php
-if (file_exists(dirname(__FILE__)."/config.default.php")) {include dirname(__FILE__) . "/config.default.php";}
-# Load the real config
-if (!file_exists(dirname(__FILE__)."/config.php")) {header ("Location: pages/setup.php" );die(0);}
-include (dirname(__FILE__)."/config.php");
 
 # Set time limit
 set_time_limit($php_time_limit);

@@ -1,7 +1,7 @@
 <?php
-include "../include/db.php";
-include "../include/general.php";
-include "../include/collections_functions.php";
+include "../application/bootstrap.php";
+
+
 if (getval("user","")!="" || isset($anonymous_login)) {include "../include/authenticate.php";} #Authenticate if already logged in, so the correct theme is displayed when using user group specific themes.
 
 if (getval("refreshcollection","")!="")

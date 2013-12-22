@@ -5,7 +5,7 @@ if (file_exists('../include/collections_functions.php')){
 	$relpath = '../..';
 }
 
-include_once "$relpath/include/db.php";
+include_once "$relpath/application/bootstrap.php";
 include_once "$relpath/include/authenticate.php"; 
 include_once "$relpath/include/general.php"; 
 include_once "$relpath/include/collections_functions.php"; 

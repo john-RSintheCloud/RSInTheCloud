@@ -6,7 +6,7 @@
  * @subpackage Pages_Team
  * @author Dan Huby
  */
-include "../../include/db.php";
+include "../../application/bootstrap.php";
 include "../../include/authenticate.php";if (!checkperm("a")) {exit ("Permission denied.");}
 include "../../include/general.php";
 

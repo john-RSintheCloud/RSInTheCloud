@@ -743,7 +743,7 @@ $lang["months"]=array("Januar","Februar","März","April","Mai","Juni","Juli","Au
 $lang["false-true"]=array("Falsch","Wahr");
 
 # Formatting
-$lang["plugin_field_fmt"]="%A (%B)"; // %A and %B are replaced by content defined by individual plugins. See, e.e., config_db_single_select in /include/plugin_functions.php
+$lang["plugin_field_fmt"]="%A (%B)"; // %A and %B are replaced by content defined by individual plugins. See, e.e., config_db_single_select in /_config/plugin_functions.php
 
 
 #Sharing
@@ -950,11 +950,11 @@ $lang["addresourcebatchlocalfolder"]="Ressourcen hinzufügen - aus Upload Ordner
 $lang["phpextensions"]="PHP Extensions";
 
 # Setup Script
-$lang["setup-alreadyconfigured"]="Ihre ResourceSpace installation ist bereits konfiguriert. Um die Installation neu zu konfigurieren, können Sie die Datei <pre>include/config.php</pre> und dann diese Seite neu laden.";
+$lang["setup-alreadyconfigured"]="Ihre ResourceSpace installation ist bereits konfiguriert. Um die Installation neu zu konfigurieren, können Sie die Datei <pre>_config/config.php</pre> und dann diese Seite neu laden.";
 $lang["setup-successheader"]="Glückwunsch!";
-$lang["setup-successdetails"]="Ihre ResourceSpace Installation ist abgeschlossen. Weitere Konfigurationsoptionen finden Sie in der Datei 'include/default.config.php'.";
+$lang["setup-successdetails"]="Ihre ResourceSpace Installation ist abgeschlossen. Weitere Konfigurationsoptionen finden Sie in der Datei '_config/default.config.php'.";
 $lang["setup-successnextsteps"]="Nächste Schritte:";
-$lang["setup-successremovewrite"]="Sie können nun den Schreibzugriff auf den Ordner 'include/' entfernen.";
+$lang["setup-successremovewrite"]="Sie können nun den Schreibzugriff auf den Ordner '_config/' entfernen.";
 $lang["setup-visitwiki"]='Besuchen Sie das <a target="_blank" href="http://wiki.resourcespace.org/index.php/Main_Page">ResourceSpace Documentation Wiki</a> für weitere Informationen über die Anpassung Ihrer Installation';
 $lang["php-config-file"]="PHP config: '%phpinifile'"; # %phpinifile will be replaced, e.g. PHP config: '/etc/php5/apache2/php.ini'
 $lang["setup-checkconfigwrite"]="Schreibzugriff auf Konfigurationsverzeichnis:";
@@ -1011,7 +1011,7 @@ $lang["setup-err_apiscramblekey"]="Wenn diese Installtion öffentlich zugänglic
 $lang["setup-err_path"]="Konnte Pfad nicht bestätigen von";
 $lang["setup-emailerr"]="Ungültige E-Mail Adresse.";
 $lang["setup-rs_initial_configuration"]="ResourceSpace: Erstkonfiguration";
-$lang["setup-include_not_writable"]="'/include' nicht beschreibbar. Nur während der Konfiguration nötig.";
+$lang["setup-include_not_writable"]="'/_config' nicht beschreibbar. Nur während der Konfiguration nötig.";
 $lang["setup-override_location_in_advanced"]="Ort überschreiben in 'Erweiterte Einstellungen'.";
 $lang["setup-advancedsettings"]="Erweiterte Einstellungen";
 $lang["setup-binpath"]="%bin Pfad"; #%bin will be replaced, e.g. "Imagemagick Path"

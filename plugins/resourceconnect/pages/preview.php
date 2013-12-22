@@ -1,5 +1,5 @@
 <?php
-include "../../../include/db.php";
+include "../../../application/bootstrap.php";
 
 $k=getvalescaped("k","");
 $kauth=true;

@@ -10,10 +10,8 @@
 */
 
 
-// Define path to application directory and load bootstrap
-defined('APPLICATION_PATH')
-    || define('APPLICATION_PATH', realpath(dirname(__FILE__) . '/application') . '/');
-require_once '/' . APPLICATION_PATH . 'bootstrap.php';
+// load bootstrap
+require_once 'application/bootstrap.php';
 
 
 # External access support (authenticate only if no key provided, or if invalid access key provided)

@@ -1,5 +1,5 @@
 <?php
-include "../../include/db.php";?>
+include "../../application/bootstrap.php";?>
 <?php include "../../include/authenticate.php"; if (!checkperm("a")) {exit("Permission denied");}?>
 <?php
 

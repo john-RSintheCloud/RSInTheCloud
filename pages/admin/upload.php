@@ -1,6 +1,6 @@
 <?php
 include "../../include/security.php";
-include "../../include/db.php";
+include "../../application/bootstrap.php";
 
 #handle posts
 if (array_key_exists("userfile",$_FILES))

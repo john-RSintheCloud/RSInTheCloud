@@ -1,9 +1,9 @@
 <?php
-include "../include/db.php";
-include "../include/general.php";
+include "../application/bootstrap.php";
+
 include "../include/resource_functions.php"; //for checking scr access
 include "../include/search_functions.php";
-include "../include/collections_functions.php";
+
 
 # External access support (authenticate only if no key provided, or if invalid access key provided)
 $s=explode(" ",getvalescaped("search",""));

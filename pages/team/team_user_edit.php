@@ -5,7 +5,7 @@
  * @package ResourceSpace
  * @subpackage Pages_Team
  */
-include "../../include/db.php";
+include "../../application/bootstrap.php";
 include "../../include/authenticate.php"; 
 $url=$baseurl_short."pages/team/team_user_edit.php?ref=" .getvalescaped("ref","",true);
 if (!checkperm("u")) {redirect($baseurl_short ."login.php?error=error-permissions-login&url=".urlencode($url));}

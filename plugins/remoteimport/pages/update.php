@@ -1,5 +1,5 @@
 <?php
-include "../../../include/db.php";
+include "../../../application/bootstrap.php";
 include "../../../include/general.php";
 include "../../../include/search_functions.php";
 include "../../../include/resource_functions.php";

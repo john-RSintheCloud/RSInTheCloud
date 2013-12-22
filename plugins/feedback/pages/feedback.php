@@ -1,5 +1,5 @@
 <?php
-include "../../../include/db.php";
+include "../../../application/bootstrap.php";
 
 
 if (array_key_exists("user",$_COOKIE))

@@ -8,7 +8,7 @@
 #
 #
 $cwd = dirname(__FILE__);
-include "$cwd/../../include/db.php";
+include "$cwd/../../application/bootstrap.php";
 //include "../../include/authenticate.php"; if (!checkperm("a")) {exit("Permission denied");}
 include "$cwd/../../include/general.php";
 include "$cwd/../../include/image_processing.php";
