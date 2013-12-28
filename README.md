@@ -38,6 +38,14 @@ This system is to run on Linux using PHP 5.4 (eventually).  If you wish to inclu
 code which runs on both Linux and Windows, this is not a problem, but code which
 has not been tested on Linux will not be accepted.
 
+The basic layout will use an application folder for app-specific code and
+a library folder for generic classes.  The application folder contains a bootstrap
+and module folders for related classes - eg the modules/database folder will contain
+all database related classes.
+
+Each module holds a wrapper.php which converts legacy procedural code into OO
+class dialogues.
+
 TO BE Continued
 
 JBB
