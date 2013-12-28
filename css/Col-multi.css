@@ -51,8 +51,8 @@ input[readonly] {color: #000000;}
 .ResourcePanelSmall {background: #FFFFFF;}
 .ResourcePanelLarge {background: #FFFFFF;}
 
-.ImageBorder, .Picture, .VideoBorder {border: 1px solid #000000;}	
-.CollectImageBorder {border: 1px solid #000000;}	
+.ImageBorder, .Picture, .VideoBorder {border: 1px solid #000000;}
+.CollectImageBorder {border: 1px solid #000000;}
 
 .PanelShadow {background: url(../gfx/whitegry/interface/panelshadow.gif) repeat-x;height: 5px;}
 .IconCollect, .KeyCollect	{background: url(../gfx/whitegry/interface/IcCol.gif) no-repeat;}
@@ -75,11 +75,11 @@ input[readonly] {color: #000000;}
 .Question{border-top: 1px solid #BBBBBB;}
 .RecordPanel .RecordDownloadSpace h2 {color: #3C3C3C;}
 .RecordPanel .RecordDownloadSpace .DownloadDBlend h2 {color: white;}
-.RecordDownloadSpace .HorizontalWhiteNav a:active, .RecordPanel .RecordDownloadSpace .HorizontalWhiteNav a:hover {color:#FFFFFF;} 
+.RecordDownloadSpace .HorizontalWhiteNav a:active, .RecordPanel .RecordDownloadSpace .HorizontalWhiteNav a:hover {color:#FFFFFF;}
 .NoFind {border: 1px solid #BBBBBB;background: #FFFFFF;}
 .NoFind .highlight {color:#000000;font-weight: bold;}
 .NoFind a:link, .NoFind a:visited, .NoFind a:hover, .NoFind a:active {color:#000000;text-decoration:underline;}
-.RecordPanel .Title,  {	border-bottom: 1px solid #BBBBBB;}
+.RecordPanel .Title  {	border-bottom: 1px solid #BBBBBB;}
 .RecordPanel .RecordDownload {background-color: #ccc;}
 .RecordPanel .RecordDownload .DownloadDBlend td {border: 1px solid #E2E2E2;color: #FFFFFF;}
 .RecordPanel .RecordDownloadSpace .DownloadDBlend .DownloadButton {background: #000 url(../gfx/whitegry/interface/CollectBack.gif?nc=1);background-position: 0 -8px;}
@@ -100,7 +100,7 @@ input[readonly] {color: #000000;}
 .highlight {color: #990000;}
 
 .Tab a {border: 1px solid #BBBBBB;border-bottom-style: none;color: #aaaaaa;  }
-.StyledTabbedPanel 
+.StyledTabbedPanel
     {
     background: #fefefe; /* Old browsers */
     background: -moz-linear-gradient(top, #fff 0%, #eee 100%); /* FF3.6+ */
@@ -111,16 +111,16 @@ input[readonly] {color: #000000;}
     background: linear-gradient(to bottom, #fff 0%,#eee 100%); /* W3C */
     filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#eeeeee',GradientType=0 ); /* IE6-9 */
 	border: 1px solid #BBBBBB;
-	
+
 
     }
-.TabSelected  
-    { 
-    background: #ffffff;  
-    border-bottom: 1px solid #ffffff; 
+.TabSelected
+    {
+    background: #ffffff;
+    border-bottom: 1px solid #ffffff;
     border-top: 1px solid #ffffff;
     border-left: #bbbbbb;
-    margin-right: 5px; 
+    margin-right: 5px;
     }
 .TabSelected a { margin: 0; color: #666666; }
 
@@ -133,9 +133,9 @@ input[readonly] {color: #000000;}
 .NewFlag {background-color:#737373;color:#fff;}
 
 /* Mouseover effect on list views */
-.ListviewStyle tr:hover td {background-color: #ddd;} 
-.ListviewStyle tr.ListviewTitleStyle:hover td {background:none;background-color:#F3F3F3;} 
-.ListviewStyle tr.ListviewBoxedTitleStyle:hover td {background:none;background-color:#fff;} 
+.ListviewStyle tr:hover td {background-color: #ddd;}
+.ListviewStyle tr.ListviewTitleStyle:hover td {background:none;background-color:#F3F3F3;}
+.ListviewStyle tr.ListviewBoxedTitleStyle:hover td {background:none;background-color:#fff;}
 
 /* single file upload progress bar */
 .meter-value {background-color: #BBBBBB;}
@@ -152,7 +152,7 @@ input[readonly] {color: #000000;}
 	{
 	color: #FFFFFF;
 	background: rgb(119,119,119);
-	}	
+	}
 .propbox
 	{
 	color: #000000;
@@ -178,7 +178,7 @@ input[readonly] {color: #000000;}
 	color: #000000;
 	background: #FFFFFF;
 	}
-	
+
 /* Additional CSS effects from WhiteSpace */
 
 .HomePanelIN
@@ -186,7 +186,7 @@ input[readonly] {color: #000000;}
 	background: #F45D18;
         color: #fff;
 	}
-        
+
 #SearchBoxPanel, #ResearchBoxPanel
 	{
 	background: #0DA4CF;
@@ -200,14 +200,14 @@ input[readonly] {color: #000000;}
 #ThemeBoxPanel,  .RecordPanel, .ResourcePanel, .ResourcePanelSmall, .ResourcePanelLarge
 	{
 	background: #eee;
-        
+
 	}
 
 #SearchBoxPanel h2, #ThemeBoxPanel h2, #ResearchBoxPanel h2
 	{
         color: #fff;
         }
-	
+
 .PanelShadow
 	{
 	background: none;
@@ -215,14 +215,14 @@ input[readonly] {color: #000000;}
 .collapsed
     {
     background: url(../gfx/whitegry/interface/HomeArrow.gif) no-repeat top left;
-    background-position:3px 8px;  
+    background-position:3px 8px;
     }
 .expanded
     {
-    background: url(../gfx/whitegry/interface/HomeArrowDown.gif) no-repeat top left;    
-     background-position:0px 12px; 
+    background: url(../gfx/whitegry/interface/HomeArrowDown.gif) no-repeat top left;
+     background-position:0px 12px;
     }
-	
+
 .CommentFlag { background-image: url('../gfx/whitegry/interface/FlagOff.png'); }
 
 .CommentEntryInfoCommenterName { color: #3070bf; }

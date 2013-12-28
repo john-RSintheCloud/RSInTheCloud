@@ -1,7 +1,7 @@
 <?php
 /**
  * timer class
- * for timing things - trivially.
+ * for timing things - trivially - and counting things.
  *
  * @author John Brookes <john@RSintheClouds.com>
  * @package RSintheClouds
