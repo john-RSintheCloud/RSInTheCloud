@@ -9,6 +9,149 @@
  * @package RSintheClouds
  * @subpackage Refactor
  */
+
+
+$GLOBALS['get_resource_path_fpcache'] = array();
+
+function get_resource_path($ref, $getfilepath, $size, $generate = true, $extension = "jpg", $scramble = -1, $page = 1, $watermarked = false, $file_modified = "", $alternative = -1, $includemodified = true) {
+    # returns the correct path to resource $ref of size $size ($size==empty string is original resource)
+    # If one or more of the folders do not exist, and $generate=true, then they are generated
+    if (!preg_match('/^[a-zA-Z0-9]+$/', $extension)) {
+        $extension = "jpg";
+    }
+//	if(preg_match('/\w/', $extension)){$extension="jpg";}
+
+    $override = hook("get_resource_path_override", "general", array($ref, $getfilepath, $size, $generate, $extension, $scramble, $page, $watermarked, $file_modified, $alternative, $includemodified));
+    if (is_string($override)) {
+        return $override;
+    }
+
+    global $storagedir;
+
+    if ($size == "") {
+        # For the full size, check to see if the full path is set and if so return that.
+        global $get_resource_path_fpcache;
+        truncate_cache_arrays();
+
+        if (!isset($get_resource_path_fpcache[$ref])) {
+            $get_resource_path_fpcache[$ref] = sql_value("select file_path value from resource where ref='$ref'", "");
+        }
+        $fp = $get_resource_path_fpcache[$ref];
+
+        # Test to see if this nosize file is of the extension asked for, else skip the file_path and return a $storagedir path.
+        # If using staticsync, file path will be set already, but we still want the $storagedir path for a nosize preview jpg.
+        # Also, returning the original filename when a nosize 'jpg' is looked for is no good, since preview_preprocessing.php deletes $target.
+
+        $test_ext = explode(".", $fp);
+        $test_ext = trim(strtolower($test_ext[count($test_ext) - 1]));
+
+        if (($test_ext == $extension) && (strlen($fp) > 0) && (strpos($fp, "/") !== false) && !($alternative > 0)) {
+
+            if ($getfilepath) {
+                global $syncdir;
+                $syncdirmodified = hook("modifysyncdir", "all", array($ref));
+                if ($syncdirmodified != "") {
+                    return $syncdirmodified;
+                }
+                return $syncdir . "/" . $fp;
+            } else {
+                global $baseurl_short, $k;
+                return $baseurl_short . "pages/download.php?ref={$ref}&size={$size}&ext={$extension}&noattach=true&k={$k}&page={$page}";
+            }
+        }
+    }
+
+    global $scramble_key;
+    if ($scramble === -1) {
+        # Find the system default scramble setting if not specified
+        if (isset($scramble_key) && ($scramble_key != "")) {
+            $scramble = true;
+        } else {
+            $scramble = false;
+        }
+    }
+
+    if ($scramble) {
+        # Create a scrambled path using the scramble key
+        # It should be very difficult or impossible to work out the scramble key, and therefore access
+        # other resources, based on the scrambled path of a single resource.
+        $scramblepath = substr(md5($ref . "_" . $scramble_key), 0, 15);
+    }
+
+    if ($extension == "") {
+        $extension = "jpg";
+    }
+
+    $folder = "";
+    #if (!file_exists(dirname(__FILE__) . $folder)) {mkdir(dirname(__FILE__) . $folder,0777);}
+
+    for ($n = 0; $n < strlen($ref); $n++) {
+        $folder.=substr($ref, $n, 1);
+        if (($scramble) && ($n == (strlen($ref) - 1))) {
+            $folder.="_" . $scramblepath;
+        }
+        $folder.="/";
+        #echo "<li>" . $folder;
+        if ((!(file_exists($storagedir . "/" . $folder))) && $generate) {
+            mkdir($storagedir . "/" . $folder, 0777);
+            chmod($storagedir . "/" . $folder, 0777);
+        }
+    }
+
+    # Add the page to the filename for everything except page 1.
+    if ($page == 1) {
+        $p = "";
+    } else {
+        $p = "_" . $page;
+    }
+
+    # Add the alternative file ID to the filename if provided
+    if ($alternative > 0) {
+        $a = "_alt_" . $alternative;
+    } else {
+        $a = "";
+    }
+
+    # Add the watermarked url too
+    if ($watermarked) {
+        $p.="_wm";
+    }
+
+    # Fetching the file path? Add the full path to the file
+    $filefolder = $storagedir . "/" . $folder;
+    if ($getfilepath) {
+        $folder = $filefolder;
+    } else {
+        global $storageurl;
+        $folder = $storageurl . "/" . $folder;
+    }
+
+    if ($scramble) {
+        $file_old = $filefolder . $ref . $size . $p . $a . "." . $extension;
+        $file_new = $filefolder . $ref . $size . $p . $a . "_" . substr(md5($ref . $size . $p . $a . $scramble_key), 0, 15) . "." . $extension;
+        $file = $folder . $ref . $size . $p . $a . "_" . substr(md5($ref . $size . $p . $a . $scramble_key), 0, 15) . "." . $extension;
+        if (file_exists($file_old)) {
+            rename($file_old, $file_new);
+        }
+    } else {
+        $file = $folder . $ref . $size . $p . $a . "." . $extension;
+    }
+
+# Append modified date/time to the URL so the cached copy is not used if the file is changed.
+    if (!$getfilepath && $includemodified) {
+        if ($file_modified == "") {
+            $data = get_resource_data($ref);
+            $file .= "?v=" . urlencode($data['file_modified']);
+        } else {
+            # Use the provided value
+            $file .= "?v=" . urlencode($file_modified);
+        }
+    }
+
+    return $file;
+}
+
+
 function safe_file_name($name) {
     # Returns a file name stipped of all non alphanumeric values
     # Spaces are replaced with underscores

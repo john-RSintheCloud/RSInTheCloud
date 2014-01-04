@@ -133,7 +133,7 @@ if (!hook("replaceloginform")) {
 		</div>
 
 		<div class="Question">
-			<label for="pass"><?php echo $lang["password"]?> </label>
+			<label for="password"><?php echo $lang["password"]?> </label>
 			<input type="password" name="password" id="password" class="stdwidth" <?php if (!$login_autocomplete) { ?>AUTOCOMPLETE="OFF"<?php } ?> />
 			 <div id="capswarning"><?php echo $lang["caps-lock-on"]; ?></div>
 			<div class="clearerleft"> </div>

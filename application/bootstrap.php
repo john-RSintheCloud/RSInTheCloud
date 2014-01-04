@@ -1,8 +1,9 @@
 <?php
 
 /**
- * bootstrap
+ * Bootstrap
  *
+ * PHP Version  PHP 5.3.10
  *
  * @author John Brookes <john@RSintheClouds.com>
  * @package RSintheClouds
@@ -94,13 +95,3 @@ require_once "general2.php";
 require_once "collections_functions2.php";
 
 
-
-//function pagename() {
-//    $name = getvalescaped('pagename', '');
-//    if (!empty($name))
-//        return $name;
-//    $url = str_replace("\\", "/", $_SERVER["PHP_SELF"]); // To work with Windows command line scripts
-//    $urlparts = explode("/", $url);
-//    $url = array_pop($urlparts);
-//    return escape_check($url);
-//}

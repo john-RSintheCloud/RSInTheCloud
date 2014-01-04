@@ -1,0 +1,10 @@
+default:
+  context:
+    class:  'rs'
+  extensions:
+    Behat\MinkExtension\Extension:
+      base_url:  'http://local.rs/'
+      goutte:    ~
+      selenium2: ~
+
+
