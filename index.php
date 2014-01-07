@@ -2,7 +2,7 @@
 /**
  * index.php
  *
- * @author John Brookes <john@RSintheClouds.com>
+ * @author John Brookes <john@RSintheCloud.com>
  * @package RSintheClouds
  * @subpackage Refactor
 */

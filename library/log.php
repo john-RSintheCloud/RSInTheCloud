@@ -6,7 +6,7 @@
  *
  * Expand as required!
  *
- * @author John Brookes <john@RSintheClouds.com>
+ * @author John Brookes <john@RSintheCloud.com>
  * @package RSintheClouds
  * @subpackage Library
 */

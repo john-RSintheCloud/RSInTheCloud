@@ -3,7 +3,7 @@
  * plugin Wrapper
  * A wrapper round the plugin functions, to allow a future move to OO design.
  *
- * @author John Brookes <john@RSintheClouds.com>
+ * @author John Brookes <john@RSintheCloud.com>
  * @package RSintheClouds
  * @subpackage Refactor
 */
@@ -165,4 +165,36 @@ function register_plugin($plugin) {
     return true;
 }
 
+/**
+ * Returns an xml compliant string in UTF-8
+ *
+ * Built upon a code snippet from steve at mcdragonsoftware dot com
+ * @link http://php.net/manual/en/function.htmlentities.php#106535
+ *
+ * @param string $string A string to be made xml compliant.
+ * @param string $fromcharset The charset of $string.
+ * @access public
+ * @return string Returns the xml compliant UTF-8 encoded string.
+ */
+function xml_entities($string, $fromcharset = "")
+{
+    # Convert the data to UTF-8 if not already.
+    if ($fromcharset == "") {
+        global $mysql_charset;
+        if (isset($mysql_charset)) {
+            $fromcharset = $mysql_charset;
+        } else {
+            $fromcharset = "UTF-8";
+        } # Default to UTF-8.
+    }
+    if (strtolower($fromcharset) != "utf-8") {
+        $string = mb_convert_encoding($string, 'UTF-8', $fromcharset);
+    }
+
+    # Sanitize the string to comply with xml:
+    # http://en.wikipedia.org/wiki/Valid_characters_in_XML?section=1#XML_1.0
+    $not_in_list = "A-Z0-9a-z\s_-";
+    return preg_replace_callback("/[^{$not_in_list}]/u",
+            'get_xml_entity_at_index_0', $string);
+}
 

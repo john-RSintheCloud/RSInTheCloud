@@ -3,7 +3,7 @@
  * plugin.php - Maps requests to plugin pages to requested plugin.
  * No html, so moved to the plugon module.
  *
- * @author John Brookes <john@RSintheClouds.com>
+ * @author John Brookes <john@RSintheCloud.com>
  * @package RSintheClouds
  * @subpackage Refactor
  */

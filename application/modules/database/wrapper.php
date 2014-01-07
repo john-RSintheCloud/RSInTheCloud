@@ -4,7 +4,7 @@
  * dbWrapper
  * A wrapper round the database functions, to allow a future move to OO design.
  *
- * @author John Brookes <john@RSintheClouds.com>
+ * @author John Brookes <john@RSintheCloud.com>
  * @package RSintheClouds
  * @subpackage Refactor
  */
@@ -155,6 +155,65 @@ function sql_insert_id() {
         return mysql_insert_id();
     }
 }
+
+
+/**
+ * Currently this function is called to escape values before injecting into the query.
+ * As we stop creating queries in code, this will no longer be needed.
+ *
+ * @global MySqli $db
+ * @param string $text
+ * @return string
+ */
+function escape_check($text) { #only escape a string if we need to, to prevent escaping an already escaped string
+    global $db;
+//    $text = mysqli_real_escape_string($db, $text);
+
+    # turn all \\' into \'
+    while (!(strpos($text, "\\\\'") === false)) {
+        $text = str_replace("\\\\'", "\\'", $text);
+    }
+
+    # Remove any backslashes that are not being used to escape single quotes.
+    $text = str_replace("\\'", "{bs}'", $text);
+    $text = str_replace("\\n", "{bs}n", $text);
+    $text = str_replace("\\r", "{bs}r", $text);
+
+    $text = str_replace("\\", "", $text);
+    $text = str_replace("{bs}'", "\\'", $text);
+    $text = str_replace("{bs}n", "\\n", $text);
+    $text = str_replace("{bs}r", "\\r", $text);
+
+    return $text;
+}
+
+/**
+ * This is only needed because of those stupid magic quotes used in PHP4 -
+ * so we'll be glad to see the back of it!
+ *
+ * @param string $text
+ * @return string
+ */
+function unescape($text) {
+    // for comparing escape_checked strings against mysql content because
+    // just doing $text=str_replace("\\","",$text);	does not undo escape_check
+    # Remove any backslashes that are not being used to escape single quotes.
+    $text = str_replace("\\'", "\'", $text);
+    $text = str_replace("\\n", "\n", $text);
+    $text = str_replace("\\r", "\r", $text);
+    $text = str_replace("\\", "", $text);
+
+
+    return $text;
+}
+
+function sql_affected_rows() {
+    global $db;
+    return mysqli_affected_rows($db);
+}
+
+
+
 
 function CheckDBStruct($path) {
     # Check the database structure against the text files stored in $path.

@@ -4,10 +4,44 @@
  * url Wrapper
  * A wrapper round the url and IP functions, to allow a future move to OO design.
  *
- * @author John Brookes <john@RSintheClouds.com>
+ * @author John Brookes <john@RSintheCloud.com>
  * @package RSintheClouds
  * @subpackage Refactor
 */
+
+
+function getval($val, $default, $force_numeric = false) {
+    # return a value from POST, GET or COOKIE (in that order), or $default if none set
+    if (array_key_exists($val, $_POST)) {
+        return ($force_numeric && !is_numeric($_POST[$val]) ? $default : $_POST[$val]);
+    }
+    if (array_key_exists($val, $_GET)) {
+        return ($force_numeric && !is_numeric($_GET[$val]) ? $default : $_GET[$val]);
+    }
+    if (array_key_exists($val, $_COOKIE)) {
+        return ($force_numeric && !is_numeric($_COOKIE[$val]) ? $default : $_COOKIE[$val]);
+    }
+    return $default;
+}
+
+function getvalescaped($val, $default, $force_numeric = false) {
+    # return a value from get/post, escaped, SQL-safe and XSS-free
+    $value = getval($val, $default, $force_numeric);
+    if (is_array($value)) {
+        foreach ($value as &$item) {
+            $item = escape_check($item);
+            if (strpos(strtolower($item), "<script") !== false)
+                return $default;
+        }
+    }
+    else {
+        $value = escape_check($value);
+        if (strpos(strtolower($value), "<script") !== false) {
+            return $default;
+        }
+    }
+    return $value;
+}
 
 
 function resolve_user_agent($agent) {

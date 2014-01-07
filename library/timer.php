@@ -3,7 +3,7 @@
  * timer class
  * for timing things - trivially - and counting things.
  *
- * @author John Brookes <john@RSintheClouds.com>
+ * @author John Brookes <john@RSintheCloud.com>
  * @package RSintheClouds
  * @subpackage Library
 */

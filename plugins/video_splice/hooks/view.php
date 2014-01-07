@@ -1,9 +1,27 @@
 <?php
 
+
+/**
+ * Converts a path to a url relative to the installation.
+ * PROBABLY DOESN@T WORK!
+ * @param string $abs_path: The absolute path.
+ * @return Url that is the relative path.
+ */
+function convert_path_to_url($abs_path) {
+    // Get the root directory of the app:
+    $rootDir = dirname(dirname(__FILE__));
+    // Get the baseurl:
+    global $baseurl;
+    // Replace the $rootDir with $baseurl in the path given:
+    return str_ireplace($rootDir, $baseurl, $abs_path);
+}
+
+
+
 function HookVideo_spliceViewAfterresourceactions()
 	{
 	global $videosplice_resourcetype,$resource,$lang,$config_windows;
-	
+
 	if ($resource["resource_type"]!=$videosplice_resourcetype) {return false;} # Not the right type.
 
 
@@ -11,31 +29,31 @@ function HookVideo_spliceViewAfterresourceactions()
 		{
 		# Process actions
 		$error="";
-		
+
 		# Receive input
 		$fh=getvalescaped("video_splice_cut_from_hours","");
 		$fm=getvalescaped("video_splice_cut_from_minutes","");
 		$fs=getvalescaped("video_splice_cut_from_seconds","");
-		
+
 		$th=getvalescaped("video_splice_cut_to_hours","");
 		$tm=getvalescaped("video_splice_cut_to_minutes","");
 		$ts=getvalescaped("video_splice_cut_to_seconds","");
-		
+
 		$preview=getvalescaped("preview","")!="";
-		
+
 		# Calculate a duration, as needed by FFMPEG
 		$from_seconds=($fh*60*60) + ($fm*60) + $fs;
 		$to_seconds=($th*60*60) + ($tm*60) + $ts;
 		$seconds=$to_seconds-$from_seconds;
-		
+
 		# Any problems?
 		if ($seconds<=0) {$error = $lang["error-from_time_after_to_time"];}
-		
+
 		# Convert seconds to HH:MM:SS as required by FFmpeg.
 		$dh=floor($seconds/(60*60));
 		$dm=floor(($seconds-($dh*60*60))/60);
 		$ds=floor($seconds-($dh*60*60)-($dm*60));
-		
+
 		# Show error message if necessary
 		if ($error!="")
 			{
@@ -50,7 +68,7 @@ function HookVideo_spliceViewAfterresourceactions()
 			# Process video.
 			$ss=$fh . ":" . $fm . ":" . $fs;
 			$t=str_pad($dh,2,"0",STR_PAD_LEFT) . ":" . str_pad($dm,2,"0",STR_PAD_LEFT) . ":" . str_pad($ds,2,"0",STR_PAD_LEFT);
-			
+
 			# Establish FFMPEG location.
 			$ffmpeg_fullpath = get_utility_path("ffmpeg");
 
@@ -60,11 +78,11 @@ function HookVideo_spliceViewAfterresourceactions()
 				{
 				$source=get_resource_path($ref,true,"pre",false,$ffmpeg_preview_extension,-1,1,false,"",-1,false);
 				}
-			else 
+			else
 				{
 				$source=get_resource_path($ref,true,"",false,$ffmpeg_preview_extension,-1,1,false,"",-1,false);
 				}
-			
+
 			# Preview only?
 			global $userref;
 			if ($preview)
@@ -77,11 +95,11 @@ function HookVideo_spliceViewAfterresourceactions()
 				# Not a preview. Create a new resource.
 				$newref=copy_resource($ref);
 				$target=get_resource_path($newref,true,"",true,$ffmpeg_preview_extension,-1,1,false,"",-1,false);
-				
+
 				# Set parent resource field details.
 				global $videosplice_parent_field;
 				update_field($newref,$videosplice_parent_field,$ref . ": " . $resource["field8"] . " [$fh:$fm:$fs - $th:$tm:$ts]");
-				
+
 				# Set created_by, archive and extension
 				sql_query("update resource set created_by='$userref',archive=-2,file_extension='" . $ffmpeg_preview_extension . "' where ref='$newref'");
 				}
@@ -173,20 +191,20 @@ if (document.getElementById('videocut').style.display=='block') {document.getEle
 if (isset($preview) && $preview)
 	{
 	# Show the preview
-	
+
 	# Work out a colour theme
 	global $userfixedtheme;
 	$theme=(isset($userfixedtheme) && $userfixedtheme!="")?$userfixedtheme:getval("colourcss","greyblu");
 	$colour="505050";
 	if ($theme=="greyblu") {$colour="446693";}
 	global $baseurl;
-	
+
 	# Embedded preview player
 	?>
 	<p align="center">
 	<object type="application/x-shockwave-flash" data="../lib/flashplayer/player_flv_maxi.swf" width="240" height="135">
     <param name="allowFullScreen" value="true" />
-	
+
      <param name="movie" value="../lib/flashplayer/player_flv_maxi.swf" />
      <param name="FlashVars" value="flv=<?php echo convert_path_to_url($target) ?>&amp;width=240&amp;height=135&amp;margin=0&amp;buffer=10&amp;showvolume=0&amp;volume=200&amp;showtime=0&amp;autoplay=1&amp;autoload=1&amp;showfullscreen=0&amp;showstop=0&amp;playercolor=<?php echo $colour?>" />
 	</object>
@@ -200,8 +218,8 @@ if (isset($preview) && $preview)
 </form>
 
 	<?php
-		
+
 	return true;
 	}
-	
+
 ?>

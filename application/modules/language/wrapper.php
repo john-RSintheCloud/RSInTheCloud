@@ -4,7 +4,7 @@
  * Language Wrapper
  * A wrapper round the language functions, to allow future rationalisation.
  *
- * @author John Brookes <john@RSintheClouds.com>
+ * @author John Brookes <john@RSintheCloud.com>
  * @package RSintheClouds
  * @subpackage Refactor
  */
@@ -151,4 +151,134 @@ function text($name) {
 
 function get_section_list($page) {
     return sql_array("select name value from site_text where page='$page' and name<>'introtext' order by name");
+}
+
+
+function get_all_site_text($findpage = "", $findname = "", $findtext = "") {
+    # Returns a list of all available editable site text (content).
+    # If $find is specified a search is performed across page, name and text fields.
+    global $defaultlanguage;
+    $findname = trim($findname);
+    $findpage = trim($findpage);
+    $findtext = trim($findtext);
+    $sql = "site_text s ";
+
+    if ($findname != "" || $findpage != "" || $findtext != "") {
+        $sql.=" where (";
+    }
+
+
+    if ($findname != "") {
+        $findnamearray = explode(" ", $findname);
+        for ($n = 0; $n < count($findnamearray); $n++) {
+            $sql.=' name like "%' . $findnamearray[$n] . '%"';
+            if ($n + 1 != count($findnamearray)) {
+                $sql.=" and ";
+            }
+        }
+    }
+
+    if ($findpage != "") {
+        $findpagearray = explode(" ", $findpage);
+        if ($findname != "") {
+            $sql.=" and ";
+        }
+        for ($n = 0; $n < count($findpagearray); $n++) {
+            $sql.=' page like "%' . $findpagearray[$n] . '%"';
+            if ($n + 1 != count($findpagearray)) {
+                $sql.=" and ";
+            }
+        }
+    }
+
+    if ($findtext != "") {
+        $findtextarray = explode(" ", $findtext);
+        if ($findname != "" || $findpage != "") {
+            $sql.=" and ";
+        }
+        for ($n = 0; $n < count($findtextarray); $n++) {
+            $sql.=' text like "%' . $findtextarray[$n] . '%"';
+            if ($n + 1 != count($findtextarray)) {
+                $sql.=" and ";
+            }
+        }
+    }
+    if ($findname != "" || $findpage != "" || $findtext != "") {
+        $sql.=" ) ";
+    }
+
+    return sql_query("select distinct s.page,s.name,(select text from site_text st where st.name=s.name and st.page=s.page order by (language='$defaultlanguage') desc limit 1) text from $sql order by (s.page='all') desc,s.page,name");
+}
+
+function get_site_text($page, $name, $language, $group) {
+    # Returns a specific site text entry.
+    if ($group == "") {
+        $g = "null";
+        $gc = "is";
+    } else {
+        $g = "'" . $group . "'";
+        $gc = "=";
+    }
+
+    $text = sql_query("select * from site_text where page='$page' and name='$name' and language='$language' and specific_to_group $gc $g");
+    if (count($text) == 0) {
+        $existing = escape_check(sql_value("select text value from site_text where page='$page' and name='$name' limit 1", ""));
+        return $existing;
+    }
+    return $text[0]["text"];
+}
+
+function check_site_text_custom($page, $name) {
+    # Check if site text section is custom, i.e. deletable.
+
+    $check = sql_query("select custom from site_text where page='$page' and name='$name'");
+    if (isset($check[0]["custom"])) {
+        return $check[0]["custom"];
+    }
+}
+
+function save_site_text($page, $name, $language, $group) {
+    # Saves the submitted site text changes to the database.
+
+    if ($group == "") {
+        $g = "null";
+        $gc = "is";
+    } else {
+        $g = "'" . $group . "'";
+        $gc = "=";
+    }
+
+    global $custom, $newcustom;
+
+    if ($newcustom) {
+        $test = sql_query("select * from site_text where page='$page' and name='$name'");
+        if (count($test) > 0) {
+            return true;
+        }
+    }
+    if ($custom == "") {
+        $custom = 0;
+    }
+    if (getval("deletecustom", "") != "") {
+        sql_query("delete from site_text where page='$page' and name='$name'");
+    } elseif (getval("deleteme", "") != "") {
+        sql_query("delete from site_text where page='$page' and name='$name' and specific_to_group $gc $g");
+    } elseif (getval("copyme", "") != "") {
+        sql_query("insert into site_text(page,name,text,language,specific_to_group,custom) values ('$page','$name','" . getvalescaped("text", "") . "','$language',$g,'$custom')");
+    } elseif (getval("newhelp", "") != "") {
+        global $newhelp;
+        $check = sql_query("select * from site_text where page = 'help' and name='$newhelp'");
+        if (!isset($check[0])) {
+            sql_query("insert into site_text(page,name,text,language,specific_to_group) values ('$page','$newhelp','','$language',$g)");
+        }
+    } else {
+        $text = sql_query("select * from site_text where page='$page' and name='$name' and language='$language' and specific_to_group $gc $g");
+        if (count($text) == 0) {
+            # Insert a new row for this language/group.
+            sql_query("insert into site_text(page,name,language,specific_to_group,text,custom) values ('$page','$name','$language',$g,'" . getvalescaped("text", "") . "','$custom')");
+        } else {
+            # Update existing row
+            sql_query("update site_text set text='" . getvalescaped("text", "") . "' where page='$page' and name='$name' and language='$language' and specific_to_group $gc $g");
+        }
+    }
 }

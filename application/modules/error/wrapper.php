@@ -4,7 +4,7 @@
  * A wrapper round the error handling and reporting functions,
  * to allow a future move to OO design.
  *
- * @author John Brookes <john@RSintheClouds.com>
+ * @author John Brookes <john@RSintheCloud.com>
  * @package RSintheClouds
  * @subpackage Refactor
 */

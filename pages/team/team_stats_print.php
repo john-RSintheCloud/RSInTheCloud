@@ -1,13 +1,18 @@
 <?php
 /**
  * Print statistics page (part of Team Center)
- * 
+ *
  * @package ResourceSpace
  * @subpackage Pages_Team
  */
 include "../../application/bootstrap.php";
 include "../../include/authenticate.php";if (!checkperm("t")) {exit ("Permission denied.");}
-include "../../include/general.php";
+
+function get_stats_activity_types()
+{
+    # Returns a list of activity types for which we have stats data (Search, User Session etc.)
+    return sql_array("select distinct activity_type value from daily_stat order by activity_type");
+}
 
 $year=getvalescaped("year",date("Y"));
 $groupselect=getvalescaped("groupselect","");
@@ -21,7 +26,7 @@ $title=$applicationname . " - " . $lang["statisticsfor"] . " " . $year;
 
 <h1><?php echo $title?></h1>
 
-<?php $types=get_stats_activity_types(); 
+<?php $types=get_stats_activity_types();
 for ($n=0;$n<count($types);$n++)
 	{
 	?>

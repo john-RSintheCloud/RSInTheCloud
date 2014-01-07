@@ -7,7 +7,7 @@
  * and the file management routines to use S3,
  * the first job is to split this up into sensible parts.
  *
- * @author John Brookes <john@RSintheClouds.com>
+ * @author John Brookes <john@RSintheCloud.com>
  * @package RSintheClouds
  * @subpackage Refactor
  *

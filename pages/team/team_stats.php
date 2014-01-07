@@ -1,13 +1,24 @@
 <?php
 /**
  * Statistics Display Page (part of Team Center)
- * 
+ *
  * @package ResourceSpace
  * @subpackage Pages_Team
  */
 include "../../application/bootstrap.php";
 include "../../include/authenticate.php";if (!checkperm("t")) {exit ("Permission denied.");}
-include "../../include/general.php";
+
+
+function get_stats_years()
+{
+    # Returns a list of years for which we have statistics.
+    return sql_array("select distinct year value from daily_stat order by year");
+}
+function get_stats_activity_types()
+{
+    # Returns a list of activity types for which we have stats data (Search, User Session etc.)
+    return sql_array("select distinct activity_type value from daily_stat order by activity_type");
+}
 
 $activity_type=getvalescaped("activity_type","User session");
 $year=getvalescaped("year",date("Y"));
@@ -46,19 +57,19 @@ if (getval("print","")!="") { # Launch printable page in an iframe
 <iframe width=1 height=1 style="visibility:hidden" src="<?php echo $baseurl_short?>pages/team/team_stats_print.php?year=<?php echo $year?>&groupselect=<?php echo $groupselect?>&groups=<?php echo join("_",$groups)?>"></iframe>
 <?php } ?>
 
-<div class="BasicsBox"> 
+<div class="BasicsBox">
   <h2>&nbsp;</h2>
   <h1><?php echo $lang["viewstatistics"]?></h1>
   <p><?php echo text("introtext")?></p>
-  
+
   <form method="post" action="<?php echo $baseurl_short?>pages/team/team_stats.php" onSubmit="return CentralSpacePost(this);">
 	<div class="Question">
 <label for="activity_type"><?php echo $lang["activity"]?></label><select id="activity_type" name="activity_type" class="shrtwidth">
-<?php $types=get_stats_activity_types(); 
+<?php $types=get_stats_activity_types();
 for ($n=0;$n<count($types);$n++)
-	{ 
-	if (!isset($lang["stat-" . strtolower(str_replace(" ","",$types[$n]))])){$lang["stat-" . strtolower(str_replace(" ","",$types[$n]))]=str_replace("[type]",$types[$n],$lang["log-missinglang"]);}	
-		
+	{
+	if (!isset($lang["stat-" . strtolower(str_replace(" ","",$types[$n]))])){$lang["stat-" . strtolower(str_replace(" ","",$types[$n]))]=str_replace("[type]",$types[$n],$lang["log-missinglang"]);}
+
 	?><option <?php if ($activity_type==$types[$n]) { ?>selected<?php } ?> value="<?php echo $types[$n]?>"><?php echo $lang["stat-" . strtolower(str_replace(" ","",$types[$n]))]?></option><?php
 	}
 ?>
@@ -68,7 +79,7 @@ for ($n=0;$n<count($types);$n++)
 
 	<div class="Question">
 <label for="year"><?php echo $lang["year"]?></label><select id="year" name="year" class="shrtwidth">
-<?php $years=get_stats_years(); 
+<?php $years=get_stats_years();
 for ($n=0;$n<count($years);$n++)
 	{
 	?><option <?php if ($year==$years[$n]) { ?>selected<?php } ?>><?php echo $years[$n]?></option><?php
@@ -82,7 +93,7 @@ for ($n=0;$n<count($years);$n++)
 <div class="Question">
 <label for="month"><?php echo $lang["month"]?></label><select id="month" name="month" class="shrtwidth">
 <option value=""><?php echo $lang["allmonths"] ?></option>
-<?php 
+<?php
 for ($n=1;$n<=12;$n++)
 	{
 	?><option value="<?php echo $n ?>" <?php if ($month==$n) { ?>selected<?php } ?>><?php echo $lang["months"][$n-1]?></option><?php
@@ -130,18 +141,18 @@ else {document.getElementById('groupselector').style.display='block';}">
 </div>
 
 <div class="QuestionSubmit">
-<label for="buttons"> </label>			
+<label for="buttons"> </label>
 <input name="save" type="submit" value="&nbsp;&nbsp;<?php echo $lang["viewstatistics"]?>&nbsp;&nbsp;" />
 </div>
 </form>
 
-	<?php if ($activity_type!="") { ?>	
+	<?php if ($activity_type!="") { ?>
 	<br/>
 	<div class="BasicsBox">
 	<img style="border:1px solid black;" src="<?php echo $baseurl_short?>pages/graph.php?activity_type=<?php echo urlencode($activity_type)?>&year=<?php echo $year?>&month=<?php echo $month ?>&groupselect=<?php echo $groupselect?>&groups=<?php echo join("_",$groups)?>" width=700 height=350>
 	</div>
 	<?php } ?>
-	
+
   </div>
 
 <?php
