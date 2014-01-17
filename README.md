@@ -20,4 +20,4 @@ Future:
 Note: 
 git master "IvoryPenguin/resourcespace" syncs frequently the original Resource Space SVN: http://svn.montala.net/svn/resourcespace
 
-We will try to keep backward compatibility as much as possible.
+This project is not backward compatible with ResourceSpace or OO RS.
