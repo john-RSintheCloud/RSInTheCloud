@@ -4,7 +4,7 @@ if (!defined("RUNNING_ASYNC")) {define("RUNNING_ASYNC", !isset($allow_smart_coll
 
 if (RUNNING_ASYNC){
 
-	include dirname(__FILE__)."/../../include/db.php";
+	include dirname(__FILE__)."/../../application/bootstrap.php";
 	include dirname(__FILE__)."/../../include/authenticate.php";
 	include dirname(__FILE__)."/../../include/general.php";
 	include dirname(__FILE__)."/../../include/collections_functions.php";

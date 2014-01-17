@@ -1,9 +1,9 @@
 <?php
-include "../include/db.php";
+include "../application/bootstrap.php";
 include "../include/authenticate.php"; 
-include "../include/general.php";
+
 include "../include/resource_functions.php";
-include "../include/collections_functions.php";
+
 include "../include/search_functions.php";
 include "../include/image_processing.php";
 
@@ -304,7 +304,7 @@ jQuery(document).ready(function()
 			{?>
 			jQuery(document).bind('keydown',function (e)
 				{
-				if (!(e.which == 115 && (e.ctrlKey || e.metaKey)) && !(e.which == 83 && (e.ctrlKey || e.metaKey)) && !(e.which == 19) )
+				if (!(e.which == 115 && e.ctrlKey) && !(e.which == 83 && e.ctrlKey) && !(e.which == 19) ) 
 					{
 					return true;
 					}
@@ -612,7 +612,7 @@ if ($enable_copy_data_from && !$multiple && !checkperm("F*"))
 	<div class="Question" id="question_copyfrom">
 	<label for="copyfrom"><?php echo $lang["batchcopyfrom"]?></label>
 	<input class="stdwidth" type="text" name="copyfrom" id="copyfrom" value="" style="width:80px;">
-	<input type="submit" name="copyfromsubmit" value="<?php echo $lang["copy"]?>" onClick="event.preventDefault();CentralSpacePost(document.getElementById('mainform'),true);">
+	<input type="submit" name="copyfromsubmit" value="<?php echo $lang["copy"]?>">
 	</div><!-- end of question_copyfrom -->
 	<?php
 	}

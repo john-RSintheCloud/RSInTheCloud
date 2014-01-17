@@ -1,7 +1,7 @@
 <?php
-include "../include/db.php";
+include "../application/bootstrap.php";
 if (!hook("authenticate")){include "../include/authenticate.php";}
-include "../include/general.php";
+
 
 include "../include/header.php";
 ?>

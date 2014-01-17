@@ -1,13 +1,13 @@
 <?php 
 
-include "../include/db.php";
-include "../include/general.php";
+include "../application/bootstrap.php";
+
 # External access support (authenticate only if no key provided, or if invalid access key provided)
 $k=getvalescaped("k","");if ($k!=""){die();} 
 include("../include/authenticate.php");
 include "../include/search_functions.php";
 include "../include/resource_functions.php";
-include "../include/collections_functions.php";
+
 
 $ref=getvalescaped("ref","",true);
 $collections=get_resource_collections($ref);

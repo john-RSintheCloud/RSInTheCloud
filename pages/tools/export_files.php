@@ -18,7 +18,7 @@ $write_metadata=false;
 set_time_limit(60*60*5);
 
 
-include "../../include/db.php";
+include "../../application/bootstrap.php";
 include "../../include/authenticate.php"; if (!checkperm("a")) {exit("Permission denied");}
 include "../../include/general.php";
 include "../../include/resource_functions.php";

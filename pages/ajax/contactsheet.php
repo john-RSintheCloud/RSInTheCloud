@@ -6,7 +6,7 @@
 foreach ($_POST as $key => $value) {$$key = stripslashes(utf8_decode(trim($value)));}
 
 // create new PDF document
-include('../../include/db.php');
+include('../../application/bootstrap.php');
 include('../../include/general.php');
 include('../../include/authenticate.php');
 include('../../include/search_functions.php');

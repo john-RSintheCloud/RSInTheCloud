@@ -3,7 +3,7 @@
 # This script is useful if you've added an exiftool field mapping and would like to update RS fields with the original file information 
 # for all your resources.
 
-include "../../include/db.php";
+include "../../application/bootstrap.php";
 include "../../include/authenticate.php"; if (!checkperm("a")) {exit("Permission denied");}
 include "../../include/general.php";
 include "../../include/resource_functions.php";

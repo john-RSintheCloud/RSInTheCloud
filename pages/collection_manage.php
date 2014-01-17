@@ -1,9 +1,9 @@
 <?php 
-include "../include/db.php";
+include "../application/bootstrap.php";
 include "../include/authenticate.php"; if (checkperm("b")){exit("Permission denied");}
 #if (!checkperm("s")) {exit ("Permission denied.");}
-include "../include/general.php";
-include "../include/collections_functions.php";
+
+
 include "../include/search_functions.php";
 include "../include/resource_functions.php";
 

@@ -2,8 +2,8 @@
 ob_start(); // we will use output buffering to prevent any included files 
             // from outputting stray characters that will mess up the binary download
             // we will clear the buffer and start over right before we download the file
-include "../include/db.php";
-include "../include/general.php";
+include "../application/bootstrap.php";
+
 include "../include/resource_functions.php";
 
 ob_end_clean(); 

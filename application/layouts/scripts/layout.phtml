@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<?php
+/**
+ * layout.phtml
+ * 
+ * Default layout template
+ * 
+ * PHP Version  PHP 5.3.10
+ * 
+ * @category  AdminService
+ * @package    Layout
+ * @author     John Brookes <john@qeweb.org>
+ * @copyright  2013 QE.org
+ * @version   2.2
+*/
+/**
+ * Application_Form_News
+ * 
+ * @category  AdminService
+ * @package    Layout
+ * @author     John Brookes
+ * @copyright  2013 QE.org
+ * @version   2.2
+*/
+?>
+<title>QE Admin System</title>
+<link href="/templates/default/en/css/layout.css" media="screen" rel="stylesheet" type="text/css" >
+<link href="/templates/default/en/css/school.css" media="screen" rel="stylesheet" type="text/css" >
+<?php echo $this->headLink() . PHP_EOL; //  variable links (jcrop css, etc
+    echo $this->headStyle()  . PHP_EOL; //  extra styles
+?>
+<style>
+table {
+    width: 100%;
+}
+td {
+    padding:2px;
+}
+.footer hr {
+    padding-top:10px;
+    height:1px solid black;
+}
+
+</style>
+
+<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js"></script>
+<script type="text/javascript" src="/templates/default/en/js/school.js"></script>
+
+<?php
+echo $this->headScript();
+?>
+
+</head>
+<body>
+        
+    <div id="containerWrapper">
+        <div id="maxImage" class="maxImg"><img src="/templates/default/en/images/common/none.gif" alt="" /></div>
+        <div id="container">
+            <div id="column">
+                <div class="callToAction">
+                    Phone for a Prospectus UK: 0<span class="skypeBreak">-
+                    </span>14<span class="skypeBreak">-
+                    </span>23 3<span class="skypeBreak">-
+                    </span>3 33 3<span class="skypeBreak">-
+                    </span>0
+                <br>
+                    International: +<span class="skypeBreak">-
+                    </span>4<span class="skypeBreak">-
+                    </span>4 14<span class="skypeBreak">-
+                    </span>23 3<span class="skypeBreak">-
+                    </span>3 33 3<span class="skypeBreak">-
+                    </span>0
+                </div>
+
+                <div class="logo">
+                    <a href='/'>QE Web Admin System</a>
+                </div>
+                 <ul class="navigation">
+                           <?php 
+                                echo $this->partial('partials/_navigation.phtml');
+                            ?>
+                 </ul>
+                <ul class="quotes">
+                    <li><a href="http://www.qe.org/en/what-the-students-say/"><q>I wanted somewhere I would be treated like a young adult and where people genuinely care about you.</q><em>Read more</em></a></li>
+                    <li><a href="http://www.qe.org/en/what-the-students-say/"><q>The quality and facilities are remarkable - the best I have ever seen and the staff are amazing.</q><em>Read more</em></a></li>
+                    <li><a href="http://www.qe.org/en/what-the-students-say/"><q>Our daughter loves the extra-curricular activities, sport, and all the horses and ponies.</q><em>Read more</em></a></li>
+                    <li><a href="http://www.qe.org/en/what-the-students-say/"><q>My parents and I chose you because your students' examination results put you in the top sector.</q><em>Read more</em></a></li>
+                </ul>
+                <a href="http://www.qe.org/en/" class="backtoschool">MAIN SCHOOL website<span>Click to view main site</span></a>
+
+                <ul class="language">
+                    <li class="portal"><a href="https://parents.qec.org/" target="_blank"><span>Secure Login</span>Parent Portal</a></li>
+                </ul>
+
+                <div class="footer">
+                    <ul>
+                        <li class="face so"><a href="http://www.facebook.com/QueenEthelburgas">facebook.com</a></li>
+                        <li class="twit so"><a href="http://twitter.com/qethelburgas">twitter.com</a></li>
+                        <li class="tele ">+44 (0)1423 33 33 30</li>
+                        <li class="emai">Email: <a href="mailto:info@qe.org">info@QE.org</a></li>
+                        <li><p>Thorpe Underwood Estate,<br />York, YO26 9SS, UK</p></li>
+                    </ul>
+                </div>
+                
+            </div>
+            <!-- end side column -->
+
+            <!-- start content -->
+            <div id="content">
+                <div class="logo">
+                    <a href="/" class="block"></a>
+                    <h1>QE Web Admin System</h1>
+                </div>
+
+                <ul class="navigation">
+                    <li class="kind" ><a href="http://www.qe.org/en/kindergarten/" >Queen's Kindergarten<span>3 Months to 3 Years</span></a></li>
+                    <li class="chap" ><a href="http://www.qe.org/en/chapter-house/" >Chapter House Preparatory School<span>3 to 10 Years Old</span></a></li>
+                    <li class="king" ><a href="http://www.qe.org/en/kings-magna/" >King's Magna Middle School<span>10 to 14 Years Old</span></a></li>
+                    <li class="coll" ><a href="http://www.qe.org/en/college/" >Queen Ethelburga\'s College<span>14 to 19 Years Old</span></a></li>
+                    <li class="facu" ><a href="http://www.qe.org/en/faculty/" >The Faculty of Queen Ethelburga's<span>14 to 19 Years Old</span></a></li>
+                </ul>
+
+                <ul id="dvd">
+                    <li><a href="http://www.qe.org/en/free-dvd-and-prospectus/">FREE DVD<br />&amp; Prospectus<span>Click to order yours</span></a></li>
+                    <li class="disc"><a href="#" >View Video</a></li>
+                </ul>
+
+                <ul id="breadcrumbs"><li class="home"><a href="/"></a></li><li><a href="/" class="last"">Breadcrumbs</a></li></ul>
+                <div id="main">
+                    
+                    
+<?php echo $this->layout()->content; ?>
+                    
+                    <div class="explore trippleCol">
+                        <h3 class="lined">Explore Our School</h3>
+                        <a href="#" class="overHang"><img src="/templates/default/en/images/common/linkInteractiveMap.jpg" alt="Explore Our School" /></a>
+                        <h4 class="subHeading">Interactive Map</h4>
+                        <p>As soon as you arrive with us you sense that, compared with other schools, here is somewhere special, friendly and pleasingly different. Our campus is exceptional.</p>
+                    </div>
+                    <div class="trippleCol footer">
+                        <h2 class="lined">Quick Links</h2>
+                        <ul>
+                            <li><a href="/en/school-fees/">Our Fees</a></li>
+                            <li><a href="/en/prospectus-and-policies/">Prospectus &amp; Policies</a></li>
+                            <li><a href="/en/how-to-find-us/">How to Find Us</a></li>
+                        </ul>
+                        <ul class="right">
+                            <li><a href="/en/interactive-map/">Interactive Map</a></li>
+                            <li><a href="/en/latest-news/">Latest News</a></li>
+                            <li><a href="/en/contact-us/">Contact Us</a></li>
+                            <li><a href="/en/site-map/">Site Map</a></li>
+                        </ul>
+                        <div class="isc">
+                                <a href="http://www.isc.co.uk/schools/england/yorkshire-area-north/york/queen-ethelburgas-college">independent schools council</a>
+                        </div>
+                    </div>
+                </div>
+                <!-- end main content -->
+            </div>
+            <!-- end content -->
+        </div>
+        <!-- end wrapper -->
+    </div>
+
+</body>
+
+</html>

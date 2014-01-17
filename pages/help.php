@@ -1,21 +1,20 @@
 <?php
-include "../include/db.php";
-include "../include/authenticate.php";
-include "../include/general.php";
+require_once "../application/bootstrap.php";
+require_once "../include/authenticate.php";
 
 $section=getvalescaped("section","");
 
-include "../include/header.php";
+require_once "../include/header.php";
 ?>
 
-<div class="BasicsBox"> 
+<div class="BasicsBox">
 
 <?php if (!hook("replacehelp")){?>
 <?php if ($section=="") { ?>
   <h2>&nbsp;</h2>
   <h1><?php echo $lang["helpandadvice"]?></h1>
   <p><?php echo text("introtext")?></p>
-  
+
   <div class="VerticalNav">
   <ul>
   <?php
@@ -29,7 +28,7 @@ include "../include/header.php";
   ?>
   </ul>
   </div>
-  
+
 <?php } else { ?>
   <h2>&nbsp;</h2>
   <h1><?php echo htmlspecialchars($section)?></h1>
@@ -42,5 +41,5 @@ include "../include/header.php";
 </div>
 
 <?php
-include "../include/footer.php";
+require_once "../include/footer.php";
 ?>

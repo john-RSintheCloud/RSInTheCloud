@@ -5,7 +5,7 @@
  * @package ResourceSpace
  * @subpackage Pages_Team
  */
-include "../../include/db.php";
+include "../../application/bootstrap.php";
 include "../../include/authenticate.php";if (!checkperm("t")) {exit ("Permission denied.");}
 include "../../include/general.php";
 include "../../include/resource_functions.php";
@@ -117,9 +117,7 @@ include "../../include/header.php";
 	<li><a href="<?php echo $baseurl?>/pages/team/team_plugins.php" onClick="return CentralSpaceLoad(this,true);"><?php echo $lang["pluginssetup"]?></a></li>
 	<?php } ?>
 	<li><a href="<?php echo $baseurl?>/pages/admin/index.php"><?php echo $lang["systemsetup"]?></a></li>
-	<?php if($team_centre_bug_report) { ?>   
     <li><a href="<?php echo $baseurl?>/pages/team/team_reportbug.php" onClick="return CentralSpaceLoad(this,true);"><?php echo $lang["reportbug"]?></a></li>
-	<?php } ?>	
 	<?php hook("customteamfunctionadmin")?>
 	<?php } ?>
 	

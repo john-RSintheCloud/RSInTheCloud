@@ -7,7 +7,7 @@
 # This script allows administrators to target resources in a particular collection for reindexing.
 #
 
-include "../../include/db.php";
+include "../../application/bootstrap.php";
 include "../../include/authenticate.php"; if (!checkperm("a")) {exit("Permission denied");}
 include "../../include/general.php";
 include "../../include/resource_functions.php";

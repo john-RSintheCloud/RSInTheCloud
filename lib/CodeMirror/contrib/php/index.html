@@ -22,7 +22,7 @@ Yahoo! Inc. under the BSD (revised) open source license
     parser, and &lt;style> tags use the CSS parser. The rest of the content is
     parsed using the XML parser in HTML mode.</p>
 
-    <p>Features of the PHP parser:
+    <p>Features of the PHP parser:</p>
     <ul>
       <li>special "deprecated" style for PHP4 keywords like 'var'
       <li>support for PHP 5.3 keywords: 'namespace', 'use'
@@ -231,16 +231,16 @@ EOSTRING
 
 
     };
-    
+
     if($something==true):
     	$test = 'something';
     endif;
-    
+
     for($i=0;$i<2000;$i++):
     	echo $i;
     	$k = $k + 1;
     endfor;
-    
+
     foreach(array('one','two') as $key => $value):
     	echo $number . ' = '. $key;
     endforeach;

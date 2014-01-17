@@ -1,6 +1,6 @@
 <?php
-include "../include/db.php";
-include "../include/general.php";
+include "../application/bootstrap.php";
+
 # External access support (authenticate only if no key provided)
 # No need to check access key for this page as it merely redirects to other pages
 $k=getvalescaped("k","");if ($k=="") {include "../include/authenticate.php";}

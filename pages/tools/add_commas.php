@@ -3,7 +3,7 @@
 # Quick script to fix database entries that need commas at the beginning (dropdown fields edited using collection edit before r1940). 
 # When some values have commas and others don't, sorting doesn't work correctly!!!
 
-include "../../include/db.php";
+include "../../application/bootstrap.php";
 include "../../include/authenticate.php"; if (!checkperm("a")) {exit("Permission denied");}
 include "../../include/general.php";
 include "../../include/resource_functions.php";

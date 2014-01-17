@@ -10,14 +10,11 @@ Goals:
 - Support AWS CloudFront publishing. On click publish to CDN.
 - Support on Demand custom Video Transcoding delegated to something else than a local FFMPEG
 
-Future:
-- Remove Windows and PHP4 dependencies
-- Make the code modular
-- Make the SQL calls and query independant, in a Class or Module
-- Use a PHP Framework
+This project is based on OORS - the Object Oriented ResourceSpace project.
 
+For more detail please see the wiki
 
-Note: 
-git master "IvoryPenguin/resourcespace" syncs frequently the original Resource Space SVN: http://svn.montala.net/svn/resourcespace
+With thanks to IvoryPenguin for the Git migration.
+Original ResourceSpace SVN: http://svn.montala.net/svn/resourcespace
 
 This project is not backward compatible with ResourceSpace or OO RS.

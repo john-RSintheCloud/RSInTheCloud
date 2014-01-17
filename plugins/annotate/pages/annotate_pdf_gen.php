@@ -2,7 +2,7 @@
 
 // this program creates a new PDF document with annotations
 
-include('../../../include/db.php');
+include('../../../application/bootstrap.php');
 include('../../../include/general.php');
 include('../../../include/authenticate.php');
 include('../include/general.php');

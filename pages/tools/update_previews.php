@@ -17,7 +17,7 @@
 # If you want to recreate preview for a single resource, you can pass ref=[ref]&only=true
 
 
-include "../../include/db.php";
+include "../../application/bootstrap.php";
 include "../../include/authenticate.php"; if (!checkperm("a")) {exit("Permission denied");}
 include "../../include/general.php";
 include "../../include/image_processing.php";

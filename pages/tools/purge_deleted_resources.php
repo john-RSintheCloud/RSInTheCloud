@@ -16,7 +16,7 @@ if (substr($sapi_type, 0, 3) != 'cli') {
 echo "error - aborting.";
 exit;
 }
-include "../../include/db.php";
+include "../../application/bootstrap.php";
 include "../../include/general.php";
 include "../../include/resource_functions.php";
 include "../../include/image_processing.php";

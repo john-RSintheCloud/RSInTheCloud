@@ -1,9 +1,10 @@
 <?php
-include "include/db.php";
-include "include/general.php";
-include "include/resource_functions.php";
-include "include/collections_functions.php";
-include "include/login_functions.php";
+
+require_once 'application/bootstrap.php';
+
+require_once "resource_functions.php";
+require_once "collections_functions.php";
+require_once "login_functions.php";
 
 $url=getval("url","index.php");
 $api=getval("api","");
@@ -67,7 +68,7 @@ elseif (array_key_exists("username",$_POST) && getval("langupdate","")=="")
     else
         {
         sleep($password_brute_force_delay);
-        
+
 		$error=$result['error'];
         hook("dispcreateacct");
         }
@@ -79,17 +80,17 @@ if ((getval("logout","")!="") && array_key_exists("user",$_COOKIE))
     #fetch username and update logged in status
     $session=escape_check($_COOKIE["user"]);
     sql_query("update user set logged_in=0,session='' where session='$session'");
-        
+
     #blank cookie
     rs_setcookie("user", "", time() - 3600);
 
     # Also blank search related cookies
-    setcookie("search","");	
-    setcookie("saved_offset","");	
-    setcookie("saved_archive","");	
-    
+    setcookie("search","");
+    setcookie("saved_offset","");
+    setcookie("saved_archive","");
+
     unset($username);
-    
+
     if (isset($anonymous_login))
     	{
     	# If the system is set up with anonymous access, redirect to the home page after logging out.
@@ -101,7 +102,7 @@ if (getval("langupdate","")!="")
 	{
 	# Update language while remaining on this page.
     rs_setcookie("language", $language, 1000); # Only used if not global cookies
-    rs_setcookie("language", $language, 1000, $baseurl_short . "pages/");    
+    rs_setcookie("language", $language, 1000, $baseurl_short . "pages/");
 	redirect("login.php?username=" . urlencode(getval("username","")));
 	}
 
@@ -117,27 +118,27 @@ if (!hook("replaceloginform")) {
   <p>
   <?php if ($allow_account_request) { ?><a href="pages/user_request.php">&gt; <?php echo $lang["nopassword"]?> </a><?php } ?>
   <?php if ($allow_password_reset) { ?><br/><a href="pages/user_password.php">&gt; <?php echo $lang["forgottenpassword"]?></a><?php } ?>
-  <?php hook("loginformlink") ?> 
+  <?php hook("loginformlink") ?>
   </p>
-  
-  
+
+
   <?php if ($error!="") { ?><div class="FormIncorrect"><?php echo $error?></div><?php } ?>
   <form id="loginform" method="post" <?php if (!$login_autocomplete) { ?>AUTOCOMPLETE="OFF"<?php } ?>>
-  <input type="hidden" name="langupdate" id="langupdate" value="">  
+  <input type="hidden" name="langupdate" id="langupdate" value="">
   <input type="hidden" name="url" value="<?php echo htmlspecialchars($url)?>">
 		<div class="Question">
 			<label for="username"><?php echo $lang["username"]?> </label>
 			<input type="text" name="username" id="username" class="stdwidth" <?php if (!$login_autocomplete) { ?>AUTOCOMPLETE="OFF"<?php } ?> value="<?php echo htmlspecialchars(getval("username","")) ?>" />
 			<div class="clearerleft"> </div>
 		</div>
-		
+
 		<div class="Question">
-			<label for="pass"><?php echo $lang["password"]?> </label>
+			<label for="password"><?php echo $lang["password"]?> </label>
 			<input type="password" name="password" id="password" class="stdwidth" <?php if (!$login_autocomplete) { ?>AUTOCOMPLETE="OFF"<?php } ?> />
 			 <div id="capswarning"><?php echo $lang["caps-lock-on"]; ?></div>
 			<div class="clearerleft"> </div>
 		</div>
-<?php if ($disable_languages==false) { ?>	
+<?php if ($disable_languages==false) { ?>
 		<div class="Question">
 			<label for="pass"><?php echo $lang["language"]?> </label>
 			<select class="stdwidth" name="language" onChange="document.getElementById('langupdate').value='YES';document.getElementById('loginform').submit();">
@@ -146,9 +147,9 @@ if (!hook("replaceloginform")) {
 			<?php } ?>
 			</select>
 			<div class="clearerleft"> </div>
-		</div> 
+		</div>
 <?php } ?>
-	
+
 		<?php if ($allow_keep_logged_in) { ?>
 		<div class="Question">
 			<label for="remember"><?php echo $lang["keepmeloggedin"]?></label>
@@ -156,9 +157,9 @@ if (!hook("replaceloginform")) {
 			<div class="clearerleft"> </div>
 		</div>
 		<?php } ?>
-		
+
 		<div class="QuestionSubmit">
-			<label for="buttons"> </label>			
+			<label for="buttons"> </label>
 			<input name="Submit" type="submit" value="&nbsp;&nbsp;<?php echo $lang["login"]?>&nbsp;&nbsp;" />
 		</div>
 	</form>

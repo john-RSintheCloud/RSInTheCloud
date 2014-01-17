@@ -28,7 +28,7 @@ function do_search($search,$restypes="",$order_by="relevance",$archive=0,$fetchr
 	# resolve $order_by to something meaningful in sql
 	$orig_order=$order_by;
 	global $date_field;
-	$order=array("relevance"=>"score $sort, user_rating $sort, hit_count $sort, field$date_field $sort,r.ref $sort","popularity"=>"user_rating $sort,hit_count $sort,field$date_field $sort,r.ref $sort","rating"=>"r.rating $sort, user_rating $sort, score $sort,r.ref $sort","date"=>"field$date_field $sort,r.ref $sort","colour"=>"has_image $sort,image_blue $sort,image_green $sort,image_red $sort,field$date_field $sort,r.ref $sort","country"=>"country $sort,r.ref $sort","title"=>"title $sort,r.ref $sort","file_path"=>"file_path $sort,r.ref $sort","resourceid"=>"r.ref $sort","resourcetype"=>"resource_type $sort,r.ref $sort","titleandcountry"=>"title $sort,country $sort","random"=>"RAND()","status"=>"archive $sort");
+	$order=array("relevance"=>"score $sort, user_rating $sort, hit_count $sort, field$date_field $sort,r.ref $sort","popularity"=>"user_rating $sort,hit_count $sort,field$date_field $sort,r.ref $sort","rating"=>"r.rating $sort, user_rating $sort, score $sort,r.ref $sort","date"=>"field$date_field $sort,r.ref $sort","colour"=>"has_image $sort,image_blue $sort,image_green $sort,image_red $sort,field$date_field $sort,r.ref $sort","country"=>"country $sort,r.ref $sort","title"=>"title $sort,r.ref $sort","file_path"=>"file_path $sort,r.ref $sort","resourceid"=>"r.ref $sort","resourcetype"=>"resource_type $sort,r.ref $sort","titleandcountry"=>"title $sort,country $sort","random"=>"RAND()");
 	if (!in_array($order_by,$order)&&(substr($order_by,0,5)=="field") ) {
 		if (!is_numeric(str_replace("field","",$order_by))) {exit("Order field incorrect.");}
 		$order[$order_by]="$order_by $sort";
@@ -47,7 +47,7 @@ function do_search($search,$restypes="",$order_by="relevance",$archive=0,$fetchr
 	$search=trim($search);
 
         # Dedupe keywords (not for quoted strings as the user may be looking for the same word multiple times together in this instance)
-        if (!$quoted_string) {$keywords=array_values(array_unique($keywords));}
+        if (!$quoted_string) {$keywords=array_unique($keywords);}
         
 	$modified_keywords=hook('dosearchmodifykeywords', '', array($keywords));
 	if ($modified_keywords)
@@ -193,13 +193,11 @@ function do_search($search,$restypes="",$order_by="relevance",$archive=0,$fetchr
 		global $uploader_view_override, $userref;
 		if ($uploader_view_override)
 			{
-			if ($sql_filter!="") {$sql_filter.=" and ";}
-			$sql_filter.="(archive not in ('$filterblockstates') or created_by='" . $userref . "')";
+			$sql_filter.=" and (archive not in ('$filterblockstates') or created_by='" . $userref . "')";
 			}
 		else
 			{
-			if ($sql_filter!="") {$sql_filter.=" and ";}
-			$sql_filter.="archive not in ('$filterblockstates')";
+			$sql_filter.=" and archive not in ('$filterblockstates')";
 			}
 		}
 	
@@ -277,7 +275,7 @@ function do_search($search,$restypes="",$order_by="relevance",$archive=0,$fetchr
 		for ($n=0;$n<count($keywords);$n++)
 			{			
 			$keyword=$keywords[$n];
-
+			
 			if (substr($keyword,0,1)!="!")
 				{
 				global $date_field;

@@ -4,11 +4,11 @@
  * 
  * @package ResourceSpace
  */
-include "../include/db.php";
+include "../application/bootstrap.php";
 include "../include/authenticate.php";
-include "../include/general.php";
+
 include "../include/request_functions.php";
-include "../include/collections_functions.php";
+
 
 $offset=getvalescaped("offset",0);
 

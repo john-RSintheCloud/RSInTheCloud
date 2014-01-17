@@ -1,6 +1,6 @@
 <?php
 
-include "../../include/db.php";
+include "../../application/bootstrap.php";
 include "../../include/general.php";
 include "../../include/authenticate.php";if (!checkperm("a")) {exit ("Permission denied.");}
 
@@ -37,7 +37,7 @@ function DrawOption($permission,$description,$reverse=false,$reload=false)
 	?>
 	<input type="hidden" name="permission_<?php echo urlencode($permission)?>" value="<?php echo ($reverse)?"reverse":"normal" ?>">
 	<tr>
-	<td width="3%"><?php if ($reverse) {?><i><?php } ?><?php echo $permission?><?php if ($reverse) {?></i><?php } ?></td>
+	<td nowrap width="3%"><?php if ($reverse) {?><i><?php } ?><?php echo $permission?><?php if ($reverse) {?></i><?php } ?></td>
 	<td><?php echo $description?></td>
 	<td width="20%"><input type="checkbox" name="checked_<?php echo urlencode($permission) ?>" <?php if ($checked) { ?> checked <?php } ?><?php if ($reload) { ?> onChange="submitForm();" <?php } ?>></td>
 	</tr>

@@ -1,7 +1,7 @@
 <?php
 //single upload progress meter
 //http://www.ultramegatech.com/blog/2010/10/create-an-upload-progress-bar-with-php-and-jquery/
-include('../../include/db.php');
+include('../../application/bootstrap.php');
  
     // Fetch the upload progress data
     $status = uploadprogress_get_info(getval('uid','test'));

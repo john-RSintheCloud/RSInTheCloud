@@ -1,7 +1,7 @@
 <?php
 
 // Do the include and authorization checking ritual
-include '../../../include/db.php';
+include '../../../application/bootstrap.php';
 include '../../../include/authenticate.php'; if (!checkperm('a')) {exit ($lang['error-permissiondenied']);}
 include '../../../include/general.php';
 
