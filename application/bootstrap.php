@@ -1,5 +1,7 @@
 <?php
 
+
+
 /**
  * Bootstrap
  *
@@ -32,6 +34,19 @@ set_include_path(implode(PATH_SEPARATOR, array(
 require_once 'timer.php';
 $pageTimer = new timer();
 
+//  Autoloader
+
+spl_autoload_register(
+  function ($pClassName) {
+    require_once (APPLICATION_PATH . 'modules/' . str_replace("_", "/", $pClassName) . '.php');
+  }
+);
+
+//  Dependency Injection
+$container = new containers_Dic();
+$container->init();
+
+
 //  Headers should be set in the layout script, not here.
 //  Commented out for now;
 //  Suppress Headers is set in access.php and file.php before calling bootstrap.
@@ -47,14 +62,12 @@ $pageTimer = new timer();
 //if (($pagename!="download") && ($pagename!="graph")) {header("Content-Type: text/html; charset=UTF-8");} // Make sure we're using UTF-8.
 
 
-//  These modules contain code and functions:
 require_once 'modules/config/wrapper.php';
 require_once 'modules/error/wrapper.php';
 require_once 'modules/database/wrapper.php';
 require_once 'modules/language/wrapper.php';
 require_once 'modules/plugins/wrapper.php';
 
-//  These only contain functions
 require_once 'modules/server/wrapper.php';
 require_once 'modules/files/wrapper.php';
 require_once 'modules/session/wrapper.php';
@@ -75,13 +88,4 @@ hook("initialise");
 //  DEAD!  require_once "db.php";
 //  DEAD!  require_once "general2.php";
 require_once "collections_functions2.php";
-
-//  Autoloader
-
-spl_autoload_register(
-  function ($pClassName) {
-    require_once (APPLICATION_PATH . 'modules/' . str_replace("_", "/", $pClassName) . '.php');
-  }
-);
-
 

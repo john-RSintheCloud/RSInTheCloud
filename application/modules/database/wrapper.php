@@ -8,6 +8,35 @@
  * @package RSintheClouds
  * @subpackage Refactor
  */
+
+//  Dependency Injection
+//  Our DIC needs to know about all our classes,
+//  but this is an attempt to add them in an orderly manner.
+//  Once the system is all OO, this can be moved to the main container->init method.
+
+//  Asset Table requires db injection
+$container['table_asset'] = $container->share( function ($c) {
+    $table = new database_table_asset();
+    $table->setDb($c['db']);
+    return $table;
+        });
+
+//  Basket Table requires db injection
+$container['table_basket'] = $container->share( function ($c) {
+    $table = new database_table_basket();
+    $table->setDb($c['db']);
+    return $table;
+        });
+
+//  Resource Table requires db injection
+$container['table_resource'] = $container->share( function ($c) {
+    $table = new database_table_resource();
+    $table->setDb($c['db']);
+    return $table;
+        });
+
+
+
 //  Config
 # If true, it does not remove the backslash from DB queries, and doesn't do any special processing.
 # to them. Unless you need to store '\' in your fields, you can safely keep the default.
@@ -249,7 +278,7 @@ function CheckDBStruct($path) {
                     if ($sql.="") {
                         $sql.=", ";
                     }
-                    $sql.=$col[0] . " " . str_replace("§", ",", $col[1]);
+                    $sql.=$col[0] . " " . str_replace("Â§", ",", $col[1]);
                     if ($col[4] != "") {
                         $sql.=" default " . $col[4];
                     }
@@ -367,7 +396,7 @@ function CheckDBStruct($path) {
                             if (!$found) {
                                 # Add this column.
                                 $sql = "alter table $table add column ";
-                                $sql.=$col[0] . " " . str_replace("§", ",", $col[1]); # Allow commas to be entered using '§', necessary for a type such as decimal(2,10)
+                                $sql.=$col[0] . " " . str_replace("Â§", ",", $col[1]); # Allow commas to be entered using 'Â§', necessary for a type such as decimal(2,10)
                                 if ($col[4] != "") {
                                     $sql.=" default " . $col[4];
                                 }
