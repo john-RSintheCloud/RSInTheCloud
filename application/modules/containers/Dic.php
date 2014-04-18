@@ -23,22 +23,13 @@ class containers_Dic extends Pimple
         });
 
         /**
-         * Database Connector
+         * Bucket for Plupload
          */
-        $this['PdoConnector'] = $this->share( function ($c) {
-            $conn = new database_PdoConnector(
-                $c['config']->getDbConfig()
-                );
-            return $conn->getConnection();
-        });
-
-        /**
-         * DB Query Runner
-         */
-        $this['db'] = $this->share( function ($c) {
-            return new database_Db($c['PdoConnector']);
+        $this['Bucket'] = $this->share( function ($c) {
+            return new s3_model_bucket();
 
         });
+
 
 
     }

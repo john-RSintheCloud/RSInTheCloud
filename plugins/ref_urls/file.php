@@ -3,7 +3,6 @@
 $suppress_headers = true;
 
 include "../../application/bootstrap.php";
-include "../../include/general.php";
 
 # Check if we need to authorize this access
 $size = getvalescaped('size', '');

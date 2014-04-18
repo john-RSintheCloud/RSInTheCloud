@@ -1,7 +1,4 @@
 <?php
-
-
-
 /**
  * Bootstrap
  *
@@ -47,20 +44,8 @@ $container = new containers_Dic();
 $container->init();
 
 
-//  Headers should be set in the layout script, not here.
-//  Commented out for now;
-//  Suppress Headers is set in access.php and file.php before calling bootstrap.
-//if (!isset($suppress_headers) || !$suppress_headers)
-//	{
-//	header("Expires: 26 Jul 2012 05:00:00 GMT");    // Date in the past
-//	header("Last-Modified: " . gmdate("D, d M Y H:i:s") . " GMT");  // always modified
-//	header("Cache-Control: no-store, no-cache, must-revalidate");
-//	header("Cache-Control: post-check=0, pre-check=0", false);
-//	}
-# Set character set.
-//  this should be in layout
-//if (($pagename!="download") && ($pagename!="graph")) {header("Content-Type: text/html; charset=UTF-8");} // Make sure we're using UTF-8.
-
+//  Load all the wrappers.
+//  These contain legacy functions and DIC components.
 
 require_once 'modules/config/wrapper.php';
 require_once 'modules/error/wrapper.php';
@@ -80,6 +65,8 @@ require_once 'modules/processLock/wrapper.php';
 
 require_once 'views//helpers/wrapper.php';
 
+//  DIC Plugins
+// require_once 'modules/organisation/wrapper.php';
 
 # Initialise hook for plugins
 hook("initialise");

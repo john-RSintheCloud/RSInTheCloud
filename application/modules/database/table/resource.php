@@ -12,7 +12,6 @@ class database_table_resource extends database_table_abstract
 {
     protected $table = 'res';
 
-    protected $_ref; // int(11) NOT NULL AUTO_INCREMENT,
     protected $_title; // varchar(200) NOT NULL,
     protected $_slug; // varchar(100) CHARACTER SET latin1 COLLATE latin1_general_cs NOT NULL,
     protected $_status; // char(1) DEFAULT '0',
@@ -52,12 +51,7 @@ class database_table_resource extends database_table_abstract
 
 
 
-    public function getRef()
-    {
-        return $this->_ref;
-    }
-
-    public function getSlug()
+   public function getSlug()
     {
         return $this->_slug;
     }
@@ -70,23 +64,6 @@ class database_table_resource extends database_table_abstract
     public function getOwner()
     {
         return $this->_owner;
-    }
-
-    public function getDate_created()
-    {
-        return $this->_date_created;
-    }
-
-    public function getDate_modified()
-    {
-        return $this->_date_modified;
-    }
-
-
-    public function setRef($ref)
-    {
-        $this->_ref = $ref;
-        return $this;
     }
 
     public function setSlug($slug)
@@ -131,29 +108,6 @@ class database_table_resource extends database_table_abstract
         return $this;
     }
 
-    public function setDate_created($date_created)
-    {
-        $this->_date_created = $date_created;
-        return $this;
-    }
-
-    public function setDate_modified($date_modified)
-    {
-        $this->_date_modified = $date_modified;
-        return $this;
-    }
-
-    public function setPRIMARY($PRIMARY)
-    {
-        $this->PRIMARY = $PRIMARY;
-        return $this;
-    }
-
-    public function setUNIQUE($UNIQUE)
-    {
-        $this->UNIQUE = $UNIQUE;
-        return $this;
-    }
 
 
 }

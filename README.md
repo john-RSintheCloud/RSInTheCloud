@@ -1,7 +1,7 @@
 RSintheClouds
 =============
 
-ResourceSpace V2 dev repo - Object Oriented ResourceSrace OORS
+ResourceSpace V2 dev repo - Object Oriented ResourceSpace OORS
 
 Testing / dev environment.  You are welcome to pull this, but don't expect it to work!
 

@@ -78,14 +78,40 @@ class database_Db
         } catch (Exception $exc) {
             $error = $this->getConnection()->errorInfo();
             if ($error[0] != '00000')
-                throw new InvalidArgumentException ('Cannot run sqlQuery: ' . $sql
+                throw new RuntimeException ('Cannot run sqlQuery: ' . $sql
                     . ' - message was: ' . $exc->getMessage()
-                    . "  -:-  Extended error : " . print_r($error, true));
+                    . "  -:-  Extended error : " . print_r($error, true), null, $exc);
         }
 
         $this->saveStats($qTime->show(), $sql);
 
-        return count($this->_data);
+        if ($this->_data){
+            return count($this->_data);
+        } else {
+            return 0;
+        }
+    }
+
+    public function selectQuery($sql = '')
+    {
+        $ret = $this->sqlQuery($sql);
+        if ($this->_data){
+            return $this->_data;
+        } else {
+            return '';
+        }
+
+    }
+
+    public function insertQuery($sql = '')
+    {
+        $ret = $this->sqlQuery($sql);
+        return $this->getConnection()->lastInsertId();
+    }
+
+    public function updateQuery($sql = '')
+    {
+        return $this->sqlQuery($sql);
     }
 
     protected function saveStats($time, $sql)

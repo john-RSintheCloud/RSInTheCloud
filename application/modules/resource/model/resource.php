@@ -5,7 +5,7 @@
  *
  * @author John
  */
-class resource_model_resource extends resource_model_abstract
+class resource_model_resource extends abstract_model_abstract
 {
 
     protected $_slug = ''; // varchar(200) CHARACTER SET latin1 COLLATE latin1_general_cs NOT NULL,

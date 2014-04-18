@@ -14,26 +14,78 @@
 //  but this is an attempt to add them in an orderly manner.
 //  Once the system is all OO, this can be moved to the main container->init method.
 
-//  Asset Table requires db injection
-$container['table_asset'] = $container->share( function ($c) {
-    $table = new database_table_asset();
-    $table->setDb($c['db']);
-    return $table;
-        });
+    /**
+    * Database Connector
+    */
+    $container['PdoConnector'] = $container->share( function ($c) {
+        $conn = new database_PdoConnector(
+            $c['config']->getDbConfig()
+            );
+        return $conn->getConnection();
+    });
 
-//  Basket Table requires db injection
-$container['table_basket'] = $container->share( function ($c) {
-    $table = new database_table_basket();
-    $table->setDb($c['db']);
-    return $table;
-        });
+    /**
+     * DB Query Runner
+     */
+    $container['db'] = $container->share( function ($c) {
+        return new database_Db($c['PdoConnector']);
 
-//  Resource Table requires db injection
-$container['table_resource'] = $container->share( function ($c) {
-    $table = new database_table_resource();
-    $table->setDb($c['db']);
-    return $table;
-        });
+    });
+
+    /**
+     * DB structure manager
+     */
+    $container['dbStruct'] = $container->share( function ($c) {
+        return new database_dbStruct();
+
+    });
+
+    //  ALL TABLES AND MAPPERS ARE DEFINED IN HERE
+    //
+    //  User Table
+    $container['userTable'] = $container->share( function ($c) {
+        $table = new database_table_abstract(array(
+            'db' => $c['db'],
+            'table' => 'user',
+            'fields' => $c['dbStruct']->getDbStruct('user')->getFieldNames()
+        ));
+        return $table;
+            });
+
+     //  User mapper requires table injection
+    $container['userMapper'] = $container->share( function ($c) {
+        $mapper = new database_mapper_user();
+        $mapper->setTable($c['userTable']);
+        return $mapper;
+            });
+
+   //  Asset Table requires db injection
+    $container['table_asset'] = $container->share( function ($c) {
+        $table = new database_table_asset();
+        $table->setDb($c['db']);
+        return $table;
+            });
+
+    //  Asset mapper requires table injection
+    $container['assetMapper'] = $container->share( function ($c) {
+        $mapper = new database_table_assetMapper();
+        $mapper->setTable($c['db']);
+        return $mapper;
+            });
+
+    //  Basket Table requires db injection
+    $container['table_basket'] = $container->share( function ($c) {
+        $table = new database_table_basket();
+        $table->setDb($c['db']);
+        return $table;
+            });
+
+    //  Resource Table requires db injection
+    $container['table_resource'] = $container->share( function ($c) {
+        $table = new database_table_resource();
+        $table->setDb($c['db']);
+        return $table;
+            });
 
 
 

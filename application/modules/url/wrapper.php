@@ -10,8 +10,17 @@
 */
 
 
-function getval($val, $default, $force_numeric = false) {
-    # return a value from POST, GET or COOKIE (in that order), or $default if none set
+/**
+ * return a value from POST, GET or COOKIE (in that order),
+ * or $default if none set
+ *
+ * @param string $val               name of value to get
+ * @param mixed $default            default value = '' or 0
+ * @param boolean $force_numeric    force numeric
+ * @return mixed                    value passed in
+ */
+function getval($val, $default = '', $force_numeric = false) {
+    #
     if (array_key_exists($val, $_POST)) {
         return ($force_numeric && !is_numeric($_POST[$val]) ? $default : $_POST[$val]);
     }
@@ -24,8 +33,16 @@ function getval($val, $default, $force_numeric = false) {
     return $default;
 }
 
-function getvalescaped($val, $default, $force_numeric = false) {
-    # return a value from get/post, escaped, SQL-safe and XSS-free
+/**
+ * return a value from get/post, escaped, SQL-safe and XSS-free
+ *
+ * @param string $val name of value to get
+ * @param mixed $default default value
+ * @param boolean $force_numeric
+ * @return mixed escaped value passed in
+ */
+function getvalescaped($val, $default = '', $force_numeric = false) {
+
     $value = getval($val, $default, $force_numeric);
     if (is_array($value)) {
         foreach ($value as &$item) {
@@ -44,64 +61,6 @@ function getvalescaped($val, $default, $force_numeric = false) {
 }
 
 
-function resolve_user_agent($agent) {
-    if ($agent == "") {
-        return "-";
-    }
-    $agent = strtolower($agent);
-    $bmatches = array(# Note - order is important - first come first matched
-        "firefox" => "Firefox",
-        "chrome" => "Chrome",
-        "opera" => "Opera",
-        "safari" => "Safari",
-        "applewebkit" => "Safari",
-        "msie 3." => "IE3",
-        "msie 4." => "IE4",
-        "msie 5.5" => "IE5.5",
-        "msie 5." => "IE5",
-        "msie 6." => "IE6",
-        "msie 7." => "IE7",
-        "msie 8." => "IE8",
-        "msie 9." => "IE9",
-        "msie 10." => "IE10",
-        "msie" => "IE",
-        "netscape" => "Netscape",
-        "mozilla" => "Mozilla"
-            #catch all for mozilla references not specified above
-    );
-    $osmatches = array(
-        "iphone" => "iPhone",
-        "nt 6.1" => "Windows 7",
-        "nt 6.0" => "Vista",
-        "nt 5.2" => "WS2003",
-        "nt 5.1" => "XP",
-        "nt 5.0" => "2000",
-        "nt 4.0" => "NT4",
-        "windows 98" => "98",
-        "linux" => "Linux",
-        "freebsd" => "FreeBSD",
-        "os x" => "OS X",
-        "mac_powerpc" => "Mac",
-        "sunos" => "Sun",
-        "psp" => "Sony PSP",
-        "api" => "Api Client"
-    );
-    $b = "???";
-    $os = "???";
-    foreach ($bmatches as $key => $value) {
-        if (!strpos($agent, $key) === false) {
-            $b = $value;
-            break;
-        }
-    }
-    foreach ($osmatches as $key => $value) {
-        if (!strpos($agent, $key) === false) {
-            $os = $value;
-            break;
-        }
-    }
-    return $os . " / " . $b;
-}
 
 function get_ip() {
 
