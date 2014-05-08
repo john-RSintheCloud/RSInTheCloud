@@ -59,22 +59,59 @@ class database_Db
     public function sqlQuery($sql = '')
     {
         $qTime = new timer();
+        $this->_data = array();
         if ( empty($sql)){
             throw new InvalidArgumentException('Empty query supplied to sqlQuery');
         }
         try {
-            $data = $this->getConnection()
+            $prepquery = $this->getConnection()
                 ->query($sql );
+        } catch (Exception $exc) {
+            throw new InvalidArgumentException ('Invalid sql statement supplied to sqlQuery: ' . $sql
+                    . ' - message was: ' . $exc->getMessage()
+                    . "  -:-  Extended error : " . print_r($this->getConnection()->errorInfo(), true));
+        }
+       try {
 
-        $this->_data = $data->fetchAll(PDO::FETCH_ASSOC);
+           $this->_data = $prepquery->fetchAll(PDO::FETCH_ASSOC);
 
         } catch (Exception $exc) {
-            throw new InvalidArgumentException ('Invalid sql statement supplied to sqlQuery: ' . $sql);
+            $error = $this->getConnection()->errorInfo();
+            if ($error[0] != '00000')
+                throw new RuntimeException ('Cannot run sqlQuery: ' . $sql
+                    . ' - message was: ' . $exc->getMessage()
+                    . "  -:-  Extended error : " . print_r($error, true), null, $exc);
         }
 
         $this->saveStats($qTime->show(), $sql);
 
-        return count($this->_data);
+        if ($this->_data){
+            return count($this->_data);
+        } else {
+            return 0;
+        }
+    }
+
+    public function selectQuery($sql = '')
+    {
+        $ret = $this->sqlQuery($sql);
+        if ($this->_data){
+            return $this->_data;
+        } else {
+            return '';
+        }
+
+    }
+
+    public function insertQuery($sql = '')
+    {
+        $ret = $this->sqlQuery($sql);
+        return $this->getConnection()->lastInsertId();
+    }
+
+    public function updateQuery($sql = '')
+    {
+        return $this->sqlQuery($sql);
     }
 
     protected function saveStats($time, $sql)
@@ -139,4 +176,42 @@ class database_Db
         return $ret;
     }
 
+    public function getNextSlug($slug, $table)
+    {
+
+        if (substr($slug, -2, 1) == '-'){
+            $suffix = intval(substr($slug, -1, 1)) + 1;
+            $base = substr($slug, 0, -2);
+
+        } else {
+            $suffix = 1;
+            $base = $slug;
+
+        }
+
+        $sql = 'SELECT slug FROM `' .$table ."` WHERE slug like '"
+                .$base . "%' ; ";
+        $slugs = $this->fetchAll($sql);
+
+        if (empty($slugs)){
+            return $slug;
+        }
+        //  $slugs is an array of arrays
+        $values = array();
+        foreach ($slugs as $value) {
+            $values[] = $value['slug'];
+        }
+
+        if (! in_array($slug, $values)){
+            return $slug;
+        }
+
+        for ($nx = $suffix; $nx < 999; $nx++){
+            if (! in_array($base . '-' . $nx, $values)){
+                return $base . '-' . $nx;
+            }
+
+        }
+        throw new InvalidArgumentException('Too many identical slugs being generated');
+    }
 }
