@@ -6,10 +6,10 @@ Initiative to port Resource Space Digital Asset Management to the Amazon Cloud.
 
 
 Goals:
-- Full AWS S3 integration. Storage reliable that scales
-- Support AWS CloudFront publishing. On click publish to CDN.
-- Support on Demand custom Video Transcoding delegated to something else than a local FFMPEG
-  - Using Cloud Transcode project for that: https://github.com/sportarchive/CloudTranscode
+- Full AWS S3 integration. Reliable storage that scales
+- Support AWS CloudFront publishing. One click publish to CDN.
+- Support on demand custom transcoding delegated to a cloud transcode stack
+  - see the Cloud Transcode project: https://github.com/sportarchive/CloudTranscode
 
 This project is based on OORS - the Object Oriented ResourceSpace project.
 

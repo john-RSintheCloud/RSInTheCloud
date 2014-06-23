@@ -34,7 +34,7 @@ namespace Rsitc\Logger;
 
 /**
  * use
- * $log = new EAndL_Logger_CsvFile($filename, $data);
+ * $log = new Logger_CsvFile($filename, $data);
  * if (! $log.isValid){var_dump ($log->errorList);}
  * 
  * @category  Library
@@ -107,7 +107,7 @@ class CsvFile
      * @param string $filename The name of the file
      * @param array  $data     (optional) data to write
      * 
-     * @return EAndL_Logger_CsvFile
+     * @return Logger_CsvFile
      */
     
     public function __construct($filename, $data = array(), $fileParts = array())
@@ -127,7 +127,7 @@ class CsvFile
      * 
      * @param string $filename The name of the file
      * 
-     * @return EAndL_Logger_CsvFile
+     * @return Logger_CsvFile
      */
     protected function makeFile($filename = '', $fileParts = array())
     {
@@ -191,7 +191,7 @@ class CsvFile
      * 
      * @param array $data (optional) data to write
      * 
-     * @return EAndL_Logger_CsvFile
+     * @return Logger_CsvFile
      */
     public function saveData($data = array())
     {
@@ -217,7 +217,7 @@ class CsvFile
      * 
      * @param array $data (optional) data to write
      * 
-     * @return EAndL_Logger_CsvFile
+     * @return Logger_CsvFile
      */
     protected function newFile($data)
     {
@@ -251,7 +251,7 @@ class CsvFile
      *
      * @param array $data (optional) data to write
      * 
-     * @return EAndL_Logger_CsvFile
+     * @return Logger_CsvFile
      */
     protected function appendFile($data = array())
     {
@@ -295,7 +295,7 @@ class CsvFile
     /**
      * sets the file stats
      * 
-     * @return EAndL_Logger_CsvFile
+     * @return Logger_CsvFile
      */
     protected function setStats()
     {
@@ -344,7 +344,7 @@ class CsvFile
      * 
      * @param boolean $rewind Whether to reset the pointer
      * 
-     * @return EAndL_Logger_CsvFile
+     * @return Logger_CsvFile
      */
     protected function rewind($rewind)
     {
@@ -363,7 +363,7 @@ class CsvFile
      * 
      * @param string $mode Permissions to open the file with
      * 
-     * @return EAndL_Logger_CsvFile
+     * @return Logger_CsvFile
      */
     protected function openFile($mode = '')
     {
@@ -428,7 +428,7 @@ class CsvFile
      * 
      * @param string $destination The new file destination
      * 
-     * @return string|EAndL_Logger_CsvFile
+     * @return string|Logger_CsvFile
      */
     function copy($destination)
     {

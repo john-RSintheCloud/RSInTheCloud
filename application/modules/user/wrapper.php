@@ -1,5 +1,4 @@
 <?php
-
 /**
  * url Wrapper
  * A wrapper round the user and password functions, to allow a future move to OO design.
@@ -8,68 +7,99 @@
  * @package RSintheClouds
  * @subpackage Refactor
  */
-if (!function_exists("get_users")) {
+//  Dependency Injection
+//  Our DIC needs to know about all our classes,
+//  but this is an attempt to add them in an orderly manner.
+//  Once the system is all OO, this can be moved to the main container->init method.
+//  User Table and User Mapper added in the database wrapper
+//  User model requires user mapper.
+//  There may be multiple users at any one time, so use 'factory'
+$container['user'] = $container->factory(function ($c) {
+    return new user_model_user($c['userMapper']);
+});
 
-    function get_users($group = 0, $find = "", $order_by = "u.username",
-            $usepermissions = false, $fetchrows = -1)
-    {
-        # Returns a user list. Group or search term is optional.
-        # The standard user group names are translated using $lang. Custom user group names are i18n translated.
+////////////////////////////////////////////  LEGACY FUNCTIONS WRAPPED INTO OBJECTS
 
-        $sql = "";
-        if ($group != 0) {
-            $sql = "where usergroup IN ($group)";
-        }
-        if (strlen($find) > 1) {
-            if ($sql == "") {
-                $sql = "where ";
-            } else {
-                $sql.= " and ";
-            }
-            $sql .= "(username like '%$find%' or fullname like '%$find%' or email like '%$find%')";
-        }
-        if (strlen($find) == 1) {
-            if ($sql == "") {
-                $sql = "where ";
-            } else {
-                $sql.= " and ";
-            }
-            $sql .= "username like '$find%'";
-        }
-        if ($usepermissions && checkperm("U")) {
-            # Only return users in children groups to the user's group
-            global $usergroup;
-            if ($sql == "") {
-                $sql = "where ";
-            } else {
-                $sql.= " and ";
-            }
-            $sql.= "find_in_set('" . $usergroup . "',g.parent) ";
-            $sql.= hook("getuseradditionalsql");
-        }
-        # Executes query.
-        $r = sql_query("select u.*,g.name groupname,g.ref groupref,g.parent groupparent,u.approved,u.created from user u left outer join usergroup g on u.usergroup=g.ref $sql order by $order_by",
-                false, $fetchrows);
 
-        # Translates group names in the newly created array.
-        for ($n = 0; $n < count($r); $n++) {
-            if (!is_array($r[$n])) {
-                break;
-            } # The padded rows can't be and don't need to be translated.
-            $r[$n]["groupname"] = lang_or_i18n_get_translated($r[$n]["groupname"],
-                    "usergroup-");
-        }
+function get_user($ref)
+{
+    global $container;
 
-        return $r;
+    $user = $container['user']->fetchOne(array('ref' => $ref));
+
+    return $user->toLegacyArray();
+}
+
+function user_email_exists($email)
+{
+# Returns true if a user account exists with e-mail address $email
+    $email = escape_check(trim(strtolower($email)));
+
+    global $container;
+
+    return $container['user']->isMailInUse($email);
+}
+
+///////////////////////////////////////////  LEGACY CODE
+
+function get_users($group = 0, $find = "", $order_by = "u.username",
+        $usepermissions = false, $fetchrows = -1)
+{
+# Returns a user list. Group or search term is optional.
+# The standard user group names are translated using $lang. Custom user group names are i18n translated.
+
+    $sql = "";
+    if ($group != 0) {
+        $sql = "where usergroup IN ($group)";
+    }
+    if (strlen($find) > 1) {
+        if ($sql == "") {
+            $sql = "where ";
+        } else {
+            $sql.= " and ";
+        }
+        $sql .= "(username like '%$find%' or fullname like '%$find%' or email like '%$find%')";
+    }
+    if (strlen($find) == 1) {
+        if ($sql == "") {
+            $sql = "where ";
+        } else {
+            $sql.= " and ";
+        }
+        $sql .= "username like '$find%'";
+    }
+    if ($usepermissions && checkperm("U")) {
+# Only return users in children groups to the user's group
+        global $usergroup;
+        if ($sql == "") {
+            $sql = "where ";
+        } else {
+            $sql.= " and ";
+        }
+        $sql.= "find_in_set('" . $usergroup . "',g.parent) ";
+        $sql.= hook("getuseradditionalsql");
+    }
+# Executes query.
+    $r = sql_query("select u.*,g.name groupname,g.ref groupref,g.parent groupparent,u.approved,u.created from user u left outer join usergroup g on u.usergroup=g.ref $sql order by $order_by",
+            false, $fetchrows);
+
+# Translates group names in the newly created array.
+    for ($n = 0; $n < count($r); $n++) {
+        if (!is_array($r[$n])) {
+            break;
+        } # The padded rows can't be and don't need to be translated.
+        $r[$n]["groupname"] = lang_or_i18n_get_translated($r[$n]["groupname"],
+                "usergroup-");
     }
 
+    return $r;
 }
 
 function get_users_with_permission($permission)
 {
-    # Returns all the users who have the permission $permission.
-    # The standard user group names are translated using $lang. Custom user group names are i18n translated.
-    # First find all matching groups.
+# Returns all the users who have the permission $permission.
+# The standard user group names are translated using $lang. Custom user group names are i18n translated.
+# First find all matching groups.
     $groups = sql_query("select ref,permissions from usergroup");
     $matched = array();
     for ($n = 0; $n < count($groups); $n++) {
@@ -78,27 +108,11 @@ function get_users_with_permission($permission)
             $matched[] = $groups[$n]["ref"];
         }
     }
-    # Executes query.
+# Executes query.
     $r = sql_query("select u.*,g.name groupname,g.ref groupref,g.parent groupparent from user u left outer join usergroup g on u.usergroup=g.ref where g.ref in ('" . join("','",
                     $matched) . "') order by username", false);
 
-    # Translates group names in the newly created array.
-    $return = array();
-    for ($n = 0; $n < count($r); $n++) {
-        $r[$n]["groupname"] = lang_or_i18n_get_translated($r[$n]["groupname"],
-                "usergroup-");
-        $return[] = $r[$n]; # Adds to return array.
-    }
-
-    return $return;
-}
-
-function get_user_by_email($email)
-{
-    $r = sql_query("select u.*,g.name groupname,g.ref groupref,g.parent groupparent from user u left outer join usergroup g on u.usergroup=g.ref where u.email like '%$email%' order by username",
-            false);
-
-    # Translates group names in the newly created array.
+# Translates group names in the newly created array.
     $return = array();
     for ($n = 0; $n < count($r); $n++) {
         $r[$n]["groupname"] = lang_or_i18n_get_translated($r[$n]["groupname"],
@@ -111,12 +125,12 @@ function get_user_by_email($email)
 
 function get_usergroups($usepermissions = false, $find = "")
 {
-    # Returns a list of user groups. The standard user groups are translated using $lang. Custom user groups are i18n translated.
-    # Puts anything starting with 'General Staff Users' - in the English default names - at the top (e.g. General Staff).
-    # Creates a query, taking (if required) the permissions  into account.
+# Returns a list of user groups. The standard user groups are translated using $lang. Custom user groups are i18n translated.
+# Puts anything starting with 'General Staff Users' - in the English default names - at the top (e.g. General Staff).
+# Creates a query, taking (if required) the permissions  into account.
     $sql = "";
     if ($usepermissions && checkperm("U")) {
-        # Only return users in children groups to the user's group
+# Only return users in children groups to the user's group
         global $usergroup, $U_perm_strict;
         if ($sql == "") {
             $sql = "where ";
@@ -124,19 +138,19 @@ function get_usergroups($usepermissions = false, $find = "")
             $sql.= " and ";
         }
         if ($U_perm_strict) {
-            //$sql.= "(parent='$usergroup')";
+//$sql.= "(parent='$usergroup')";
             $sql.= "find_in_set('" . $usergroup . "',parent)";
         } else {
-            //$sql.= "(ref='$usergroup' or parent='$usergroup')";
+//$sql.= "(ref='$usergroup' or parent='$usergroup')";
             $sql.= "(ref='$usergroup' or find_in_set('" . $usergroup . "',parent))";
         }
     }
 
-    # Executes query.
+# Executes query.
     global $default_group;
     $r = sql_query("select * from usergroup $sql order by (ref='$default_group') desc,name");
 
-    # Translates group names in the newly created array.
+# Translates group names in the newly created array.
     $return = array();
     for ($n = 0; $n < count($r); $n++) {
         $r[$n]["name"] = lang_or_i18n_get_translated($r[$n]["name"],
@@ -145,7 +159,7 @@ function get_usergroups($usepermissions = false, $find = "")
     }
 
     if (strlen($find) > 0) {
-        # Searches for groups with names which contains the string defined in $find.
+# Searches for groups with names which contains the string defined in $find.
         $initial_length = count($return);
         for ($n = 0; $n < $initial_length; $n++) {
             if (strpos(strtolower($return[$n]["name"]), strtolower($find)) === false) {
@@ -160,7 +174,7 @@ function get_usergroups($usepermissions = false, $find = "")
 
 function get_usergroup($ref)
 {
-    # Returns the user group corresponding to the $ref. A standard user group name is translated using $lang. A custom user group name is i18n translated.
+# Returns the user group corresponding to the $ref. A standard user group name is translated using $lang. A custom user group name is i18n translated.
 
     $return = sql_query("select * from usergroup where ref='$ref'");
     if (count($return) == 0) {
@@ -172,93 +186,11 @@ function get_usergroup($ref)
     }
 }
 
-if (!function_exists("get_user")) {
-
-    function get_user($ref)
-    {
-        global $udata_cache;
-        if (isset($udata_cache[$ref])) {
-            $return = $udata_cache[$ref];
-        } else {
-            $udata_cache[$ref] = sql_query("select * from user where ref='$ref'");
-        }
-        # Return a user's credentials.
-        if (count($udata_cache[$ref]) > 0) {
-            return $udata_cache[$ref][0];
-        } else {
-            return false;
-        }
-    }
-
-}
-
-if (!function_exists("save_user")) {
-
-    function save_user($ref)
-    {
-        global $lang;
-
-        # Save user details, data is taken from the submitted form.
-        if (getval("deleteme", "") != "") {
-            sql_query("delete from user where ref='$ref'");
-            return true;
-        } else {
-            # Username or e-mail address already exists?
-            $c = sql_value("select count(*) value from user where ref<>'$ref' and (username='" . getvalescaped("username",
-                            "") . "' or email='" . getvalescaped("email", "") . "')",
-                    0);
-            if (($c > 0) && (getvalescaped("email", "") != "")) {
-                return false;
-            }
-
-            $password = getvalescaped("password", "");
-            if (getval("suggest", "") != "") {
-                $password = make_password();
-            } elseif ($password != $lang["hidden"]) {
-                $message = check_password($password);
-                if ($message !== true) {
-                    return $message;
-                }
-            }
-
-            $expires = "'" . getvalescaped("account_expires", "") . "'";
-            if ($expires == "''") {
-                $expires = "null";
-            }
-
-            $passsql = "";
-            if ($password != $lang["hidden"]) {
-                # Save password.
-                if (getval("suggest", "") == "") {
-                    $password = md5("RS" . getvalescaped("username", "") . $password);
-                }
-                $passsql = ",password='" . $password . "',password_last_change=now()";
-            }
-
-            $additional_sql = hook("additionaluserfieldssave");
-
-            sql_query("update user set username='" . trim(getvalescaped("username",
-                                    "")) . "'" . $passsql . ",fullname='" . getvalescaped("fullname",
-                            "") . "',email='" . getvalescaped("email", "") . "',usergroup='" . getvalescaped("usergroup",
-                            "") . "',account_expires=$expires,ip_restrict='" . getvalescaped("ip_restrict",
-                            "") . "',comments='" . getvalescaped("comments", "") . "',approved='" . ((getval("approved",
-                            "") == "") ? "0" : "1") . "' $additional_sql where ref='$ref'");
-        }
-
-        if (getval("emailme", "") != "") {
-            email_user_welcome(getval("email", ""), getval("username", ""),
-                    getval("password", ""), getvalescaped("usergroup", ""));
-        }
-        return true;
-    }
-
-}
-
 function email_user_welcome($email, $username, $password, $usergroup)
 {
     global $applicationname, $email_from, $baseurl, $lang, $email_url_save_user;
 
-    # Fetch any welcome message for this user group
+# Fetch any welcome message for this user group
     $welcome = sql_value("select welcome_message value from usergroup where ref='" . $usergroup . "'",
             "");
     if (trim($welcome) != "") {
@@ -280,62 +212,58 @@ function email_user_welcome($email, $username, $password, $usergroup)
             $message, "", "", "emaillogindetails", $templatevars);
 }
 
-if (!function_exists("email_reminder")) {
+function email_reminder($email)
+{
+# Send a password reminder.
+    global $password_brute_force_delay;
+    if ($email == "") {
+        return false;
+    }
+    $details = sql_query("select username from user where email like '$email' and approved=1");
+    if (count($details) == 0) {
+        sleep($password_brute_force_delay);
+        return false;
+    }
+    $details = $details[0];
+    global $applicationname, $email_from, $baseurl, $lang, $email_url_remind_user;
+    $password = make_password();
+    $password_hash = md5("RS" . $details["username"] . $password);
 
-    function email_reminder($email)
-    {
-        # Send a password reminder.
-        global $password_brute_force_delay;
-        if ($email == "") {
-            return false;
-        }
-        $details = sql_query("select username from user where email like '$email' and approved=1");
-        if (count($details) == 0) {
-            sleep($password_brute_force_delay);
-            return false;
-        }
-        $details = $details[0];
-        global $applicationname, $email_from, $baseurl, $lang, $email_url_remind_user;
-        $password = make_password();
-        $password_hash = md5("RS" . $details["username"] . $password);
+    sql_query("update user set password='$password_hash' where username='" . escape_check($details["username"]) . "'");
 
-        sql_query("update user set password='$password_hash' where username='" . escape_check($details["username"]) . "'");
-
-        $templatevars['username'] = $details["username"];
-        $templatevars['password'] = $password;
-        if (trim($email_url_remind_user) != "") {
-            $templatevars['url'] = $email_url_remind_user;
-        } else {
-            $templatevars['url'] = $baseurl;
-        }
-
-
-        $message = $lang["newlogindetails"] . "\n\n" . $lang["username"] . ": " . $templatevars['username'] . "\n" . $lang["password"] . ": " . $templatevars['password'] . "\n\n" . $templatevars['url'];
-        send_mail($email, $applicationname . ": " . $lang["newpassword"],
-                $message, "", "", "emailreminder", $templatevars);
-        return true;
+    $templatevars['username'] = $details["username"];
+    $templatevars['password'] = $password;
+    if (trim($email_url_remind_user) != "") {
+        $templatevars['url'] = $email_url_remind_user;
+    } else {
+        $templatevars['url'] = $baseurl;
     }
 
+
+    $message = $lang["newlogindetails"] . "\n\n" . $lang["username"] . ": " . $templatevars['username'] . "\n" . $lang["password"] . ": " . $templatevars['password'] . "\n\n" . $templatevars['url'];
+    send_mail($email, $applicationname . ": " . $lang["newpassword"], $message,
+            "", "", "emailreminder", $templatevars);
+    return true;
 }
 
 function new_user($newuser)
 {
-    # Username already exists?
+# Username already exists?
     $c = sql_value("select count(*) value from user where username='$newuser'",
             0);
     if ($c > 0) {
         return false;
     }
 
-    # Create a new user with username $newuser. Returns the created user reference.
+# Create a new user with username $newuser. Returns the created user reference.
     sql_query("insert into user(username) values ('" . escape_check($newuser) . "')");
 
     $newref = sql_insert_id();
 
-    # Create a collection for this user, the collection name is translated when displayed!
+# Create a collection for this user, the collection name is translated when displayed!
     global $lang;
     $new = create_collection($newref, "My Collection", 0, 1); # Do not translate this string!
-    # set this to be the user's current collection
+# set this to be the user's current collection
     sql_query("update user set current_collection='$new' where ref='$newref'");
 
     return $newref;
@@ -343,25 +271,25 @@ function new_user($newuser)
 
 function get_active_users()
 {
-    # Returns a list of active users, i.e. users still logged on with a last-active time within the last 2 hours.
+# Returns a list of active users, i.e. users still logged on with a last-active time within the last 2 hours.
     return sql_query("select username,round((unix_timestamp(now())-unix_timestamp(last_active))/60,0) t from user where logged_in=1 and unix_timestamp(now())-unix_timestamp(last_active)<(3600*2) order by t;");
 }
 
 function change_password($password)
 {
-    # Sets a new password for the current user.
+# Sets a new password for the current user.
     global $userref, $username, $lang, $userpassword;
 
-    # Check password
+# Check password
     $message = check_password($password);
     if ($message !== true) {
         return $message;
     }
 
-    # Generate new password hash
+# Generate new password hash
     $password_hash = md5("RS" . $username . $password);
 
-    # Check password is not the same as the current
+# Check password is not the same as the current
     if ($userpassword == $password_hash) {
         return $lang["password_matches_existing"];
     }
@@ -372,7 +300,7 @@ function change_password($password)
 
 function make_password()
 {
-    # Generate a password using the configured settings.
+# Generate a password using the configured settings.
 
     global $password_min_length, $password_min_alpha, $password_min_uppercase, $password_min_numeric, $password_min_special;
 
@@ -384,36 +312,36 @@ function make_password()
 
     $password = "";
 
-    # Add alphanumerics
+# Add alphanumerics
     for ($n = 0; $n < $password_min_alpha; $n++) {
         $password.=substr($alpha, rand(0, strlen($alpha) - 1), 1);
     }
 
-    # Add upper case
+# Add upper case
     for ($n = 0; $n < $password_min_uppercase; $n++) {
         $password.=substr($uppercase, rand(0, strlen($uppercase) - 1), 1);
     }
 
-    # Add numerics
+# Add numerics
     for ($n = 0; $n < $password_min_numeric; $n++) {
         $password.=substr($numeric, rand(0, strlen($numeric) - 1), 1);
     }
 
-    # Add special
+# Add special
     for ($n = 0; $n < $password_min_special; $n++) {
         $password.=substr($special, rand(0, strlen($special) - 1), 1);
     }
 
-    # Pad with lower case
+# Pad with lower case
     $padchars = $password_min_length - strlen($password);
     for ($n = 0; $n < $padchars; $n++) {
         $password.=substr($lowercase, rand(0, strlen($lowercase) - 1), 1);
     }
 
-    # Shuffle the password.
+# Shuffle the password.
     $password = str_shuffle($password);
 
-    # Check the password
+# Check the password
     $check = check_password($password);
     if ($check !== true) {
         exit("Error: unable to automatically produce a password that met the criteria. Please check the password criteria in config.php. Generated password was '$password'. Error was: " . $check);
@@ -424,14 +352,14 @@ function make_password()
 
 function get_user_log($user, $fetchrows = -1)
 {
-    # Returns a user action log for $user.
-    # Standard field titles are translated using $lang.  Custom field titles are i18n translated.
+# Returns a user action log for $user.
+# Standard field titles are translated using $lang.  Custom field titles are i18n translated.
     global $view_title_field;
-    # Executes query.
+# Executes query.
     $r = sql_query("select r.ref resourceid,r.field" . $view_title_field . " resourcetitle,l.date,l.type,f.title,l.purchase_size,l.purchase_price, l.notes from resource_log l left outer join resource r on l.resource=r.ref left outer join resource_type_field f on f.ref=l.resource_type_field where l.user='$user' order by l.date desc",
             false, $fetchrows);
 
-    # Translates field titles in the newly created array.
+# Translates field titles in the newly created array.
     $return = array();
     for ($n = 0; $n < count($r); $n++) {
         if (is_array($r[$n])) {
@@ -445,8 +373,8 @@ function get_user_log($user, $fetchrows = -1)
 
 function resolve_userlist_groups($userlist)
 {
-    # Given a comma separated user list (from the user select include file) turn all Group: entries into fully resolved list of usernames.
-    # Note that this function can't decode default groupnames containing special characters.
+# Given a comma separated user list (from the user select include file) turn all Group: entries into fully resolved list of usernames.
+# Note that this function can't decode default groupnames containing special characters.
 
     global $lang;
     $ulist = explode(",", $userlist);
@@ -454,19 +382,19 @@ function resolve_userlist_groups($userlist)
     for ($n = 0; $n < count($ulist); $n++) {
         $u = trim($ulist[$n]);
         if (strpos($u, $lang["group"] . ": ") === 0) {
-            # Group entry, resolve
-            # Find the translated groupname.
+# Group entry, resolve
+# Find the translated groupname.
             $translated_groupname = trim(substr($u,
                             strlen($lang["group"] . ": ")));
-            # Search for corresponding $lang indices.
+# Search for corresponding $lang indices.
             $default_group = false;
             $langindices = array_keys($lang, $translated_groupname);
             if (count($langindices) > 0)
                 ; {
                 foreach ($langindices as $langindex) {
-                    # Check if it is a default group
+# Check if it is a default group
                     if (strstr($langindex, "usergroup-") !== false) {
-                        # Decode the groupname by using the code from lang_or_i18n_get_translated the other way around (it could be possible that someone have renamed the English groupnames in the language file).
+# Decode the groupname by using the code from lang_or_i18n_get_translated the other way around (it could be possible that someone have renamed the English groupnames in the language file).
                         $untranslated_groupname = trim(substr($langindex,
                                         strlen("usergroup-")));
                         $untranslated_groupname = str_replace(array("_", "and"),
@@ -481,8 +409,8 @@ function resolve_userlist_groups($userlist)
                 }
             }
             if ($default_group == false) {
-                # Custom group
-                # Decode the groupname
+# Custom group
+# Decode the groupname
                 $untranslated_groups = sql_query("select ref, name from usergroup");
                 foreach ($untranslated_groups as $group) {
                     if (i18n_get_translated($group['name']) == $translated_groupname) {
@@ -492,14 +420,14 @@ function resolve_userlist_groups($userlist)
                 }
             }
 
-            # Find and add the users.
+# Find and add the users.
             $users = sql_array("select username value from user where usergroup='$groupref'");
             if ($newlist != "") {
                 $newlist.=",";
             }
             $newlist.=join(",", $users);
         } else {
-            # Username, just add as-is
+# Username, just add as-is
             if ($newlist != "") {
                 $newlist.=",";
             }
@@ -509,11 +437,10 @@ function resolve_userlist_groups($userlist)
     return $newlist;
 }
 
-
 function check_password($password)
 {
-    # Checks that a password conforms to the configured paramaters.
-    # Returns true if it does, or a descriptive string if it doesn't.
+# Checks that a password conforms to the configured paramaters.
+# Returns true if it does, or a descriptive string if it doesn't.
     global $lang, $password_min_length, $password_min_alpha, $password_min_uppercase, $password_min_numeric, $password_min_special;
 
     if (strlen($password) < $password_min_length) {
@@ -567,7 +494,7 @@ function check_password($password)
 
 function resolve_users($users)
 {
-    # For a given comma-separated list of user refs (e.g. returned from a group_concat()), return a string of matching usernames.
+# For a given comma-separated list of user refs (e.g. returned from a group_concat()), return a string of matching usernames.
     if (trim($users) == "") {
         return "";
     }
@@ -577,15 +504,14 @@ function resolve_users($users)
 
 function send_statistics()
 {
-    # Sorry Montala.
-        return false;
+# Sorry Montala.
+    return false;
 }
-
 
 function check_access_key($resource, $key)
 {
-    # Verify a supplied external access key
-    # Option to plugin in some extra functionality to check keys
+# Verify a supplied external access key
+# Option to plugin in some extra functionality to check keys
     if (hook("check_access_key", "", array($resource, $key)) === true) {
         return true;
     }
@@ -595,12 +521,12 @@ function check_access_key($resource, $key)
     if (count($keys) == 0) {
         return false;
     } else {
-        # "Emulate" the user that e-mailed the resource by setting the same group and permissions
+# "Emulate" the user that e-mailed the resource by setting the same group and permissions
 
         $user = $keys[0]["user"];
         $expires = $keys[0]["expires"];
 
-        # Has this expired?
+# Has this expired?
         if ($expires != "" && strtotime($expires) < time()) {
             global $lang;
             ?>
@@ -627,15 +553,15 @@ function check_access_key($resource, $key)
             $userrequestmode = 0; # Always use 'email' request mode for external users
         }
 
-        # Special case for anonymous logins.
-        # When a valid key is present, we need to log the user in as the anonymous user so they will be able to browse the public links.
+# Special case for anonymous logins.
+# When a valid key is present, we need to log the user in as the anonymous user so they will be able to browse the public links.
         global $anonymous_login;
         if (isset($anonymous_login)) {
             global $username;
             $username = $anonymous_login;
         }
 
-        # Set the 'last used' date for this key
+# Set the 'last used' date for this key
         sql_query("update external_access_keys set lastused=now() where resource='$resource' and access_key='$key'");
 
         return true;
@@ -653,13 +579,13 @@ function check_access_key_collection($collection, $key)
     }
 
     for ($n = 0; $n < count($r); $n++) {
-        # Verify a supplied external access key for all resources in a collection
+# Verify a supplied external access key for all resources in a collection
         if (!check_access_key($r[$n], $key)) {
             return false;
         }
     }
 
-    # Set the 'last used' date for this key
+# Set the 'last used' date for this key
     sql_query("update external_access_keys set lastused=now() where collection='$collection' and access_key='$key'");
     return true;
 }
@@ -668,15 +594,15 @@ if (!function_exists("auto_create_user_account")) {
 
     function auto_create_user_account()
     {
-        # Automatically creates a user account (which requires approval unless $auto_approve_accounts is true).
+# Automatically creates a user account (which requires approval unless $auto_approve_accounts is true).
         global $applicationname, $user_email, $email_from, $baseurl, $email_notify, $lang, $custom_registration_fields, $custom_registration_required, $user_account_auto_creation_usergroup, $registration_group_select, $auto_approve_accounts, $auto_approve_domains;
 
-        # Add custom fields
+# Add custom fields
         $c = "";
         if (isset($custom_registration_fields)) {
             $custom = explode(",", $custom_registration_fields);
 
-            # Required fields?
+# Required fields?
             if (isset($custom_registration_required)) {
                 $required = explode(",", $custom_registration_required);
             }
@@ -692,7 +618,7 @@ if (!function_exists("auto_create_user_account")) {
             }
         }
 
-        # Required fields (name, email) not set?
+# Required fields (name, email) not set?
         if (getval("name", "") == "") {
             return $lang['requiredfields'];
         }
@@ -700,7 +626,7 @@ if (!function_exists("auto_create_user_account")) {
             return $lang['requiredfields'];
         }
 
-        # Work out which user group to set. Allow a hook to change this, if necessary.
+# Work out which user group to set. Allow a hook to change this, if necessary.
         $altgroup = hook("auto_approve_account_switch_group");
         if ($altgroup !== false) {
             $usergroup = $altgroup;
@@ -710,7 +636,7 @@ if (!function_exists("auto_create_user_account")) {
 
         if ($registration_group_select) {
             $usergroup = getvalescaped("usergroup", "", true);
-            # Check this is a valid selectable usergroup (should always be valid unless this is a hack attempt)
+# Check this is a valid selectable usergroup (should always be valid unless this is a hack attempt)
             if (sql_value("select allow_registration_selection value from usergroup where ref='$usergroup'",
                             0) != 1) {
                 exit("Invalid user group selection");
@@ -719,35 +645,35 @@ if (!function_exists("auto_create_user_account")) {
 
         $username = escape_check(make_username(getval("name", "")));
 
-        #check if account already exists
+#check if account already exists
         $check = sql_value("select email value from user where email = '$user_email'",
                 "");
         if ($check != "") {
             return $lang["useremailalreadyexists"];
         }
 
-        # Prepare to create the user.
+# Prepare to create the user.
         $email = trim(getvalescaped("email", ""));
         $password = make_password();
 
-        # Work out if we should automatically approve this account based on $auto_approve_accounts or $auto_approve_domains
+# Work out if we should automatically approve this account based on $auto_approve_accounts or $auto_approve_domains
         $approve = false;
         if ($auto_approve_accounts == true) {
             $approve = true;
         } elseif (count($auto_approve_domains) > 0) {
-            # Check e-mail domain.
+# Check e-mail domain.
             foreach ($auto_approve_domains as $domain => $set_usergroup) {
-                // If a group is not specified the variables don't get set correctly so we need to correct this
+// If a group is not specified the variables don't get set correctly so we need to correct this
                 if (is_numeric($domain)) {
                     $domain = $set_usergroup;
                     $set_usergroup = "";
                 }
                 if (substr(strtolower($email),
                                 strlen($email) - strlen($domain) - 1) == ("@" . strtolower($domain))) {
-                    # E-mail domain match.
+# E-mail domain match.
                     $approve = true;
 
-                    # If user group is supplied, set this
+# If user group is supplied, set this
                     if (is_numeric($set_usergroup)) {
                         $usergroup = $set_usergroup;
                     }
@@ -756,17 +682,17 @@ if (!function_exists("auto_create_user_account")) {
         }
 
 
-        # Create the user
+# Create the user
         sql_query("insert into user (username,password,fullname,email,usergroup,comments,approved) values ('" . $username . "','" . $password . "','" . getvalescaped("name",
                         "") . "','" . $email . "','" . $usergroup . "','" . escape_check($c) . "'," . (($approve) ? 1 : 0) . ")");
         $new = sql_insert_id();
         hook("afteruserautocreated", "all", array("new" => $new));
         if ($approve) {
-            # Auto approving, send mail direct to user
+# Auto approving, send mail direct to user
             email_user_welcome($email, $username, $password, $usergroup);
         } else {
-            # Not auto approving.
-            # Build a message to send to an admin notifying of unapproved user
+# Not auto approving.
+# Build a message to send to an admin notifying of unapproved user
             $message = $lang["userrequestnotification1"] . "\n\n" . $lang["name"] . ": " . getval("name",
                             "") . "\n\n" . $lang["email"] . ": " . getval("email",
                             "") . "\n\n" . $lang["comment"] . ": " . getval("userrequestcomment",
@@ -786,8 +712,8 @@ if (!function_exists("auto_create_user_account")) {
 
 function make_username($name)
 {
-    # Generates a unique username for the given name
-    # First compress the various name parts
+# Generates a unique username for the given name
+# First compress the various name parts
     $s = trim_array(explode(" ", $name));
 
     $name = $s[count($s) - 1];
@@ -796,7 +722,7 @@ function make_username($name)
     }
     $name = safe_file_name(strtolower($name));
 
-    # Check for uniqueness... append an ever-increasing number until unique.
+# Check for uniqueness... append an ever-increasing number until unique.
     $unique = false;
     $num = -1;
     while (!$unique) {
@@ -810,11 +736,11 @@ function make_username($name)
 
 function get_registration_selectable_usergroups()
 {
-    # Returns a list of  user groups selectable in the registration . The standard user groups are translated using $lang. Custom user groups are i18n translated.
-    # Executes query.
+# Returns a list of  user groups selectable in the registration . The standard user groups are translated using $lang. Custom user groups are i18n translated.
+# Executes query.
     $r = sql_query("select ref,name from usergroup where allow_registration_selection=1 order by name");
 
-    # Translates group names in the newly created array.
+# Translates group names in the newly created array.
     $return = array();
     for ($n = 0; $n < count($r); $n++) {
         $r[$n]["name"] = lang_or_i18n_get_translated($r[$n]["name"],
@@ -827,12 +753,12 @@ function get_registration_selectable_usergroups()
 
 function open_access_to_user($user, $resource, $expires)
 {
-    # Give the user full access to the given resource.
-    # Used when approving requests.
-    # Delete any existing custom access
+# Give the user full access to the given resource.
+# Used when approving requests.
+# Delete any existing custom access
     sql_query("delete from resource_custom_access where user='$user' and resource='$resource'");
 
-    # Insert new row
+# Insert new row
     sql_query("insert into resource_custom_access(resource,access,user,user_expires) values ('$resource','0','$user'," . ($expires == "" ? "null" : "'$expires'") . ")");
 
     return true;
@@ -840,34 +766,27 @@ function open_access_to_user($user, $resource, $expires)
 
 function remove_access_to_user($user, $resource)
 {
-    # Remove any user-specific access granted by an 'approve'.
-    # Used when declining requests.
-    # Delete any existing custom access
+# Remove any user-specific access granted by an 'approve'.
+# Used when declining requests.
+# Delete any existing custom access
     sql_query("delete from resource_custom_access where user='$user' and resource='$resource'");
 
     return true;
 }
 
-function user_email_exists($email)
-{
-    # Returns true if a user account exists with e-mail address $email
-    $email = escape_check(trim(strtolower($email)));
-    return (sql_value("select count(*) value from user where email like '$email'",
-                    0) > 0);
-}
 
 function resolve_user_emails($ulist)
 {
     global $lang;
-    // return an array of emails from a list of usernames and email addresses.
-    // with 'key_required' sibling array preserving the intent of internal/external sharing.
+// return an array of emails from a list of usernames and email addresses.
+// with 'key_required' sibling array preserving the intent of internal/external sharing.
     $emails_key_required = array();
     for ($n = 0; $n < count($ulist); $n++) {
         $uname = $ulist[$n];
         $email = sql_value("select email value from user where username='" . escape_check($uname) . "'",
                 '');
         if ($email == '') {
-            # Not a recognised user, if @ sign present, assume e-mail address specified
+# Not a recognised user, if @ sign present, assume e-mail address specified
             if (strpos($uname, "@") === false) {
                 error_alert($lang["couldnotmatchallusernames"] . ": " . escape_check($uname));
                 die();
@@ -876,7 +795,7 @@ function resolve_user_emails($ulist)
             $emails_key_required['emails'][$n] = $uname;
             $emails_key_required['key_required'][$n] = true;
         } else {
-            # Add e-mail address from user account
+# Add e-mail address from user account
             $emails_key_required['unames'][$n] = $uname;
             $emails_key_required['emails'][$n] = $email;
             $emails_key_required['key_required'][$n] = false;
@@ -884,5 +803,3 @@ function resolve_user_emails($ulist)
     }
     return $emails_key_required;
 }
-
-

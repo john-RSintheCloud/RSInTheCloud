@@ -1,7 +1,4 @@
 <?php
-
-
-
 /**
  * Bootstrap
  *
@@ -34,29 +31,28 @@ set_include_path(implode(PATH_SEPARATOR, array(
 require_once 'timer.php';
 $pageTimer = new timer();
 
-//  Headers should be set in the layout script, not here.
-//  Commented out for now;
-//  Suppress Headers is set in access.php and file.php before calling bootstrap.
-//if (!isset($suppress_headers) || !$suppress_headers)
-//	{
-//	header("Expires: 26 Jul 2012 05:00:00 GMT");    // Date in the past
-//	header("Last-Modified: " . gmdate("D, d M Y H:i:s") . " GMT");  // always modified
-//	header("Cache-Control: no-store, no-cache, must-revalidate");
-//	header("Cache-Control: post-check=0, pre-check=0", false);
-//	}
-# Set character set.
-//  this should be in layout
-//if (($pagename!="download") && ($pagename!="graph")) {header("Content-Type: text/html; charset=UTF-8");} // Make sure we're using UTF-8.
+//  Autoloader
+
+spl_autoload_register(
+  function ($pClassName) {
+    require_once (APPLICATION_PATH . 'modules/' . str_replace("_", "/", $pClassName) . '.php');
+  }
+);
+
+//  Dependency Injection
+$container = new containers_Dic();
+$container->init();
 
 
-//  These modules contain code and functions:
+//  Load all the wrappers.
+//  These contain legacy functions and DIC components.
+
 require_once 'modules/config/wrapper.php';
 require_once 'modules/error/wrapper.php';
 require_once 'modules/database/wrapper.php';
 require_once 'modules/language/wrapper.php';
 require_once 'modules/plugins/wrapper.php';
 
-//  These only contain functions
 require_once 'modules/server/wrapper.php';
 require_once 'modules/files/wrapper.php';
 require_once 'modules/session/wrapper.php';
@@ -69,6 +65,8 @@ require_once 'modules/processLock/wrapper.php';
 
 require_once 'views//helpers/wrapper.php';
 
+//  DIC Plugins
+// require_once 'modules/organisation/wrapper.php';
 
 # Initialise hook for plugins
 hook("initialise");
@@ -78,13 +76,3 @@ hook("initialise");
 //  DEAD!  require_once "general2.php";
 require_once "collections_functions2.php";
 
-//  Autoloader
-
-spl_autoload_register(
-  function ($pClassName) {
-    require_once (APPLICATION_PATH . 'modules/' . str_replace("_", "/", $pClassName) . '.php');
-  }
-);
-
-$container = new containers_Dic();
-$container->init();
