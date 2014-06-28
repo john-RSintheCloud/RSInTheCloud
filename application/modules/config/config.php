@@ -13,8 +13,20 @@ class config_config
     {
         //  read in the config.
 
-        if (($handle = fopen(APPLICATION_PATH . '../_config/config.php', "r")) === FALSE) {
+die('boo');        if (($handle = fopen(APPLICATION_PATH . '../_config/config.php', "r")) === FALSE) {
             throw new InvalidArgumentException ("Where's the config file gone?");
+        }
+        while (($data = fgetcsv($handle, 1000, "=")) !== FALSE) {
+            $num = count($data);
+            $prefix = '';
+            if ($num == 2){
+                $this->setVar ( $data[0], $data[1]);
+
+            }
+        }
+        fclose($handle);
+        if (($handle = fopen(APPLICATION_PATH . '../_config/secure.config.php', "r")) === FALSE) {
+            throw new InvalidArgumentException ("Don't forget the secure config file");
         }
         while (($data = fgetcsv($handle, 1000, "=")) !== FALSE) {
             $num = count($data);
