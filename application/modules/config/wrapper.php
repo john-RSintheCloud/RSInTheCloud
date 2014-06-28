@@ -12,16 +12,19 @@
 
 
 # *** LOAD CONFIG ***
-# Load the default config first, if it exists,
-# so any new settings are present even if missing from config.php.
+# This is legacy - all new code should be using the config class from the DIC
+# 
+# Load the default config first
+# so all settings are present 
 # Throw an exception if not found
 require_once APPLICATION_PATH . "../_config/config.default.php";
 # Load the real config
-if (!file_exists(APPLICATION_PATH . "../_config/config.php")) {
-    header ("Location: pages/setup.php" );
-    die;
-}
+//if (!file_exists(APPLICATION_PATH . "../_config/config.php")) {
+////  DON'T TRY TO ENTER SETUP    header ("Location: pages/setup.php" );
+//    die;
+//}
 require_once APPLICATION_PATH . "../_config/config.php";
+require_once APPLICATION_PATH . $secure_config_location;
 
 # Set the storage directory and URL if not already set.
 if (!isset($storagedir)) {die('Storage dir not set in config');}

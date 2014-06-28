@@ -2,7 +2,7 @@
 /**
  * Helper and rendering function for the configuration pages in the team center
  * 
- * @package ResourceSpace
+ * @package RS in the Cloud
  * @subpackage Includes
  */
 

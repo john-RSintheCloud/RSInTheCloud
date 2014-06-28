@@ -27,6 +27,9 @@ set_include_path(implode(PATH_SEPARATOR, array(
     get_include_path()
 )));
 
+//  Set baseURL  TODO
+
+
 //  start timer
 require_once 'timer.php';
 $pageTimer = new timer();
@@ -63,7 +66,7 @@ require_once 'modules/email/wrapper.php';
 require_once 'modules/user/wrapper.php';
 require_once 'modules/processLock/wrapper.php';
 
-require_once 'views//helpers/wrapper.php';
+require_once 'views/helpers/wrapper.php';
 
 //  DIC Plugins
 // require_once 'modules/organisation/wrapper.php';
