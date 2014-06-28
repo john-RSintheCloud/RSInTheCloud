@@ -25,7 +25,7 @@ die('boo');        if (($handle = fopen(APPLICATION_PATH . '../_config/config.ph
             }
         }
         fclose($handle);
-        if (($handle = fopen(APPLICATION_PATH . '../_config/secure.config.php', "r")) === FALSE) {
+        if (($handle = fopen(APPLICATION_PATH . $secure_config_location, "r")) === FALSE) {
             throw new InvalidArgumentException ("Don't forget the secure config file");
         }
         while (($data = fgetcsv($handle, 1000, "=")) !== FALSE) {

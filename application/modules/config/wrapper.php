@@ -24,7 +24,7 @@ require_once APPLICATION_PATH . "../_config/config.default.php";
 //    die;
 //}
 require_once APPLICATION_PATH . "../_config/config.php";
-require_once APPLICATION_PATH . "../_config/secure.config.php";
+require_once APPLICATION_PATH . $secure_config_location;
 
 # Set the storage directory and URL if not already set.
 #  This will not be needed once we get S3 upload working properly

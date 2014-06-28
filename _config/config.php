@@ -13,7 +13,7 @@ $config_show_performance_footer = true;
 # Options may be copied from config.default.php and configured here.
 
 ##  Passwords and keys should be stored in the secure config at
-$secure_config_location = secure.config.php;
+$secure_config_location = '../_config/secure.config.php';
 
 # MySQL database settings
 $mysql_server = 'localhost';
