@@ -1,6 +1,6 @@
 <?php
 # Chinese Simplified
-# Language File for ResourceSpace
+# Language File for RS in the Cloud
 # -------
 # Note: this has been automatically translated and could probably use some work. It's intended as a starting point.
 
@@ -654,21 +654,21 @@ $lang["noexternalsharing"]="不供外部分享.";
 $lang["sharedcollectionaddwarning"]="警告: 此收藏夹已和外部用户分享.您新加入的资源也可被他们使用. 想管理外部使用者对此收藏夹的使用权限，请点击 '分享' .";
 $lang["addresourcebatchlocalfolder"]="加入彼此资源";
 # Setup Script
-$lang["setup-alreadyconfigured"]="Your ResourceSpace installation is already configured.  To reconfigure, you may delete <pre>include/config.php</pre> and point your browser to this page again.";
+$lang["setup-alreadyconfigured"]="Your RS in the Cloud installation is already configured.  To reconfigure, you may delete <pre>include/config.php</pre> and point your browser to this page again.";
 $lang["setup-successheader"]="Congratulations!";
-$lang["setup-successdetails"]="Your initial ResourceSpace setup is complete.  Be sure to check out 'include/default.config.php' for more configuration options.";
+$lang["setup-successdetails"]="Your initial RS in the Cloud setup is complete.  Be sure to check out 'include/default.config.php' for more configuration options.";
 $lang["setup-successnextsteps"]="Next Steps:";
 $lang["setup-successremovewrite"]="You can now remove write access to 'include/'.";
 $lang["setup-visitwiki"]='Visit the <a target="_blank" href="http://wiki.resourcespace.org/index.php/Main_Page">ResourceSpace Documentation Wiki</a> for more information about customizing your installation';
 $lang["setup-checkconfigwrite"]="Write access to config directory:";
 $lang["setup-checkstoragewrite"]="Write access to storage directory:";
-$lang["setup-welcome"]="Welcome to ResourceSpace";
-$lang["setup-introtext"]="Thanks for choosing ResourceSpace.  This configuration script will help you setup ResourceSpace.  This process only needs to be completed once.";
+$lang["setup-welcome"]="Welcome to RS in the Cloud";
+$lang["setup-introtext"]="Thanks for choosing RS in the Cloud.  This configuration script will help you setup RS in the Cloud.  This process only needs to be completed once.";
 $lang["setup-checkerrors"]="Pre-configuration errors were detected.<br />  Please resolve these errors and return to this page to continue.";
 $lang["setup-errorheader"]="There were errors detected in your configuration.  See below for detailed error messages.";
 $lang["setup-warnheader"]="Some of your settings generated warning messages.  See below for details.  This doesn't necessarily mean there is a problem with your configuration.";
 $lang["setup-basicsettings"]="Basic Settings";
-$lang["setup-basicsettingsdetails"]="These settings provide the basic setup for your ResourceSpace installation.  Required items are marked with a <strong>*</strong>";
+$lang["setup-basicsettingsdetails"]="These settings provide the basic setup for your RS in the Cloud installation.  Required items are marked with a <strong>*</strong>";
 $lang["setup-dbaseconfig"]="Database Configuration";
 $lang["setup-mysqlerror"]="There was an error with your MySQL settings:";
 $lang["setup-mysqlerrorversion"]="MySQL version should be 5 or greater.";

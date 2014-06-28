@@ -1,6 +1,6 @@
 <?php
 # Brazilian Portuguese
-# Language File for ResourceSpace
+# Language File for RS in the Cloud
 # -------
 # Note: when translating to a new language, preserve the original case if possible.
 
@@ -50,7 +50,7 @@ $lang["manageresearchrequests"]="Gerenciar Requisições de Pesquisa";
 $lang["manageusers"]="Gerenciar Usuários";
 $lang["managecontent"]="Gerenciar Textos do Serviço";
 
-$lang["viewstatistics"]="Ver Estatísticas do ResourceSpace";
+$lang["viewstatistics"]="Ver Estatísticas do RS in the Cloud";
 $lang["viewserverstatistics"]="Ver Estatísticas do Servidor";
 
 $lang["viewreports"]="Ver Relatórios";

@@ -1,4 +1,6 @@
 <?php
+
+die ('do not attempt setup on this system, as it is now secure');
 /**
  * Initial setup page.
  *

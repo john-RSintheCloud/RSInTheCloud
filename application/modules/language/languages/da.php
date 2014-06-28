@@ -1,6 +1,6 @@
 <?php
 # Danish
-# Language File for ResourceSpace
+# Language File for RS in the Cloud
 # -------
 # Note: this has been automatically translated and could probably use some work. It's intended as a starting point.
 
@@ -551,21 +551,21 @@ $lang["confirmdeleteaccess"]="Er du sikker på du vil slette denne adgangsnøgle
 $lang["noexternalsharing"]="Ingen ekstern deling.";
 $lang["sharedcollectionaddwarning"]="Advarsel: Denne samling er blevet delt med eksterne brugere. Den ressource, du har tilføjet er nu blevet stillet til rådighed for disse brugere. Klik på &#39;share&#39; til at styre den eksterne adgang til denne samling.";
 $lang["addresourcebatchlocalfolder"]="Tilføj Resource Batch - Hent fra lokale upload mappe";
-$lang["setup-alreadyconfigured"]="Din ResourceSpace installationen er allerede konfigureret. At omkonfigurere, kan du slette &lt;pre&gt; omfatte / config.php &lt;/ pre&gt; og punkt din browser til denne side igen.";
+$lang["setup-alreadyconfigured"]="Din RS in the Cloud installationen er allerede konfigureret. At omkonfigurere, kan du slette &lt;pre&gt; omfatte / config.php &lt;/ pre&gt; og punkt din browser til denne side igen.";
 $lang["setup-successheader"]="Tillykke!";
-$lang["setup-successdetails"]="Deres første ResourceSpace opsætningen er færdig. Sørg for at tjekke ud &#39;omfatte / default.config.php &quot;for yderligere konfiguration valgmuligheder.";
+$lang["setup-successdetails"]="Deres første RS in the Cloud opsætningen er færdig. Sørg for at tjekke ud &#39;omfatte / default.config.php &quot;for yderligere konfiguration valgmuligheder.";
 $lang["setup-successnextsteps"]="Næste trin:";
 $lang["setup-successremovewrite"]="Du kan nu fjerne skrive adgang til &#39;omfatte /&#39;.";
 $lang["setup-visitwiki"]='Visit the <a target="_blank" href="http://wiki.resourcespace.org/index.php/Main_Page">ResourceSpace Documentation Wiki</a> for more information about customizing your installation';
 $lang["setup-checkconfigwrite"]="Skriveadgang til config directory:";
 $lang["setup-checkstoragewrite"]="Skriv adgang til oplagring directory:";
-$lang["setup-welcome"]="Velkommen til ResourceSpace";
-$lang["setup-introtext"]="Tak for valget ResourceSpace. Denne konfiguration script vil hjælpe dig med opsætningen ResourceSpace. Denne proces skal kun udfyldes én gang.";
+$lang["setup-welcome"]="Velkommen til RS in the Cloud";
+$lang["setup-introtext"]="Tak for valget RS in the Cloud. Denne konfiguration script vil hjælpe dig med opsætningen RS in the Cloud. Denne proces skal kun udfyldes én gang.";
 $lang["setup-checkerrors"]="Pre-konfiguration fejl blev opdaget. &lt;br /&gt; Venligst løse disse fejl og vende tilbage til denne side til at fortsætte.";
 $lang["setup-errorheader"]="Der var fejl i din konfiguration. Se nedenfor for detaljerede fejlmeddelelser.";
 $lang["setup-warnheader"]="Nogle af dine indstillinger genereret advarselsmeddelelser. Se nedenfor for yderligere oplysninger. Dette betyder ikke nødvendigvis, at der er et problem med din konfiguration.";
 $lang["setup-basicsettings"]="Grundlæggende indstillinger";
-$lang["setup-basicsettingsdetails"]="Disse indstillinger giver den grundlæggende opsætning til din ResourceSpace installationen. Krævet punkter er markeret med en &lt;strong&gt; * &lt;/ strong&gt;";
+$lang["setup-basicsettingsdetails"]="Disse indstillinger giver den grundlæggende opsætning til din RS in the Cloud installationen. Krævet punkter er markeret med en &lt;strong&gt; * &lt;/ strong&gt;";
 $lang["setup-dbaseconfig"]="Database Konfiguration";
 $lang["setup-mysqlerror"]="Der var en fejl i din MySQL-indstillinger:";
 $lang["setup-mysqlerrorversion"]="MySQL version bør være på 5 eller derover.";

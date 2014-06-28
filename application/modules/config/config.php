@@ -13,7 +13,7 @@ class config_config
     {
         //  read in the config.
 
-die('boo');        if (($handle = fopen(APPLICATION_PATH . '../_config/config.php', "r")) === FALSE) {
+        if (($handle = fopen(APPLICATION_PATH . '../_config/config.php', "r")) === FALSE) {
             throw new InvalidArgumentException ("Where's the config file gone?");
         }
         while (($data = fgetcsv($handle, 1000, "=")) !== FALSE) {

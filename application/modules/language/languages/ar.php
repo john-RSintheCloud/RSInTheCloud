@@ -1,6 +1,6 @@
 <?php	
 # Arabic
-# Language File for ResourceSpace
+# Language File for RS in the Cloud
 # -------
 
 
@@ -632,21 +632,21 @@ $lang["noexternalsharing"]=" أي تقاسم الخارجية. ";
 $lang["sharedcollectionaddwarning"]=" تحذير : هذه المجموعة قد تم تبادلها مع المستخدمين الخارجيين. المورد أضفتها الآن أتيحت لهؤلاء المستخدمين. انقر فوق 'سهم' لإدارة الوصول الخارجي لهذه المجموعة. ";
 $lang["addresourcebatchlocalfolder"]=" إضافة الموارد الدفعية -- إحضار من مجلد تحميل المحلية ";
 # Setup Script
-$lang["setup-alreadyconfigured"]=" ResourceSpace التثبيت الخاص بك تم تكوينه مسبقا. إلى تكوين ، قد تشمل حذف <pre>/ config.php </ قبل> ونقطة المتصفح إلى هذه الصفحة مرة أخرى. ";
+$lang["setup-alreadyconfigured"]=" RS in the Cloud التثبيت الخاص بك تم تكوينه مسبقا. إلى تكوين ، قد تشمل حذف <pre>/ config.php </ قبل> ونقطة المتصفح إلى هذه الصفحة مرة أخرى. ";
 $lang["setup-successheader"]=" تهانينا! ";
-$lang["setup-successdetails"]=" الأولي الخاص بك ResourceSpace اكتمال الإعداد. أن يكون متأكدا من إطلاعك 'تشمل / default.config.php' لمزيد من خيارات التكوين. ";
+$lang["setup-successdetails"]=" الأولي الخاص بك RS in the Cloud اكتمال الإعداد. أن يكون متأكدا من إطلاعك 'تشمل / default.config.php' لمزيد من خيارات التكوين. ";
 $lang["setup-successnextsteps"]=" الخطوات التالية : ";
 $lang["setup-successremovewrite"]=" يمكنك الآن إزالة الكتابة الوصول إلى 'تشمل /'. ";
 $lang["setup-visitwiki"]=" 'زيارة <أ href ";
 $lang["setup-checkconfigwrite"]=" الكتابة الوصول إلى الدليل التهيئة : ";
 $lang["setup-checkstoragewrite"]=" الكتابة الوصول إلى التخزين الدليل : ";
-$lang["setup-welcome"]=" مرحبا بكم في ResourceSpace ";
-$lang["setup-introtext"]=" شكرا لاختيار ResourceSpace. هذا البرنامج النصي التكوين سوف تساعدك على الإعداد ResourceSpace. هذه العملية لا تحتاج إلا إلى أن يكتمل مرة واحدة. ";
+$lang["setup-welcome"]=" مرحبا بكم في RS in the Cloud ";
+$lang["setup-introtext"]=" شكرا لاختيار RS in the Cloud. هذا البرنامج النصي التكوين سوف تساعدك على الإعداد RS in the Cloud. هذه العملية لا تحتاج إلا إلى أن يكتمل مرة واحدة. ";
 $lang["setup-checkerrors"]=" قبل تم الكشف عن أخطاء التكوين. <br/> الرجاء حل هذه الأخطاء والعودة إلى هذه الصفحة على الاستمرار. ";
 $lang["setup-errorheader"]=" كانت هناك أخطاء في الكشف عن التكوين الخاص بك. أنظر أدناه للاطلاع على رسائل الخطأ المفصلة. ";
 $lang["setup-warnheader"]=" بعض الإعدادات ولدت رسائل التحذير. أنظر أدناه للاطلاع على التفاصيل. هذا لا يعني بالضرورة وجود مشكلة مع التكوين الخاص بك. ";
 $lang["setup-basicsettings"]=" الإعدادات الأساسية ";
-$lang["setup-basicsettingsdetails"]=" هذه الإعدادات توفر الإعداد الأساسي لجهودكم ResourceSpace التثبيت. البنود المطلوبة تحمل مع <strong>* </ قوي> ";
+$lang["setup-basicsettingsdetails"]=" هذه الإعدادات توفر الإعداد الأساسي لجهودكم RS in the Cloud التثبيت. البنود المطلوبة تحمل مع <strong>* </ قوي> ";
 $lang["setup-dbaseconfig"]=" تكوين قاعدة بيانات ";
 $lang["setup-mysqlerror"]=" كان هناك خطأ مع إعدادات ماي : ";
 $lang["setup-mysqlerrorversion"]=" الخلية يجب أن يكون الإصدار 5 أو أكبر. ";

@@ -2,8 +2,8 @@ collection_public,introtext,"Public collections are created by other users.",1,e
 all,searchpanel,"Search using descriptions, keywords and resource numbers",2,en,,,
 home,themes,"The very best resources, hand picked and grouped.",3,en,,,
 home,mycollections,"Organise, collaborate & share your resources. Use these tools to help you work more effectively.",4,en,,,
-home,help,"Help and advice to get the most out of ResourceSpace.",5,en,,,
-home,welcometitle,"Welcome to ResourceSpace",6,en,,,
+home,help,"Help and advice to get the most out of RS in the Cloud.",5,en,,,
+home,welcometitle,"Welcome to RS in the Cloud",6,en,,,
 home,welcometext,"Your introductory text here.",7,en,,,
 themes,introtext,"Themes are groups of resources that have been selected by the administrators to provide an example of the resources available in the system.",8,en,,,
 edit,multiple,"Please select which fields you wish to overwrite. Fields you do not select will be left untouched.",9,en,,,
@@ -12,7 +12,7 @@ research_request,introtext,"Our professional researchers are here to assist you 
 collection_manage,introtext,"Organise and manage your work by grouping resources together. Create ‘Collections’ to suit your way of working. You may want to group resources under projects that you are working on independently, share resources amongst a project team or simply keep your favourite resources together in one place. All the collections in your list appear in the ‘My Collections’ panel at the bottom of the screen.",12,en,,,
 collection_manage,findpublic,"Public collections are groups of resources made widely available by users of the system. Enter a collection ID, or all or part of a collection name or username to find public collections. Add them to your list of collections to access the resources.",13,en,,,
 team_home,introtext,"Welcome to the team centre. Use the links below to administer resources, respond to resource requests, manage themes and alter system settings.",14,en,,,
-help,introtext,"Get the most out of ResourceSpace. These guides will help you use the system and the resources more effectively. </p>
+help,introtext,"Get the most out of RS in the Cloud. These guides will help you use the system and the resources more effectively. </p>
 
 
 
@@ -52,7 +52,7 @@ about,about,"Your about text goes here.",39,en,,,
 team_content,introtext,,40,en,,,
 done,deleted,"The resource has been deleted.",41,en,,,
 upload,introtext,"",42,en,,,
-home,restrictedtitle,"<h1>Welcome to ResourceSpace</h1>",43,en,,,
+home,restrictedtitle,"<h1>Welcome to RS in the Cloud</h1>",43,en,,,
 home,restrictedtext,"Please click on the link that you were e-mailed to access the resources selected for you.",44,en,,,
 resource_email,introtext,"Quickly share this resource with other users by email. A link is automatically sent out. You can also include any message as part of the email.",45,en,,,
 team_resource,introtext,"Add individual resources or batch upload resources. To edit individual resources, simply search for the resource, and click edit in the ‘Resource Tool’ panel on the resource screen.",46,en,,,
@@ -83,19 +83,19 @@ team_batch_select,introtext,"",54,en,,,
 download_click,introtext,"To download the resource file, right click the link below and choose ""Save As..."". You will then be asked where you would like to save the file. To open the file in your browser simply click the link.",55,en,,,
 collection_manage,newcollection,"To create a new collection, enter a short name.",56,en,,,
 collection_email,introtext,"Please complete the form below. The recipients will receive an email containing links to the collections rather than file attachments so they can choose and download the appropriate resources.",57,en,,,
-all,footer,"Powered by <a target=""_blank"" href=""http://www.resourcespace.org/"">ResourceSpace</a>: Open Source Digital Asset Management",58,en,,,
+all,footer,"Powered by <a target=""_blank"" href=""http://www.resourcespace.org/"">RS in the Cloud</a>: Open Source Digital Asset Management",58,en,,,
 change_language,introtext,"Please select your language below.",59,en,,,
 all,searchpanel,"Search using descriptions, keywords and resource numbers",60,es,,,
-all,footer,"Accionado por el <a href=""http://www.resourcespace.org/"">ResourceSpace</a>",61,es,,,
+all,footer,"Accionado por el <a href=""http://www.resourcespace.org/"">RS in the Cloud</a>",61,es,,,
 all,researchrequest,"Let our resources team find the resources you need.",62,es,,,
 delete,introtext,,68,es,,,
 contribute,introtext,"You can contribute your own resources. When you initially create a resource it is in the ""Pending Submission"" status. When you have uploaded your file and edited the fields, set the status field to ""Pending Review"". It will then be reviewed by the resources team.",69,es,,,
 done,deleted,"The resource has been deleted.",70,es,,,
 user_preferences,introtext,"Enter a new password below to change your password.",71,en,,,
 collection_manage,findpublic,"Public collections are groups of resources made widely available by users of the system. Enter a collection ID, or all or part of a collection name or username to find public collections. Add them to your list of collections to access the resources.",72,es,,,
-themes,findpublic,"Powered by <a href=""http://www.resourcespace.org/"">ResourceSpace</a>",73,es,,,
-login,welcomelogin,"Welcome to ResourceSpace, please log in...",74,en,,,
-all,footer,"Desarrollado por <a href=""http://www.resourcespace.org/"">ResourceSpace</a>",75,es,,,
+themes,findpublic,"Powered by <a href=""http://www.resourcespace.org/"">RS in the Cloud</a>",73,es,,,
+login,welcomelogin,"Welcome to RS in the Cloud, please log in...",74,en,,,
+all,footer,"Desarrollado por <a href=""http://www.resourcespace.org/"">RS in the Cloud</a>",75,es,,,
 all,researchrequest,"Pídenos fotografías, vídeos o testimonios.",76,es,,,
 contact,contact,"Introduce aquí tus datos de contacto.",77,es,,,
 collection_manage,newcollection,"Para crear una nueva colección, introduce un nombre.",78,es,,,
@@ -243,8 +243,8 @@ collection_public,introtext,"Les collections publiques sont créées par d'autre
 all,searchpanel,"Recherchez en utilisant les descriptions, mots clés et numéros de documents",200,fr,,,
 home,themes,"Les meilleurs documents, sélectionnés et regroupés",201,fr,,,
 home,mycollections,"Organisez et échangez vos documents. Ces outils vous aident à travailler plus efficacement.",202,fr,,,
-home,help,"Aide et conseils pour obtenir le meilleur de ResourceSpace.",203,fr,,,
-home,welcometitle,"Bienvenue dans ResourceSpace",204,fr,,,
+home,help,"Aide et conseils pour obtenir le meilleur de RS in the Cloud.",203,fr,,,
+home,welcometitle,"Bienvenue dans RS in the Cloud",204,fr,,,
 home,welcometext,"Votre texte d'introduction ici.",205,fr,,,
 themes,introtext,"Les thèmes sont des groupes de ressources.",206,fr,,,
 edit,multiple,"Veuillez choisir les champs que vous souhaitez écraser. Les champs non sélectionnés resteront inchangés.",207,fr,,,
@@ -253,7 +253,7 @@ research_request,introtext,"Nos professionnels sont là pour vous assister dans 
 collection_manage,introtext,"Organisez et gérez votre travail en groupant les documents. Créez des 'Collections' selon votre méthode de travail. Vous pouvez grouper les documents par projet, les partager avec l'équipe du projet, ou simplement conserver vos documents préférés en un seul endroit. Toutes vos collections sont listées dans le panneau 'Mes collections' en bas de l'écran.",210,fr,,,
 collection_manage,findpublic,"Les collections publiques sont des groupes de documents rendus disponibles pour tous par d'autres utilisateurs du système. Saisissez un numéro de collection, ou tout ou partie d'un nom de collection ou d'utilisateur pour trouver une collection publique. Ajoutez-les à votre liste de collections pour accéder à leur contenu.",211,fr,,,
 team_home,introtext,"Bienvenue dans l'espace équipe. Utilisez les liens ci-dessous pour administrer les documents, répondre aux requêtes de documents, gérer les thèmes et modifier les réglages du système.",212,fr,,,
-help,introtext,"Obtenez le meilleur de ResourceSpace. Ces guides vous aideront à utiliser le système et les documents plus efficacement. </p>
+help,introtext,"Obtenez le meilleur de RS in the Cloud. Ces guides vous aideront à utiliser le système et les documents plus efficacement. </p>
 
 
 
@@ -291,7 +291,7 @@ about,about,"Placez ici votre texte d'à propos.",237,fr,,,
 team_content,introtext,,238,fr,,,
 done,deleted,"Le document a été supprimé.",239,fr,,,
 upload,introtext,"",240,fr,,,
-home,restrictedtitle,"<h1>Bienvenue dans ResourceSpace</h1>",241,fr,,,
+home,restrictedtitle,"<h1>Bienvenue dans RS in the Cloud</h1>",241,fr,,,
 home,restrictedtext,"Veuillez cliquer sur le lien qui vous a été envoyé par mél pour accéder aux documents sélectionnés pour vous.",242,fr,,,
 resource_email,introtext,"Partagez rapidement par mél ce document avec d'autres utilisateurs. Un lien sera automatiquement envoyé. Vous pouvez aussi inclure un message dans le mél.",243,fr,,,
 team_resource,introtext,"Ajoutez un document individuel ou un ensemble de documents. Pour modifier individuellement les documents, rechercher simplement le document et cliquez sur Modifier dans le panneau 'Outils de document' sur l'écran du document..",244,fr,,,
@@ -309,7 +309,7 @@ collection_email,introtext,"Remplissez le formulaire ci-dessous pour envoyer cet
 all,footer,"Ce site utilise le système de gestion des actifs numériques <a href=""http://www.resourcespace.org/"">ResourceSpace</a>.",256,fr,,,
 change_language,introtext,"Veuillez sélectionner votre langue ci-dessous.",257,fr,,,
 change_password,introtext,"Saisissez un nouveau mot de passe ci-dessous pour changer votre mot de passe.",258,fr,,,
-login,welcomelogin,"Bienvenue dans ResourceSpace, veuillez vous identifier...",259,fr,,,
+login,welcomelogin,"Bienvenue dans RS in the Cloud, veuillez vous identifier...",259,fr,,,
 all,emailresource,"[img_gfx/whitegry/titles/title.gif]<br>
 [fromusername] [lang_hasemailedyouaresource]<br><br>
 [message]<br><br>
@@ -432,17 +432,17 @@ download_click,introtext,"Um die Datei herunterzuladen, clicken Sie bitte mit de
 download_progress,introtext,"Ihr Download wird in Kürze starten. Nachdem der Download abgeschlossen ist, wählen Sie bitte einen der folgenden Links.",293,de,,,0
 edit,batch,"",294,de,,,0
 edit,multiple,"Bitte wählen Sie die Felder aus, die Sie verändern wollen. Felder, die Sie nicht anwählen, werden nicht verändert.",295,de,,,0
-help,introtext,"Diese Anleitungen helfen Ihnen, ResourceSpace und Ihre Medien effektiv zu nutzen.</p>
+help,introtext,"Diese Anleitungen helfen Ihnen, RS in the Cloud und Ihre Medien effektiv zu nutzen.</p>
 <p>Benutzen Sie ""Themen"", um Ressourcen nach Themen zu erkunden oder nutzen Sie die Suche um spezifische Ressourcen zu finden.</p>
 <p><a href=""http://www.montala.net/downloads/resourcespace-GettingStarted.pdf"">User Guide</a> (PDF, englisch)<br /><a target=""_blank"" href=""http://wiki.resourcespace.org/index.php/Main_Page"">Online Dokumentation</a> (Wiki)</p>",296,de,,,0
-home,help,"Hilfe für die Arbeit mit ResourceSpace",297,de,,,0
+home,help,"Hilfe für die Arbeit mit RS in the Cloud",297,de,,,0
 home,mycollections,"Hier können Sie Ihre Kollektionen organisieren, verwalten und weitergeben.",298,de,,,0
 home,restrictedtext,"Bitte klicken Sie auf den Link, den Sie per E-Mail erhalten haben, um auf die für Sie ausgesuchten Ressourcen zuzugreifen.",299,de,,,0
-home,restrictedtitle,"<h1>Willkommen bei ResourceSpace</h1>",300,de,,,0
+home,restrictedtitle,"<h1>Willkommen bei RS in the Cloud</h1>",300,de,,,0
 home,themes,"Von unserem Team vorausgewählte Bilder",301,de,,,0
 home,welcometext,"Ihr Einleitungstext hier",302,de,,,0
-home,welcometitle,"Willkommen bei ResourceSpace",303,de,,,0
-login,welcomelogin,"Willkommen bei ResourceSpace. Bitte loggen Sie sich ein...",304,de,,,0
+home,welcometitle,"Willkommen bei RS in the Cloud",303,de,,,0
+login,welcomelogin,"Willkommen bei RS in the Cloud. Bitte loggen Sie sich ein...",304,de,,,0
 research_request,introtext,"Unser Team unterstützt Sie dabei, die optimalen Ressourcen für Ihre Projekte zu finden. Füllen Sie dieses Formular bitte möglichst vollständig aus, damit wir Ihre Anforderungen erfüllen können.
 <br /><br />
 Wir werden Sie kontinuierlich informieren. Sobald wir Ihre Anfrage bearbeitet haben, werden Sie eine E-Mail mit einem Link zu den von uns empfohlenen Bildern erhalten.",305,de,,,0
@@ -475,13 +475,13 @@ team_user,introtext,"In diesem Bereich können Sie Benutzer hinzufügen, lösche
 themes,manage,"Organisieren und bearbeiten Sie Ihre Themen. Themen sind besonders hervorgehobene Kollektionen. <br /><br /><strong>1 Um einen neuen Eintrag in einem Thema anzulegen, müssen Sie zuerst eine neue Kollektion anlegen</strong><br />Wählen Sie <strong>Meine Kollektionen</strong> aus der oberen Navigation und legen Sie eine neue <strong>öffentliche</strong> Kollektion an. Stellen Sie sicher, dass Sie einen Namen für Ihr Thema eingeben. Um die aktuelle Kollektion einem bestehenden Thema zuzuordnen, nutzen Sie einen bestehenden Themennamen. Wenn Sie einen noch nicht vergebenen Themennamen angeben, erstellen Sie ein neues Thema. <br /><br /><strong>2 Um den Inhalt eines bestehenden Themas zu ändern, </strong><br>wählen Sie <strong>'Kollektion bearbeiten'</strong>. Die Ressourcen in dieser Kollektion erscheinen unten im <strong>'Meine Kollektionen'</strong> Bereich. Nutzen Sie die Standardwerkzeuge um Resourcen zu bearbeiten, hizuzufügen oder zu löschen.<br /><br /><strong>3 Um eine Kollektion umzubenennen oder unter einem anderen Thema anzuzeigen,</strong><br />wählen Sie <strong>'bearbeiten'</strong> und bearbeiten Sie die Themenkategorie oder die Kollektionsnamen. <br /><br /><strong>4 Um eine Kollektion aus einem Thema zu entfernen,</strong><br>wählen Sie<strong> 'bearbeiten'</strong> und löschen Sie den Eintrag im Feld ""Themen-Kategorie"".",329,de,,,0
 upload,introtext,"",330,de,,,0
 upload_swf,introtext,"",331,de,,,0
-home,welcometitle,"Välkommen till ResourceSpace",332,sv,,,0
+home,welcometitle,"Välkommen till RS in the Cloud",332,sv,,,0
 home,welcometext,"Skriv en introduktion här …",333,sv,,,0
-all,footer,"<a target=""_blank"" href=""http://www.resourcespace.org/"">ResourceSpace</a>: Digital materialförvaltning (dam) med öppen källkod",334,sv,,,0
+all,footer,"<a target=""_blank"" href=""http://www.resourcespace.org/"">RS in the Cloud</a>: Digital materialförvaltning (dam) med öppen källkod",334,sv,,,0
 all,searchpanel,"Sök efter material genom att ange beskrivning, nyckelord eller materialnr.",335,sv,,,0
 resource_email,introtext,"Dela snabbt och enkelt material med andra. Ett e-postmeddelande innehållande en webblänk till materialen skapas och skickas automatiskt. Du kan även lägga till ett eget meddelande.",336,sv,,,0
 home,themes,"De bästa materialen, speciellt utvalda och sorterade.",337,sv,,,0
-home,restrictedtitle,"<h1>Välkommen till ResourceSpace</h1>",338,sv,,,0
+home,restrictedtitle,"<h1>Välkommen till RS in the Cloud</h1>",338,sv,,,0
 about,about,"Din egen text för ’Om oss’ …",339,sv,,,0
 home,help,"Hjälp och tips som ser till att du får ut det mesta möjliga av ResourceSpace.",340,sv,,,0
 home,mycollections,"Organisera dina material och samarbeta med andra. De här verktygen hjälper dig att arbeta mer effektivt.",341,sv,,,0

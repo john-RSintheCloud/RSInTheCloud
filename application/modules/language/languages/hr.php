@@ -1,6 +1,6 @@
 <?php
 # Croatian
-# Language File for ResourceSpace
+# Language File for RS in the Cloud
 # -------
 # Note: when translating to a new language, preserve the original case if possible.
 
@@ -549,20 +549,20 @@ $lang["confirmdeleteaccess"]="Jeste li sigurni da želite izbrisati ovaj pristup
 $lang["noexternalsharing"]="Bez vanjske dijeljenjem.";
 $lang["sharedcollectionaddwarning"]="Upozorenje: Ova zbirka je dijelio s vanjskim korisnicima. The resource ste dodali je sada dostupan za ove korisnike. Kliknite na &#39;dijeliti&#39; za upravljanje vanjskim pristupom za ovu zbirku.";
 $lang["addresourcebatchlocalfolder"]="Dodaj Resursnog Skupno - iznijet iz lokalnih učitati mapu";
-$lang["setup-alreadyconfigured"]="Vaš ResourceSpace instalacija već je konfiguriran. Da biste ponovo, vi svibanj uključuju brisanje &lt;pre&gt; / config.php &lt;/ pre&gt; i pokažite vaš preglednik za ovu stranicu ponovo.";
+$lang["setup-alreadyconfigured"]="Vaš RS in the Cloud instalacija već je konfiguriran. Da biste ponovo, vi svibanj uključuju brisanje &lt;pre&gt; / config.php &lt;/ pre&gt; i pokažite vaš preglednik za ovu stranicu ponovo.";
 $lang["setup-successheader"]="Čestitam!";
-$lang["setup-successdetails"]="Inicijalno ResourceSpace Postavljanje je završeno. Budite sigurni da provjerite &#39;uključiti / default.config.php za više konfiguracijskih opcija.";
+$lang["setup-successdetails"]="Inicijalno RS in the Cloud Postavljanje je završeno. Budite sigurni da provjerite &#39;uključiti / default.config.php za više konfiguracijskih opcija.";
 $lang["setup-successnextsteps"]="Sljedeći koraci:";
 $lang["setup-successremovewrite"]="Sada možete ukloniti Napiši pristup &#39;uključivati /&#39;.";
 $lang["setup-checkconfigwrite"]="Zapiši pristup config direktoriju:";
 $lang["setup-checkstoragewrite"]="Zapiši pristup skladištenje katalog:";
-$lang["setup-welcome"]="Dobrodošli na ResourceSpace";
-$lang["setup-introtext"]="Hvala Vam na odabiru ResourceSpace. Ova skripta konfiguracije će Vam pomoći ResourceSpace setup. Ovaj proces tek treba da bude završena jednom.";
+$lang["setup-welcome"]="Dobrodošli na RS in the Cloud";
+$lang["setup-introtext"]="Hvala Vam na odabiru RS in the Cloud. Ova skripta konfiguracije će Vam pomoći RS in the Cloud setup. Ovaj proces tek treba da bude završena jednom.";
 $lang["setup-checkerrors"]="Pre-konfiguracijske pogreške su otkrivena. &lt;br /&gt; Molimo riješite ove pogreške i vratiti se na ovu stranicu da biste nastavili.";
 $lang["setup-errorheader"]="Postojale su detektirane greške u vašoj konfiguraciji. Pogledajte dolje za detaljne poruke o pogrešci.";
 $lang["setup-warnheader"]="Neke od postavki generira upozorenje poruka. Vidjeti ispod za detalje. To ne znači postoji problem s vašom konfiguracijom.";
 $lang["setup-basicsettings"]="Osnovne postavke";
-$lang["setup-basicsettingsdetails"]="Te postavke pružiti osnovna podešavanja za vaš ResourceSpace instalacije. Potrebne podatke su označena sa * &lt;strong&gt; &lt;/ strong&gt;";
+$lang["setup-basicsettingsdetails"]="Te postavke pružiti osnovna podešavanja za vaš RS in the Cloud instalacije. Potrebne podatke su označena sa * &lt;strong&gt; &lt;/ strong&gt;";
 $lang["setup-dbaseconfig"]="Database Configuration";
 $lang["setup-mysqlerror"]="Došlo je do pogreške s Vašim MySQL Postavke:";
 $lang["setup-mysqlerrorversion"]="MySQL verzija bi trebala biti 5 ili veći.";

@@ -1,6 +1,6 @@
 <?php
 # Polski
-# Language File for ResourceSpace
+# Language File for RS in the Cloud
 # Contributed by Tomasz Chwastyk
 # -------
 # Note: when translating to a new language, preserve the original case if possible.
@@ -644,21 +644,21 @@ $lang["noexternalsharing"]="No external sharing.";
 $lang["sharedcollectionaddwarning"]="Warning: This collection has been shared with external users. The resource you have added has now been made available to these users. Click 'share' to manage the external access for this collection.";
 $lang["addresourcebatchlocalfolder"]="Add Resource Batch - Fetch from local upload folder";
 # Setup Script
-$lang["setup-alreadyconfigured"]="Your ResourceSpace installation is already configured.  To reconfigure, you may delete <pre>include/config.php</pre> and point your browser to this page again.";
+$lang["setup-alreadyconfigured"]="Your RS in the Cloud installation is already configured.  To reconfigure, you may delete <pre>include/config.php</pre> and point your browser to this page again.";
 $lang["setup-successheader"]="Congratulations!";
-$lang["setup-successdetails"]="Your initial ResourceSpace setup is complete.  Be sure to check out 'include/default.config.php' for more configuration options.";
+$lang["setup-successdetails"]="Your initial RS in the Cloud setup is complete.  Be sure to check out 'include/default.config.php' for more configuration options.";
 $lang["setup-successnextsteps"]="Next steps:";
 $lang["setup-successremovewrite"]="You can now remove write access to 'include/'.";
 $lang["setup-visitwiki"]='Visit the <a target="_blank" href="http://wiki.resourcespace.org/index.php/Main_Page">ResourceSpace Documentation Wiki</a> for more information about customizing your installation';
 $lang["setup-checkconfigwrite"]="Write access to config directory:";
 $lang["setup-checkstoragewrite"]="Write access to storage directory:";
 $lang["setup-welcome"]="Witaj w Baza fotograficzna NTO";
-$lang["setup-introtext"]="Thanks for choosing ResourceSpace.  This configuration script will help you setup ResourceSpace.  This process only needs to be completed once.";
+$lang["setup-introtext"]="Thanks for choosing RS in the Cloud.  This configuration script will help you setup RS in the Cloud.  This process only needs to be completed once.";
 $lang["setup-checkerrors"]="Pre-configuration errors were detected.<br />  Please resolve these errors and return to this page to continue.";
 $lang["setup-errorheader"]="There were errors detected in your configuration.  See below for detailed error messages.";
 $lang["setup-warnheader"]="Some of your settings generated warning messages.  See below for details.  This doesn't necessarily mean there is a problem with your configuration.";
 $lang["setup-basicsettings"]="Basic Settings";
-$lang["setup-basicsettingsdetails"]="These settings provide the basic setup for your ResourceSpace installation.  Required items are marked with a <strong>*</strong>";
+$lang["setup-basicsettingsdetails"]="These settings provide the basic setup for your RS in the Cloud installation.  Required items are marked with a <strong>*</strong>";
 $lang["setup-dbaseconfig"]="Database Configuration";
 $lang["setup-mysqlerror"]="There was an error with your MySQL settings:";
 $lang["setup-mysqlerrorversion"]="MySQL version should be 5 or greater.";
@@ -840,7 +840,7 @@ $lang['plugins-rejarchprob'] = 'There was a problem extracting the archive:';
 $lang['plugins-rejfileprob'] = 'Uploaded plugin must be a .rsp file.';
 $lang['plugins-rejremedy'] = 'If you trust this plugin you can install it manually by expanding the archive into your plugins directory.';
 $lang['plugins-uploadsuccess'] = 'Plugin uploaded succesfully.';
-$lang['plugins-headertext'] = 'Plugins extend the functionality of ResourceSpace.';
+$lang['plugins-headertext'] = 'Plugins extend the functionality of RS in the Cloud.';
 $lang['plugins-legacyinst'] = 'Activated via config.php';
 
 #Location Data
@@ -860,7 +860,7 @@ $lang["backtothemes"]="Powrót do Tematów";
 $lang["downloadreport"]="Pobierz raport";
 
 #Bug Report Page
-$lang['reportbug']="Prepare bug report for ResourceSpace team";
+$lang['reportbug']="Prepare bug report for RS in the Cloud team";
 $lang['reportbug-detail']="The following information has been compiled for inclusion in the bug report.  You'll be able to change all values before submitting a report.";
 $lang['reportbug-login']="NOTE: Click here to login to the bug tracker BEFORE clicking prepare.";
 

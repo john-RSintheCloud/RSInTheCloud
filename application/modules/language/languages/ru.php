@@ -1,6 +1,6 @@
 <?php
 # Russian
-# Language File for ResourceSpace
+# Language File for RS in the Cloud
 # -------
 # version 0.3 edited by Alexey Tikhonov alt@altert.net
 
@@ -573,21 +573,21 @@ $lang["sharecollection"]="Поделиться коллекцией";
 $lang["sharecollection-name"]="Поделиться коллекцией - %collectionname"; # %collectionname will be replaced, e.g. Share Collection - Cars
 $lang["sharedcollectionaddwarning"]="Внимание: Эта коллекция была совместно с внешними пользователями. объект вы добавили уже предоставлены в распоряжение этих пользователей. Нажмите кнопку &quot;поделиться&quot;, чтобы управлять внешнего доступа к этой коллекции.";
 $lang["addresourcebatchlocalfolder"]="Пакетное добавление объектов из локальной папки";
-$lang["setup-alreadyconfigured"]="Ваш ResourceSpace установки уже настроен. Чтобы перенастроить, вы можете удалить &lt;pre&gt; включать / config.php &lt;/ предсессионной&gt; и браузер с этой страницы.";
+$lang["setup-alreadyconfigured"]="Ваш RS in the Cloud установки уже настроен. Чтобы перенастроить, вы можете удалить &lt;pre&gt; включать / config.php &lt;/ предсессионной&gt; и браузер с этой страницы.";
 $lang["setup-successheader"]="Поздравления!";
-$lang["setup-successdetails"]="Ваш первоначальный ResourceSpace настройка завершена. Не забудьте проверить &#39;включить / default.config.php&#39; Для получения дополнительной настройки.";
+$lang["setup-successdetails"]="Ваш первоначальный RS in the Cloud настройка завершена. Не забудьте проверить &#39;включить / default.config.php&#39; Для получения дополнительной настройки.";
 $lang["setup-successnextsteps"]="Следующие шаги:";
 $lang["setup-successremovewrite"]="Теперь Вы можете удалить запись с &quot;включить / &#39;.";
 #$lang["setup-visitwiki"]='Visit the <a target="_blank" href="http://wiki.resourcespace.org/index.php/Main_Page">ResourceSpace Documentation Wiki</a> for more information about customizing your installation';
 $lang["setup-checkconfigwrite"]="Напиши доступа к конфигурации каталога:";
 $lang["setup-checkstoragewrite"]="Напиши доступа для хранения каталога:";
-$lang["setup-welcome"]="Добро пожаловать на ResourceSpace";
-$lang["setup-introtext"]="Спасибо за выбор ResourceSpace. Эта конфигурация скрипт поможет вам настроить ResourceSpace. Этот процесс только должен быть завершен один раз.";
+$lang["setup-welcome"]="Добро пожаловать на RS in the Cloud";
+$lang["setup-introtext"]="Спасибо за выбор RS in the Cloud. Эта конфигурация скрипт поможет вам настроить RS in the Cloud. Этот процесс только должен быть завершен один раз.";
 $lang["setup-checkerrors"]="Предсессионная конфигурации были обнаружены ошибки. &lt;br /&gt; Пожалуйста, решить эти ошибки и возвращаться к этой странице, чтобы продолжить.";
 $lang["setup-errorheader"]="Были ошибки, обнаруженные в вашей конфигурации. См. ниже подробные сообщения об ошибках.";
 $lang["setup-warnheader"]="Некоторые из Ваших настроек порожденных предупреждающих сообщений. См. ниже. Это не обязательно означает, существует проблема с вашей конфигурацией.";
 $lang["setup-basicsettings"]="Основные параметры";
-$lang["setup-basicsettingsdetails"]="Эти параметры обеспечивают основные настройки для вашего ResourceSpace инсталляции. Требуемые элементы отмечены в &lt;strong&gt; * &lt;/ STRONG&gt;";
+$lang["setup-basicsettingsdetails"]="Эти параметры обеспечивают основные настройки для вашего RS in the Cloud инсталляции. Требуемые элементы отмечены в &lt;strong&gt; * &lt;/ STRONG&gt;";
 $lang["setup-dbaseconfig"]="База данных конфигурации";
 $lang["setup-mysqlerror"]="Был ошибка с вашим MySQL настройки:";
 $lang["setup-mysqlerrorversion"]="MySQL версии должно быть 5 или более.";

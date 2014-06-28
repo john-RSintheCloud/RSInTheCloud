@@ -2,7 +2,7 @@
 /**
  * Functions related to the management of plugins.
  *
- * @package ResourceSpace
+ * @package RS in the Cloud
  * @subpackage Includes
  * @author Brian Adams <wreality@gmail.com>
  */
@@ -421,7 +421,7 @@ function handle_rsc_upload($plugin_name)
             }
         $tok = "\n";
         $rsc_plugin_name = json_decode(strtok($json, $tok),true);
-        if ($rsc_plugin_name['ResourceSpacePlugin'] == $plugin_name)
+        if ($rsc_plugin_name['RS in the CloudPlugin'] == $plugin_name)
             {
             $config = json_decode(strtok($tok), true);
             foreach($config as $key=>$value)

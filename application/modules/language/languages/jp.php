@@ -1,6 +1,6 @@
 <?php
 # Japanese
-# Language File for ResourceSpace
+# Language File for RS in the Cloud
 # -------
 # Note: when translating to a new language, preserve the original case if possible.
 
@@ -615,21 +615,21 @@ $lang["noexternalsharing"]="外部との共有なし";
 $lang["sharedcollectionaddwarning"]="警告: 本コレクションは外部のユーザと共有しています。あなたが追加したリソースは外部ユーザに利用可能になります。本コレクションの外部アクセスを管理するには'共有'をクリックしてください。";
 $lang["addresourcebatchlocalfolder"]="バッチでリソース追加 - ローカルのアップロード用フォルダーから取得";
 # Setup Script
-$lang["setup-alreadyconfigured"]="あなたのResourceSpaceインスタレーションはすでに構成されています。再構成するには<pre>include/config.php</pre>を削除し再度本ページにブラウザでアクセスしてください。";
+$lang["setup-alreadyconfigured"]="あなたのRS in the Cloudインスタレーションはすでに構成されています。再構成するには<pre>include/config.php</pre>を削除し再度本ページにブラウザでアクセスしてください。";
 $lang["setup-successheader"]="おめでとうございます!";
-$lang["setup-successdetails"]="初期のResourceSpaceセットアップは完了しました。詳細な構成オプションについては'include/default.config.php'を確認してください。";
+$lang["setup-successdetails"]="初期のRS in the Cloudセットアップは完了しました。詳細な構成オプションについては'include/default.config.php'を確認してください。";
 $lang["setup-successnextsteps"]="次のステップ:";
 $lang["setup-successremovewrite"]="あなたは'include/'から書き込み権限を削除できます。.";
 $lang["setup-visitwiki"]='あなたのインスタレーションをカスタマイズするための詳細な情報を得るには<a target="_blank" href="http://wiki.resourcespace.org/index.php/Main_Page">ResourceSpace Documentation Wiki</a>を訪問してください。';
 $lang["setup-checkconfigwrite"]="構成ディレクトリーへ書き込み権限付与:";
 $lang["setup-checkstoragewrite"]="ストレージディレクトリーへ書き込み権限付与:";
-$lang["setup-welcome"]="ResourceSpaceへようこそ";
-$lang["setup-introtext"]="ResourceSpaceを選択していただきありがとうございます。本構成スクリプトはResourceSpaceのセットアップを支援します。このプロセスは一度だけ実施する必要があります。";
+$lang["setup-welcome"]="RS in the Cloudへようこそ";
+$lang["setup-introtext"]="RS in the Cloudを選択していただきありがとうございます。本構成スクリプトはRS in the Cloudのセットアップを支援します。このプロセスは一度だけ実施する必要があります。";
 $lang["setup-checkerrors"]="事前構成エラーが検出されました。<br />  このエラーを解消してから、継続するために本ページへ戻ってください。";
 $lang["setup-errorheader"]="あなたの構成にエラーが検出されました。詳細なエラーメッセージは以下を参照してください。";
 $lang["setup-warnheader"]="設定のいくつかで警告メッセージが出力されています。詳細は以下を参照してください。これは、必ずあなたの構成に関する問題があることを意味するというわけではありません。";
 $lang["setup-basicsettings"]="基本設定";
-$lang["setup-basicsettingsdetails"]="これらの設定はあなたのResourceSpaceインスタレーションの基本設定です。必須項目には<strong>*</strong>が付いています。";
+$lang["setup-basicsettingsdetails"]="これらの設定はあなたのRS in the Cloudインスタレーションの基本設定です。必須項目には<strong>*</strong>が付いています。";
 $lang["setup-dbaseconfig"]="データベース構成";
 $lang["setup-mysqlerror"]="MySQLの設定にエラーがあります:";
 $lang["setup-mysqlerrorversion"]="MySQLのバージョンは5以上でなければなりません。";

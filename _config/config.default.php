@@ -11,7 +11,7 @@
  * ensures that any new configuration options are set to
  * a sensible default value.
  *
- * @package ResourceSpace
+ * @package RS in the Cloud
  * @subpackage Configuration
  */
 
@@ -19,10 +19,10 @@
 /* ---------------------------------------------------
 BASIC PARAMETERS
 ------------------------------------------------------ */
-$mysql_server="localhost";	# Use 'localhost' if MySQL is installed on the same server as your web server.
-$mysql_username="root";		# MySQL username
+$mysql_server="";	# Use 'localhost' if MySQL is installed on the same server as your web server.
+$mysql_username="";		# MySQL username
 $mysql_password="";			# MySQL password
-$mysql_db="resourcespace";			# MySQL database name
+$mysql_db="";			# MySQL database name
 
 # The path to the MySQL client binaries - e.g. mysqldump
 # (only needed if you plan to use the export tool)
@@ -34,7 +34,7 @@ $baseurl="http://my.site/resourcespace"; # The 'base' web address for this insta
 $email_from="resourcespace@my.site"; # Where system e-mails appear to come from
 $email_notify="resourcespace@my.site"; # Where resource/research/user requests are sent
 
-$spider_password="TBTT6FD"; # The password required for spider.php - IMPORTANT - randomise this for each new installation. Your resources will be readable by anyone that knows this password.
+$spider_password=""; # The password required for spider.php - IMPORTANT - randomise this for each new installation. Your resources will be readable by anyone that knows this password.
 $spider_usergroup=2; # The user group that will be used to access the resource list for the spider index.
 $spider_access=array(0,1); # Which access level(s) are required when producing the index (0=Open, 1=Restricted, 2=Confidential/Hidden).
 
@@ -43,7 +43,7 @@ $email_from_user=true; #enable user-to-user emails to come from user's address b
 # Scramble resource paths? If this is a public installation then this is a very wise idea.
 # Set the scramble key to be a hard-to-guess string (similar to a password).
 # To disable, set to the empty string ("").
-$scramble_key="abcdef123";
+$scramble_key="";
 
 # If you agree to send occasional statistics to Montala, leave this set to 'yes'.
 # The following two numeric metrics alone will be sent every 7 days:
@@ -121,7 +121,7 @@ and running.
 
 include "version.php";
 
-$applicationname="ResourceSpace"; # The name of your implementation / installation (e.g. 'MyCompany Resource System')
+$applicationname="RS In The Cloud"; # The name of your implementation / installation (e.g. 'MyCompany Resource System')
 $applicationdesc=""; # Subtitle (i18n translated) if $header_text_title=true;
 $header_favicon="gfx/interface/favicon.png";
 $header_text_title=false; //replace header logo with text, application name and description above

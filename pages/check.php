@@ -1,10 +1,12 @@
 <?php
+
+ie('This check page does not work');
 include "../application/bootstrap.php";
 
 include "../include/authenticate.php"; if (!checkperm("a")) {exit("Access denied.");}
 include "../include/header.php";
 
-# A simple script to check the ResourceSpace hosting environment supports our needs.
+# A simple script to check the RS in the Cloud hosting environment supports our needs.
 
 function ResolveKB($value)
 	{

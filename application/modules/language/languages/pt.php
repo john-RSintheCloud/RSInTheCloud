@@ -1,6 +1,6 @@
 <?php
 # Portugues
-# Language File for ResourceSpace
+# Language File for RS in the Cloud
 # -------
 # Note: when translating to a new language, preserve the original case if possible.
 

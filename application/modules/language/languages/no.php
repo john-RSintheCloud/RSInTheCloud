@@ -1,6 +1,6 @@
 <?php
 # Norwegian
-# Language File for ResourceSpace
+# Language File for RS in the Cloud
 # -------
 # Note: when translating to a new language, preserve the original case if possible.
 
@@ -519,7 +519,7 @@ $lang["status-warning"]="WARNING";
 $lang["status-notinstalled"]="Not installed";
 $lang["status-never"]="Never";
 $lang["softwareversion"]="? version"; # E.g. "PHP version"
-$lang["softwarebuild"]="? Build"; # E.g. "ResourceSpace Build"
+$lang["softwarebuild"]="? Build"; # E.g. "RS in the Cloud Build"
 $lang["softwarenotfound"]="'?'  not found"; # ? will be replaced.
 $lang["browseruseragent"]="Browser User-Agent";
 $lang['serverplatform']="Server Platform";
@@ -756,21 +756,21 @@ $lang["noexternalsharing"]="Ingen ekstern deling.";
 $lang["sharedcollectionaddwarning"]="Advarsel: Dette lybordet har blitt delt med eksterne brukere. Filen du har lagt til har nå blitt tilgjenelig for disse brukerne. Klikk på 'Dele' for å behandle den eksterne tilgangen til dette lysbordet.";
 $lang["addresourcebatchlocalfolder"]="Batch-opplasting - hent filer fra lokal opplastingsmappe";
 # Setup Script
-$lang["setup-alreadyconfigured"]="Din ResourceSpace-installasjon er allerede konfigurert. For å rekonfigurere kan du slette <pre>include/config.php</pre> og åpne denne siden på nytt i nettleseren din.";
+$lang["setup-alreadyconfigured"]="Din RS in the Cloud-installasjon er allerede konfigurert. For å rekonfigurere kan du slette <pre>include/config.php</pre> og åpne denne siden på nytt i nettleseren din.";
 $lang["setup-successheader"]="Gratulerer!";
-$lang["setup-successdetails"]="Din innledende installasjon av ResourceSpace er ferdig. Gå gjennom 'include/default.config.php' for øvrige konfigurasjonsvalg.";
+$lang["setup-successdetails"]="Din innledende installasjon av RS in the Cloud er ferdig. Gå gjennom 'include/default.config.php' for øvrige konfigurasjonsvalg.";
 $lang["setup-successnextsteps"]="Neste skritt:";
 $lang["setup-successremovewrite"]="Du kan nå fjerne skrivetilgangen for 'include/'.";
 $lang["setup-visitwiki"]='Besøk <a target="_blank" href="http://wiki.resourcespace.org/index.php/Main_Page">ResourceSpace Documentation Wiki</a> for mer informasjon om hvordan du kan tilpasse din ResourceSpace-installasjon.';
 $lang["setup-checkconfigwrite"]="Skrivetilgang til config-katalogen:";
 $lang["setup-checkstoragewrite"]="Skrivetilgang til storage-katalogen:";
-$lang["setup-welcome"]="Velkommen til ResourceSpace";
-$lang["setup-introtext"]="Takk for at du valgte ResourceSpace.  Dette oppsettscriptet vil hjelpe deg med å konfigurere ResourceSpace. Denne prossessen må bare fullføres én gang.";
+$lang["setup-welcome"]="Velkommen til RS in the Cloud";
+$lang["setup-introtext"]="Takk for at du valgte RS in the Cloud.  Dette oppsettscriptet vil hjelpe deg med å konfigurere RS in the Cloud. Denne prossessen må bare fullføres én gang.";
 $lang["setup-checkerrors"]="Før-konfigurasjonsfeil ble oppdaget.<br /> Vennligst løs disse problemene og kom tilbake til denne siden for å fortsette.";
 $lang["setup-errorheader"]="Det ble oppdaget feil i konfigurasjonen. Se nedenfor for detaljerte feilmeldinger.";
 $lang["setup-warnheader"]="Noen av innstillingene dine utløste advarsler. Se nedenfor etter detaljer. Dette betyr ikke nødvendigvis at det er problemer med konfigurasjonen din.";
 $lang["setup-basicsettings"]="Grunnleggende innstillinger";
-$lang["setup-basicsettingsdetails"]="Disse innstillingene utgjør det grunnleggende oppsettet for din ResourceSpace-installasjon. Nødvendige punkter er merket med en <strong>*</strong>";
+$lang["setup-basicsettingsdetails"]="Disse innstillingene utgjør det grunnleggende oppsettet for din RS in the Cloud-installasjon. Nødvendige punkter er merket med en <strong>*</strong>";
 $lang["setup-dbaseconfig"]="Database-konfigurasjon";
 $lang["setup-mysqlerror"]="Det ble oppdaget en feil i dine MySQL-innstillinger:";
 $lang["setup-mysqlerrorversion"]="MySQL må være versjon 5 eller høyere.";
@@ -977,7 +977,7 @@ $lang["backtothemes"]="Back to Themes";
 $lang["downloadreport"]="Download Report";
 
 #Bug Report Page
-$lang['reportbug']="Gjør klar feilmelding til ResourceSpace-utviklerne";
+$lang['reportbug']="Gjør klar feilmelding til RS in the Cloud-utviklerne";
 $lang['reportbug-detail']="Følgende informasjon har blitt samlet inn til feilmeldingen. Du vil få mulighet til å endre før du sender in rapporten.";
 $lang['reportbug-login']="OBS: Klikk her for å logge inn til feil-loggeren FØR du klikker 'Lag feilmelding'.";
 $lang['reportbug-preparebutton']="Lag feilmelding";

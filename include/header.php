@@ -32,7 +32,7 @@ if (getval("thumbs", "")=="")
 ?><!DOCTYPE html>
 <html>	<?php if ($include_rs_header_info){?>
 <!--<?php hook("copyrightinsert");?>
-ResourceSpace version <?php echo $productversion?>
+RS in the Cloud version <?php echo $productversion?>
 
 Copyright Oxfam GB, Montala, WWF International, Tom Gleason, David Dwiggins, Historic New England, Colorhythm LLC, Worldcolor, Henrik Frizén 2006-2013
 http://www.resourcespace.org/

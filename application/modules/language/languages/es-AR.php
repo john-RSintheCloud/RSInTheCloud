@@ -1,6 +1,6 @@
 <?php
 # Argentine Spanish
-# Language File for ResourceSpace
+# Language File for RS in the Cloud
 # -------
 # Note: when translating to a new language, preserve the original case if possible.
 
@@ -534,7 +534,7 @@ $lang['plugins-didnotwork']="Disculpas, eso no funciona. Elija un archivo .rsc v
 $lang['plugins-download']="Bajar&nbsp;configuración";
 $lang['plugins-getrsc']="Archivo a usar:";
 $lang['plugins-goodrsc']="La configuración fué subida con éxito. Clickear en el botón \'Guardar Configuración\' para guardarla.";
-$lang['plugins-headertext']="Los Plugins extienden las funcionalidades de ResourceSpace";
+$lang['plugins-headertext']="Los Plugins extienden las funcionalidades de RS in the Cloud";
 $lang['plugins-installedheader']="Plugins activos";
 $lang['plugins-instversion']="Versión Instalada";
 $lang['plugins-legacyinst']="Activado vía config.php";
@@ -560,7 +560,7 @@ $lang['plugins-uploadtext']="Seleccionar el archivo .rsp a instalar";
 $lang['plugins-version']="Versión";
 $lang['reportbug-detail']="La siguiente información ha sido recopilada para ser incluida en el reporte de errores. Puede cambiar los valores antes de emitir el reporte";
 $lang['reportbug-preparebutton']="Preparar reporte de errores";
-$lang['reportbug']="Preparar reporte de errores para el Equipo de ResourceSpace";
+$lang['reportbug']="Preparar reporte de errores para el Equipo de RS in the Cloud";
 $lang['serverplatform']="Plataforma del Servidor";
 $lang["access_to_restricted_and_confidential_resources"]="Puede descargar materiales restringidos y ver recursos confidenciales<br>(generalmente solo administradores)";
 $lang["accesskey"]="Clave de acceso";

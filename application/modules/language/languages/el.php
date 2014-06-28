@@ -1,6 +1,6 @@
 <?php
 # Greek
-# Language File for ResourceSpace
+# Language File for RS in the Cloud
 # -------
 # Note: this has been automatically translated and could probably use some work. It's intended as a starting point.
 
@@ -548,20 +548,20 @@ $lang["confirmdeleteaccess"]="Είστε σίγουροι ότι θέλετε ν
 $lang["noexternalsharing"]="Δεν εξωτερικών επιμερισμού.";
 $lang["sharedcollectionaddwarning"]="Προειδοποίηση: Αυτή η συλλογή έχει γίνει από κοινού με τους εξωτερικούς χρήστες. Ο πόρος που έχετε προσθέσει έχει πλέον στη διάθεση αυτών των χρηστών. Κάντε κλικ στο κουμπί &quot;μερίδιο&quot; για τη διαχείριση της εξωτερικής πρόσβασης για αυτή τη συλλογή.";
 $lang["addresourcebatchlocalfolder"]="Προσθήκη Πόρων Batch - fetch μεταφορτώσετε το φάκελο από το τοπικό";
-$lang["setup-alreadyconfigured"]="Ο ResourceSpace εγκατάσταση έχει ήδη διαμορφωθεί. Για να το ξανά, μπορεί να περιλαμβάνει τη διαγραφή &lt;pre&gt; / config.php &lt;/ pre&gt; και το σημείο τον browser σας σε αυτή τη σελίδα πάλι.";
+$lang["setup-alreadyconfigured"]="Ο RS in the Cloud εγκατάσταση έχει ήδη διαμορφωθεί. Για να το ξανά, μπορεί να περιλαμβάνει τη διαγραφή &lt;pre&gt; / config.php &lt;/ pre&gt; και το σημείο τον browser σας σε αυτή τη σελίδα πάλι.";
 $lang["setup-successheader"]="Συγχαρητήρια!";
-$lang["setup-successdetails"]="Η αρχική σας ResourceSpace εγκατάσταση έχει ολοκληρωθεί. Να είστε βέβαιος να ελέγξουν &quot;περιλαμβάνει / default.config.php &#39;για περισσότερες επιλογές.";
+$lang["setup-successdetails"]="Η αρχική σας RS in the Cloud εγκατάσταση έχει ολοκληρωθεί. Να είστε βέβαιος να ελέγξουν &quot;περιλαμβάνει / default.config.php &#39;για περισσότερες επιλογές.";
 $lang["setup-successnextsteps"]="Τα επόμενα βήματα:";
 $lang["setup-successremovewrite"]="Μπορείτε τώρα να καταργήσετε την πρόσβαση σε &quot;περιλαμβάνει /&quot;.";
 $lang["setup-checkconfigwrite"]="Γράψτε την πρόσβαση σε config directory:";
 $lang["setup-checkstoragewrite"]="Γράψτε την πρόσβαση στην αποθήκευση κατάλογο:";
-$lang["setup-welcome"]="Καλώς ήλθατε στο ResourceSpace";
-$lang["setup-introtext"]="Ευχαριστούμε για την επιλογή ResourceSpace. Η διαμόρφωση αυτή σενάριο εγκατάστασης θα σας βοηθήσει να ResourceSpace. Η διαδικασία αυτή πρέπει μόνο να ολοκληρωθεί αμέσως.";
+$lang["setup-welcome"]="Καλώς ήλθατε στο RS in the Cloud";
+$lang["setup-introtext"]="Ευχαριστούμε για την επιλογή RS in the Cloud. Η διαμόρφωση αυτή σενάριο εγκατάστασης θα σας βοηθήσει να RS in the Cloud. Η διαδικασία αυτή πρέπει μόνο να ολοκληρωθεί αμέσως.";
 $lang["setup-checkerrors"]="Προ-ρύθμιση λάθη που εντοπίστηκαν. &lt;br /&gt; Παρακαλώ την επίλυση αυτών των σφαλμάτων και να επιστρέψετε σε αυτή τη σελίδα για να συνεχίσετε.";
 $lang["setup-errorheader"]="Υπήρχαν σφάλματα που διαπιστώνονται στη διαμόρφωση σας. Δείτε παρακάτω για λεπτομερείς μηνύματα λάθους.";
 $lang["setup-warnheader"]="Ορισμένες από τις ρυθμίσεις που δημιουργούνται προειδοποιητικά μηνύματα. Δείτε παρακάτω για λεπτομέρειες. Αυτό δεν σημαίνει απαραίτητα ότι υπάρχει πρόβλημα με τη ρύθμιση των παραμέτρων σας.";
 $lang["setup-basicsettings"]="Βασικές Ρυθμίσεις";
-$lang["setup-basicsettingsdetails"]="Οι εν λόγω ρυθμίσεις προβλέπουν τις βασικές σας ResourceSpace setup για εγκατάσταση. Απαραίτητα στοιχεία που επισημαίνονται με ένα &lt;strong&gt; * &lt;/ strong&gt;";
+$lang["setup-basicsettingsdetails"]="Οι εν λόγω ρυθμίσεις προβλέπουν τις βασικές σας RS in the Cloud setup για εγκατάσταση. Απαραίτητα στοιχεία που επισημαίνονται με ένα &lt;strong&gt; * &lt;/ strong&gt;";
 $lang["setup-dbaseconfig"]="Database Configuration";
 $lang["setup-mysqlerror"]="Υπήρξε λάθος με σας MySQL ρυθμίσεις:";
 $lang["setup-mysqlerrorversion"]="MySQL έκδοση θα πρέπει να είναι 5 ή μεγαλύτερο.";

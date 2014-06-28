@@ -1,6 +1,6 @@
 <?php
 # English
-# Language File for ResourceSpace
+# Language File for RS in the Cloud
 # -------
 # Note: when translating to a new language, preserve the original case if possible.
 
@@ -689,7 +689,7 @@ $lang["status-warning"]="WARNING";
 $lang["status-notinstalled"]="Not installed";
 $lang["status-never"]="Never";
 $lang["softwareversion"]="? version"; # E.g. "PHP version"
-$lang["softwarebuild"]="? Build"; # E.g. "ResourceSpace Build"
+$lang["softwarebuild"]="? Build"; # E.g. "RS in the Cloud Build"
 $lang["softwarenotfound"]="'?'  not found"; # ? will be replaced.
 $lang["client-encoding"]="(client-encoding: %encoding)"; # %encoding will be replaced, e.g. client-encoding: utf8
 $lang["browseruseragent"]="Browser user-agent";
@@ -965,22 +965,22 @@ $lang["addresourcebatchlocalfolder"]="Add resource batch - fetch from local uplo
 $lang["phpextensions"]="PHP extensions";
 
 # Setup Script
-$lang["setup-alreadyconfigured"]="Your ResourceSpace installation is already configured.  To reconfigure, you may delete <pre>_config/config.php</pre> and point your browser to this page again.";
+$lang["setup-alreadyconfigured"]="Your RS in the Cloud installation is already configured.  To reconfigure, you may delete <pre>_config/config.php</pre> and point your browser to this page again.";
 $lang["setup-successheader"]="Congratulations!";
-$lang["setup-successdetails"]="Your initial ResourceSpace setup is complete.  Be sure to check out '_config/default.config.php' for more configuration options.";
+$lang["setup-successdetails"]="Your initial RS in the Cloud setup is complete.  Be sure to check out '_config/default.config.php' for more configuration options.";
 $lang["setup-successnextsteps"]="Next steps:";
 $lang["setup-successremovewrite"]="You can now remove write access to '_config/'.";
-$lang["setup-visitwiki"]='Visit the <a target="_blank" href="http://wiki.resourcespace.org/index.php/Main_Page">ResourceSpace Documentation Wiki</a> for more information about customizing your installation.';
+$lang["setup-visitwiki"]='Visit the <a target="_blank" href="http://wiki.resourcespace.org/index.php/Main_Page">RS in the Cloud Documentation Wiki</a> for more information about customizing your installation.';
 $lang["php-config-file"]="PHP config: '%phpinifile'"; # %phpinifile will be replaced, e.g. PHP config: '/etc/php5/apache2/php.ini'
 $lang["setup-checkconfigwrite"]="Write access to config directory:";
 $lang["setup-checkstoragewrite"]="Write access to storage directory:";
-$lang["setup-welcome"]="Welcome to ResourceSpace";
-$lang["setup-introtext"]="Thanks for choosing ResourceSpace.  This configuration script will help you setup ResourceSpace.  This process only needs to be completed once.";
+$lang["setup-welcome"]="Welcome to RS in the Cloud";
+$lang["setup-introtext"]="Thanks for choosing RS in the Cloud.  This configuration script will help you setup RS in the Cloud.  This process only needs to be completed once.";
 $lang["setup-checkerrors"]="Pre-configuration errors were detected.<br />  Please resolve these errors and return to this page to continue.";
 $lang["setup-errorheader"]="There were errors detected in your configuration.  See below for detailed error messages.";
 $lang["setup-warnheader"]="Some of your settings generated warning messages.  See below for details.  This doesn't necessarily mean there is a problem with your configuration.";
 $lang["setup-basicsettings"]="Basic settings";
-$lang["setup-basicsettingsdetails"]="These settings provide the basic setup for your ResourceSpace installation.  Required items are marked with a <strong>*</strong>";
+$lang["setup-basicsettingsdetails"]="These settings provide the basic setup for your RS in the Cloud installation.  Required items are marked with a <strong>*</strong>";
 $lang["setup-dbaseconfig"]="Database configuration";
 $lang["setup-mysqlerror"]="There was an error with your MySQL settings:";
 $lang["setup-mysqlerrorversion"]="MySQL version should be 5 or greater.";
@@ -1025,7 +1025,7 @@ $lang["setup-err_scramblekey"]="If this is a public installation, setting the sc
 $lang["setup-err_apiscramblekey"]="If this is a public installation, setting the api scramble key is recommended.";
 $lang["setup-err_path"]="Unable to verify location of";
 $lang["setup-emailerr"]="Not a valid email address.";
-$lang["setup-rs_initial_configuration"]="ResourceSpace: Initial Configuration";
+$lang["setup-rs_initial_configuration"]="RS in the Cloud: Initial Configuration";
 $lang["setup-include_not_writable"]="'/_config' not writable. Only required during setup.";
 $lang["setup-override_location_in_advanced"]="Override location in 'Advanced Settings'.";
 $lang["setup-advancedsettings"]="Advanced Settings";
@@ -1192,7 +1192,7 @@ $lang['plugins-rejarchprob'] = 'There was a problem extracting the archive:';
 $lang['plugins-rejfileprob'] = 'Uploaded plugin must be a .rsp file.';
 $lang['plugins-rejremedy'] = 'If you trust this plugin you can install it manually by expanding the archive into your plugins directory.';
 $lang['plugins-uploadsuccess'] = 'Plugin uploaded succesfully.';
-$lang['plugins-headertext'] = 'Plugins extend the functionality of ResourceSpace.';
+$lang['plugins-headertext'] = 'Plugins extend the functionality of RS in the Cloud.';
 $lang['plugins-legacyinst'] = 'Activated via config.php';
 $lang['plugins-uploadbutton'] = 'Upload plugin';
 $lang['plugins-download'] = 'Download&nbsp;configuration';
@@ -1232,7 +1232,7 @@ $lang["backtothemes"]="Back to themes";
 $lang["downloadreport"]="Download report";
 
 #Bug Report Page
-$lang['reportbug']="Prepare bug report for ResourceSpace team";
+$lang['reportbug']="Prepare bug report for RS in the Cloud team";
 $lang['reportbug-detail']="The following information has been compiled for inclusion in the bug report.  You'll be able to change all values before submitting a report.";
 $lang['reportbug-login']="NOTE: Click here to login to the bug tracker BEFORE clicking prepare.";
 $lang['reportbug-preparebutton']="Prepare bug report";

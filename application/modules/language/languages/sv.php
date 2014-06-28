@@ -1,6 +1,6 @@
 <?php
 # Swedish
-# Language File for ResourceSpace
+# Language File for RS in the Cloud
 # -------
 # Översättningsfil för huvudprogrammet.
 #
@@ -20,8 +20,8 @@
 # Nationalencyklopedins ordbok
 #
 # Mer information om den svenska översättningen finns på sidan:
-# http://wiki.resourcespace.org/index.php/Swedish_Translation_-_svensk_%C3%B6vers%C3%A4ttning
-# Där finns bland annat de skrivregler och den ordlista som används internt i ResourceSpace
+# http://wiki.RS in the Cloud.org/index.php/Swedish_Translation_-_svensk_%C3%B6vers%C3%A4ttning
+# Där finns bland annat de skrivregler och den ordlista som används internt i RS in the Cloud
 #
 # En första version av översättningen skapades av Henrik Frizén (förnamn.efternamn utan accenttecken i e-postboxen.Sveriges landskod) 20110124 för version 2295
 #
@@ -700,8 +700,8 @@ $lang["backtohelphome"]="Tillbaka: Hjälp och tips, första sidan";
 $lang["backtosearch"]="Tillbaka: Sökresultat";
 $lang["backtoview"]="Tillbaka: Visa material";
 $lang["backtoeditresource"]="Tillbaka: Redigera material";
-$lang["backtouser"]="Tillbaka: Välkommen till ResourceSpace";
-$lang["continuetouser"]="Fortsätt: Välkommen till ResourceSpace";
+$lang["backtouser"]="Tillbaka: Välkommen till RS in the Cloud";
+$lang["continuetouser"]="Fortsätt: Välkommen till RS in the Cloud";
 $lang["termsandconditions"]="Användningsvillkor";
 $lang["iaccept"]="Jag accepterar";
 $lang["contributedby"]="Tillagt av";
@@ -715,7 +715,7 @@ $lang["status-warning"]="VARNING";
 $lang["status-notinstalled"]="Ej installerad";
 $lang["status-never"]="Aldrig";
 $lang["softwareversion"]="?-version"; # E.g. "PHP version"
-$lang["softwarebuild"]="?-bygge"; # E.g. "ResourceSpace Build"
+$lang["softwarebuild"]="?-bygge"; # E.g. "RS in the Cloud Build"
 $lang["softwarenotfound"]="Programmet ’?’ hittades inte."; # ? will be replaced.
 $lang["client-encoding"]="(klientkodning: %encoding)"; # %encoding will be replaced, e.g. client-encoding: utf8
 $lang["browseruseragent"]="Webbläsare";
@@ -991,22 +991,22 @@ $lang["addresourcebatchlocalfolder"]="Lägg till material i grupp – överfrån
 $lang["phpextensions"]="PHP-utökningar";
 
 # Setup Script
-$lang["setup-alreadyconfigured"]="Installationen av ResourceSpace är redan konfigurerad. Om du vill göra om konfigurationen tar du bort <pre>’_config/config.php’</pre> och pekar webbläsaren till den här sidan igen.";
+$lang["setup-alreadyconfigured"]="Installationen av RS in the Cloud är redan konfigurerad. Om du vill göra om konfigurationen tar du bort <pre>’_config/config.php’</pre> och pekar webbläsaren till den här sidan igen.";
 $lang["setup-successheader"]="Gratulerar!";
-$lang["setup-successdetails"]="Den grundläggande delen av installationen av ResourceSpace är nu slutförd. Gå igenom filen ’_config/default.config.php’ om du vill se fler konfigurationsmöjligheter.";
+$lang["setup-successdetails"]="Den grundläggande delen av installationen av RS in the Cloud är nu slutförd. Gå igenom filen ’_config/default.config.php’ om du vill se fler konfigurationsmöjligheter.";
 $lang["setup-successnextsteps"]="Nästa steg:";
 $lang["setup-successremovewrite"]="Du bör nu avlägsna skrivrättigheten till katalogen ’_config/’.";
 $lang["setup-visitwiki"]='Besök <a target="_blank" href="http://wiki.resourcespace.org/index.php/Main_Page">ResourceSpace Documentation Wiki</a> (engelskspråkig wiki) om du vill hitta mer information om hur du anpassar din installation.';
 $lang["php-config-file"]="Konfiguration för php: '%phpinifile'"; # %phpinifile will be replaced, e.g. PHP config: '/etc/php5/apache2/php.ini'
 $lang["setup-checkconfigwrite"]="Skrivrättighet till konfigurationskatalog:";
 $lang["setup-checkstoragewrite"]="Skrivrättighet till lagringskatalog:";
-$lang["setup-welcome"]="Välkommen till ResourceSpace";
-$lang["setup-introtext"]="Tack för att du väljer ResourceSpace. Detta konfigurationsskript hjälper dig att installera ResourceSpace. Det behöver endast göras en gång.";
+$lang["setup-welcome"]="Välkommen till RS in the Cloud";
+$lang["setup-introtext"]="Tack för att du väljer RS in the Cloud. Detta konfigurationsskript hjälper dig att installera RS in the Cloud. Det behöver endast göras en gång.";
 $lang["setup-checkerrors"]="Fel upptäcktes i systemkonfigurationen.<br/>Åtgärda dessa fel, och peka sedan webbläsaren till den här sidan igen när du vill fortsätta.";
 $lang["setup-errorheader"]="Fel upptäcktes i konfigurationen. Se detaljerade felmeddelanden nedan.";
 $lang["setup-warnheader"]="Några av inställningarna genererade varningsmeddelanden, se nedan. Det betyder inte nödvändigtvis att det är ett problem med konfigurationen.";
 $lang["setup-basicsettings"]="Grundläggande inställningar";
-$lang["setup-basicsettingsdetails"]="Här gör du de grundläggande inställningarna för installationen av ResourceSpace.<br><strong>*</strong>Obligatoriskt fält";
+$lang["setup-basicsettingsdetails"]="Här gör du de grundläggande inställningarna för installationen av RS in the Cloud.<br><strong>*</strong>Obligatoriskt fält";
 $lang["setup-dbaseconfig"]="Databaskonfiguration";
 $lang["setup-mysqlerror"]="Det finns ett fel i MySQL-inställningarna:";
 $lang["setup-mysqlerrorversion"]="MySQL-versionen måste vara 5 eller senare.";
@@ -1034,10 +1034,10 @@ $lang["setup-basicsettingsfooter"]="Obs! Alla <strong>obligatoriska</strong> ins
 $lang["setup-if_mysqlserver"]="Ip-adressen eller <abbr title=\"Fullständigt kvalificerat domännamn\">fqdn</abbr> för MySQL-servern. Ange ’localhost’ om MySQL är installerad på samma server som webbservern.";
 $lang["setup-if_mysqlusername"]="Användarnamnet som ska användas för att ansluta till MySQL-servern. Användaren måste ha rättighet att skapa tabeller i databasen.";
 $lang["setup-if_mysqlpassword"]="Lösenordet för MySQL-användaren.";
-$lang["setup-if_mysqldb"]="Namnet på MySQL-databasen som ResourceSpace ska använda. Databasen måste redan existera.";
+$lang["setup-if_mysqldb"]="Namnet på MySQL-databasen som RS in the Cloud ska använda. Databasen måste redan existera.";
 $lang["setup-if_mysqlbinpath"]="Sökvägen till MySQL-klientens programfiler, t.ex. mysqldump. Obs! Denna uppgift behövs bara om du avser att använda exportverktyg.";
 $lang["setup-if_baseurl"]="Baswebbadressen för den här installationen. Obs! Utan efterföljande snedstreck.";
-$lang["setup-if_emailfrom"]="Adressen som e-post från ResourceSpace tycks komma ifrån.";
+$lang["setup-if_emailfrom"]="Adressen som e-post från RS in the Cloud tycks komma ifrån.";
 $lang["setup-if_emailnotify"]="E-postadress som materialbegäranden, kontoansökningar och researchförfrågningar ska skickas till.";
 $lang["setup-if_spiderpassword"]="Spindellösenordet är en obligatorisk uppgift.";
 $lang["setup-if_scramblekey"]="Ange en sträng att använda som skramlingssnyckel, om du vill aktivera skramling av materialsökvägar. Om det här är en installation nåbar från Internet rekommenderas detta starkt. Om du lämnar fältet tomt inaktiverar du skramling. Innehållet i fältet har redan slumpats fram för dig, men du kan ändra det så att det matchar en befintlig installation. Strängen ska vara svår att gissa – som ett lösenord.";
@@ -1051,7 +1051,7 @@ $lang["setup-err_scramblekey"]="Om installationen är nåbar från Internet reko
 $lang["setup-err_apiscramblekey"]="Om installationen är nåbar från Internet rekommenderas skramling starkt.";
 $lang["setup-err_path"]="Det går inte att verifiera sökvägen för";
 $lang["setup-emailerr"]="Ogiltig e-postadress.";
-$lang["setup-rs_initial_configuration"]="ResourceSpace: Inledande konfiguration";
+$lang["setup-rs_initial_configuration"]="RS in the Cloud: Inledande konfiguration";
 $lang["setup-include_not_writable"]="Skrivrättighet till katalogen ’/_config’ saknas. Krävs bara under installationen.";
 $lang["setup-override_location_in_advanced"]="Sökvägen kan åsidosättas i Avancerade inställningar.";
 $lang["setup-advancedsettings"]="Avancerade inställningar";
@@ -1068,7 +1068,7 @@ $lang["setup-if_displayresearchrequest"]="Tillåt användarna att skicka in rese
 $lang["setup-themes_as_home"]="Använd sidan Teman som startsida";
 $lang["setup-remote_storage_locations"]="Platser för fjärrlagring";
 $lang["setup-use_remote_storage"]="Använd fjärrlagring";
-$lang["setup-if_useremotestorage"]="Markera den här kryssrutan om du vill konfigurera fjärrlagring för ResourceSpace. (För att placera lagringskatalogen på en annan server.)";
+$lang["setup-if_useremotestorage"]="Markera den här kryssrutan om du vill konfigurera fjärrlagring för RS in the Cloud. (För att placera lagringskatalogen på en annan server.)";
 $lang["setup-storage_directory"]="Lagringskatalog";
 $lang["setup-if_storagedirectory"]="Var materialfilerna lagras. Kan vara en absolut sökväg (/var/www/blah/blah) eller relativ till installationen. Obs! Inget efterföljande snedstreck.";
 $lang["setup-storage_url"]="Lagringskatalogens webbadress";
@@ -1218,7 +1218,7 @@ $lang['plugins-rejarchprob'] = 'Ett problem uppstod under uppackningen:';
 $lang['plugins-rejfileprob'] = 'Tillägget måste vara en rsp-fil.';
 $lang['plugins-rejremedy'] = "Om du litar på detta tillägg kan du installera det manuellt genom att packa upp arkivet direkt i katalogen ’plugins’.";
 $lang['plugins-uploadsuccess'] = 'Överföringen av tillägget slutfördes korrekt';
-$lang['plugins-headertext'] = 'Tillägg kan ge nya funktioner och ny stil till ResourceSpace.';
+$lang['plugins-headertext'] = 'Tillägg kan ge nya funktioner och ny stil till RS in the Cloud.';
 $lang['plugins-legacyinst'] = 'Aktiverat via ’config.php’';
 $lang['plugins-uploadbutton'] = 'Överför tillägg';
 $lang['plugins-download'] = 'Hämta&nbsp;inställningar';
@@ -1258,7 +1258,7 @@ $lang["backtothemes"]="Tillbaka: Teman";
 $lang["downloadreport"]="Hämta rapport";
 
 #Bug Report Page
-$lang['reportbug']="Förbered en buggrapport till utvecklarna av ResourceSpace";
+$lang['reportbug']="Förbered en buggrapport till utvecklarna av RS in the Cloud";
 $lang['reportbug-detail']="Följande information har sammanställts till buggrapporten. Du kommer i nästa steg att kunna redigera all data innan du skickar in rapporten.";
 $lang['reportbug-login']="&gt; Obs! Klicka här för att logga in i bugghanteringssystemet <i>innan</i> du klickar på <b>Förbered&nbsp;buggrapport</b>";
 $lang['reportbug-preparebutton']="Förbered buggrapport";
@@ -1481,7 +1481,7 @@ $lang["permissions"]="Behörigheter";
 
 # System Setup File Editor
 $lang["configdefault-title"]="(Kopiera och klistra in inställningarna härifrån.)";
-$lang["config-title"]="Var <i>mycket</i> noga med att undvika syntaxfel. Om du skapar en fil med ett syntaxfel kan systemet bli obrukbart och felet kan då inte korrigeras inifrån ResourceSpace!";
+$lang["config-title"]="Var <i>mycket</i> noga med att undvika syntaxfel. Om du skapar en fil med ett syntaxfel kan systemet bli obrukbart och felet kan då inte korrigeras inifrån RS in the Cloud!";
 
 # System Setup Properties Pane
 $lang["file_too_large"]="Filen är för stor";

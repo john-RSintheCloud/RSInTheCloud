@@ -1,6 +1,6 @@
 <?php
 # Indonesian
-# Language File for ResourceSpace
+# Language File for RS in the Cloud
 # -------
 # Note: when translating to a new language, preserve the original case if possible.
 
@@ -617,21 +617,21 @@ $lang["noexternalsharing"]="Tidak ada penyebaran external.";
 $lang["sharedcollectionaddwarning"]="Perhatian: Koleksi ini telah disebarkan kepada pengguna external. Aset yang anda tambahkan sekarang akan tersedia bagai pengguna-pengguna tersebut. Klik 'penyebaran' untuk mengatur akses eksternal untuk koleksi ini..";
 $lang["addresourcebatchlocalfolder"]="Tambahkan Kumpulan Aset- Fetch dari upload kitab lokal";
 # Setup Script
-$lang["setup-alreadyconfigured"]="Instalasi ResourceSpace anda telah di konfigurasi. Untuk meng-konfigurasi ulang, anda boleh menghapus  <pre>include/config.php</pre> dan menggunakan browser anda untuk mengakses halaman ini lagi.";
+$lang["setup-alreadyconfigured"]="Instalasi RS in the Cloud anda telah di konfigurasi. Untuk meng-konfigurasi ulang, anda boleh menghapus  <pre>include/config.php</pre> dan menggunakan browser anda untuk mengakses halaman ini lagi.";
 $lang["setup-successheader"]="Selamat!";
-$lang["setup-successdetails"]="Setup awal ResourceSpace anda telah selesai.  Silahkan periksa  'include/default.config.php' untuk pilihan konfigurasi lain.";
+$lang["setup-successdetails"]="Setup awal RS in the Cloud anda telah selesai.  Silahkan periksa  'include/default.config.php' untuk pilihan konfigurasi lain.";
 $lang["setup-successnextsteps"]="Langkah Berikutnya:";
 $lang["setup-successremovewrite"]="Sekarang anda bisa menyingkirkan akses pengisian untuk memasukkan  'include/'.";
 $lang["setup-visitwiki"]='Silahkan kunjungi <a target="_blank" href="http://wiki.resourcespace.org/index.php/Main_Page">ResourceSpace Documentation Wiki</a> untuk informasi lebih lanjut tentang setup instalasi anda';
 $lang["setup-checkconfigwrite"]="Akses isi untuk direktori config:";
 $lang["setup-checkstoragewrite"]="Akses isi untuk direktori storage:";
-$lang["setup-welcome"]="Selamat Datang di ResourceSpace";
-$lang["setup-introtext"]="Terima kasih atas pilihan anda akan ResourceSpace.  Skrip konfigurasi ini akan membantu anda untuk me-setup ResourceSpace.  Proses ini hanya perlu diselesaikan sekali saja.";
+$lang["setup-welcome"]="Selamat Datang di RS in the Cloud";
+$lang["setup-introtext"]="Terima kasih atas pilihan anda akan RS in the Cloud.  Skrip konfigurasi ini akan membantu anda untuk me-setup RS in the Cloud.  Proses ini hanya perlu diselesaikan sekali saja.";
 $lang["setup-checkerrors"]="Kesalahan konfigurasi awal telah ditemukan .<br />  Silahkan memperbaiki kesalahan ini dan kembali ke halaman ini untuk kelanjutan.";
 $lang["setup-errorheader"]="Ada kesalahan yang telah terdeteksi di konfigurasi anda. Silahkan lihat informasi di bawah ini untuk detail dari pemberitahu kesalahan.";
 $lang["setup-warnheader"]="Beberapa dari seting anda menghasilkan pemberitahu perhatian (warning messages).  Silahkan lihat detail di bawah ini. Ini belum tentu berarti ada permasalahan dengan konfigurasi anda.";
 $lang["setup-basicsettings"]="Seting Dasar";
-$lang["setup-basicsettingsdetails"]="Seting-seting ini menyediakan setup dasar untuk instalasi ResourceSpace anda.  Item-item yang diperlukan telah ditandari dengan <strong>*</strong>";
+$lang["setup-basicsettingsdetails"]="Seting-seting ini menyediakan setup dasar untuk instalasi RS in the Cloud anda.  Item-item yang diperlukan telah ditandari dengan <strong>*</strong>";
 $lang["setup-dbaseconfig"]="Konfigurasi Database";
 $lang["setup-mysqlerror"]="Ada kesalahan pada setting MySQL anda.";
 $lang["setup-mysqlerrorversion"]="Versi MySQL version harus paling tidak 5 atau lebih baru.";
@@ -657,14 +657,14 @@ $lang["setup-basicsettingsfooter"]="CATATAN: Halaman ini berisikan setting yang 
 $lang["setup-if_mysqlserver"]='Alamat IP atau <abbr title="Nama Domain yang lolos kualifikasi">FQDN</abbr> dari instalasi server MySQL anda.  Bila MySql diinstal pada server yang sama dengan web server anda, gunakan pilihan "localhost".';
 $lang["setup-if_mysqlusername"]="Nama pengguna digunakan untuk berhubungan dengan server MySQL anda. Pengguna ini harus memiliki ijin untuk membuat tabel di database yang disebutkan di bawah ini.";
 $lang["setup-if_mysqlpassword"]="Kata sandi untuk pengguna MySQL telah dimasukkan di atas. ";
-$lang["setup-if_mysqldb"]="Nama dari MySQL database yang akan digunakan oleh ResourceSpace ( Database in harus ada) ";
+$lang["setup-if_mysqldb"]="Nama dari MySQL database yang akan digunakan oleh RS in the Cloud ( Database in harus ada) ";
 $lang["setup-if_mysqlbinpath"]="Jalur ke binary klien MySQL - contoh mysqldump. CATATAN: Ini hanya dibutuhkan bila anda berencana  untuk menggunakan alat ekspor.";
 $lang["setup-if_baseurl"]=" alamat web 'dasar' untuk instalasi ini  CATATAN: Tanpa trailing slash.";
-$lang["setup-if_emailfrom"]="Alamat asal email ResourceSpace berasal dari.";
+$lang["setup-if_emailfrom"]="Alamat asal email RS in the Cloud berasal dari.";
 $lang["setup-if_emailnotify"]="Alamat email di mana permintaan  resource/user/research akan dikirimkan.";
 $lang["setup-if_spiderpassword"]="Kata sandi spider termasuk bidang yang harus di-isi.";
 $lang["setup-if_scramblekey"]="Untuk memungkinkan pengacakan, pilih kata sandi acak sebagai kunci dengan string yang susah-di-tebak (serupa dengan kata sandi). Bila ini sebuah instalasi pubik, maka hal ini adalah ide yang sangat disarankan. Biarkan bidang ini kosong tanpa isi, bila anda tidak ingin memungkinkan jalur aset acak. Bidang ini telah diacakkan untuk anda, tapi anda bisa mengubahnya untuk menyamakan dengan instalasi yang telah ada, bilah itu yang anda perlukan.";
-$lang["setup-if_applicationname"]="Nama dari implementasi/instalasi anda (contoh 'Nama Perusahaan ResourceSpace system').";
+$lang["setup-if_applicationname"]="Nama dari implementasi/instalasi anda (contoh 'Nama Perusahaan RS in the Cloud system').";
 $lang["setup-err_mysqlbinpath"]="Tidak bisa mencocokkan jalur. Biarkan kosong untuk melumpuhkan.";
 $lang["setup-err_baseurl"]="URL Dasar adalah bidang yang harus di-isi.";
 $lang["setup-err_baseurlverify"]="URL Dasar kelihatannya tidak benar (tidak bisa load lincense.txt).";
