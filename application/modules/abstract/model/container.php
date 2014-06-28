@@ -11,12 +11,13 @@
  *
  * Containers need the ability to add and remove things.
  *
- * Containers will generally be stored in the DB as a many to many link table,
- * using slugs or refs and the parent table (the metadata)
+ * Containers allow us to abstract out the idea of a one to many or many to many relationship, 
+ * and it will generally be stored in the DB as a many to many link table.
+ * using slugs or refs
  *
  * examples
- * Organisation is a container of users with metadata (organisation name and address, etc)
- * stored in the organisation table and user links stored in the org_user table
+ * Organisation has a container of users with metadata (organisation name and address, etc)
+ * stored in the organisation table and user links stored in the org_user table.
  *
  *
  * @author John

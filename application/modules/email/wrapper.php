@@ -37,11 +37,38 @@ function bulk_mail($userlist, $subject, $text, $html = false) {
     return "";
 }
 
+/**
+ *
+ * @global bool $always_email_from_user
+ * @global string $username
+ * @global string $useremail
+ * @global string $userfullname
+ * @global bool $always_email_copy_admin
+ * @global string $email_notify
+ * @global bool $use_phpmailer
+ * @global string $email_footer
+ * @global bool $disable_quoted_printable_enc
+ * @global string $email_from
+ * @global string $applicationname
+ * @global string $userfullname
+ * @param string $email
+ * @param string $subject
+ * @param string $message
+ * @param string $from
+ * @param string $reply_to
+ * @param string $html_template
+ * @param array $templatevars
+ * @param string $from_name
+ * @param string $cc
+ * @return boolean
+ */
 function send_mail($email, $subject, $message, $from = "", $reply_to = "", $html_template = "", $templatevars = null, $from_name = "", $cc = "") {
     # Send a mail - but correctly encode the message/subject in quoted-printable UTF-8.
     # NOTE: $from is the name of the user sending the email,
-    # while $from_name is the name that should be put in the header, which can be the system name
-    # It is necessary to specify two since in all cases the email should be able to contain the user's name.
+    # while $from_name is the name that should be put in the header,
+    # which can be the system name
+    # It is necessary to specify two since in all cases the email should be able
+    # to contain the user's name.
     # old mail function remains the same to avoid possible issues with phpmailer
     # send_mail_phpmailer allows for the use of text and html (multipart) emails,
     # and the use of email templates in Manage Content

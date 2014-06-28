@@ -348,7 +348,7 @@ class database_table_abstract
             $fields .= $key . '`, `';
 
 
-            if (stripos($key, 'date') !== false || date) {
+            if (stripos($key, 'date') !== false) {
                 if ($value == 'now') {
                     $values .= ' now(), ';
                     continue;

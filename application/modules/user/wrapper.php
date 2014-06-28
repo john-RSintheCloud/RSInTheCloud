@@ -700,8 +700,11 @@ if (!function_exists("auto_create_user_account")) {
 
 
             send_mail($email_notify,
-                    $applicationname . ": " . $lang["requestuserlogin"] . " - " . getval("name",
-                            ""), $message, "", $user_email, "", "",
+                    $applicationname . ": "
+                        . $lang["requestuserlogin"] . " - "
+                        . getval("name",""),
+                    $message, "", "", 
+                    $user_email, "",
                     getval("name", ""));
         }
 

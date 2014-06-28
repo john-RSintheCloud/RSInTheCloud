@@ -18,7 +18,7 @@ $mysql_db = 'RS';
 $mysql_bin_path = '/usr/bin';
 
 # Base URL of the installation
-$baseurl = 'http://local.rs';
+$baseurl = 'http://oors.local';
 
 # Email settings
 $email_from = 'resourcespace@rsinthecloud.com';
@@ -37,10 +37,10 @@ $exiftool_path = '/usr/bin';
 $antiword_path = '/usr/bin';
 $pdftotext_path = '/usr/bin';
 
-$storagedir = '/var/www/filestore';
-$storageurl = 'http://local.filestore';
-$tempdir = '/var/www/filestore/tmp';
-$tempUrl = 'http://local.filestore/tmp';
+$storagedir = '/var/www/RS/filestore';
+$storageurl = 'http://filestore.local';
+$tempdir = '/var/www/RS/filestore/tmp';
+$tempUrl = 'http://filestore.local/tmp';
 $ftp_server = 'my.ftp.server';
 $ftp_username = 'my_username';
 $ftp_password = 'my_password';
