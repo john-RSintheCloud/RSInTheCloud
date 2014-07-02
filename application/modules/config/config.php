@@ -37,6 +37,10 @@ class config_config
             }
         }
         fclose($handle);
+        
+        //  set base_url
+        $this->baseurl = BASE_URL;
+        
         return $this;
    }
 

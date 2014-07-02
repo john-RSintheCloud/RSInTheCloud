@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Bootstrap
  *
@@ -7,19 +8,16 @@
  * @author John Brookes <john@RSintheCloud.com>
  * @package RSintheClouds
  * @subpackage Refactor
-*/
-
+ */
 //  Make sure app path is defined.
-defined('APPLICATION_PATH')
-    || define('APPLICATION_PATH', realpath(dirname(__FILE__) ) . '/');
+defined('APPLICATION_PATH') || define('APPLICATION_PATH', realpath(dirname(__FILE__)) . '/');
 
 // Define application environment
-defined('APPLICATION_ENV')
-    || define('APPLICATION_ENV', (getenv('APPLICATION_ENV') ? getenv('APPLICATION_ENV') : 'production'));
+defined('APPLICATION_ENV') || define('APPLICATION_ENV', (getenv('APPLICATION_ENV') ? getenv('APPLICATION_ENV') : 'production'));
 
 set_include_path(implode(PATH_SEPARATOR, array(
     //  put application path into include
-    realpath(APPLICATION_PATH ),
+    realpath(APPLICATION_PATH),
     //  Put new library into include path
     realpath(APPLICATION_PATH . '../library/'),
     //  Put old include files in last
@@ -27,8 +25,14 @@ set_include_path(implode(PATH_SEPARATOR, array(
     get_include_path()
 )));
 
-//  Set baseURL  TODO
-
+//  Set baseURL  - the host name.
+//  If the application is running in a folder, set this in the config file as $baseFolder
+if (!defined(BASE_URL)) {
+    $root = (isset($_SERVER['HTTPS']) ? "https://" : "http://")
+        . $_SERVER['HTTP_HOST'];
+//        . str_replace(basename($_SERVER['SCRIPT_NAME']), '', $_SERVER['SCRIPT_NAME']);
+    define(BASE_URL, $root);
+}
 
 //  start timer
 require_once 'timer.php';
@@ -37,9 +41,9 @@ $pageTimer = new timer();
 //  Autoloader
 
 spl_autoload_register(
-  function ($pClassName) {
+    function ($pClassName) {
     require_once (APPLICATION_PATH . 'modules/' . str_replace("_", "/", $pClassName) . '.php');
-  }
+}
 );
 
 //  Dependency Injection
@@ -73,9 +77,6 @@ require_once 'modules/organisation/wrapper.php';
 
 # Initialise hook for plugins
 //  hook("initialise");
-
 //  pull in the old includes
-//  DEAD!  require_once "db.php";
-//  DEAD!  require_once "general2.php";
 require_once "collections_functions2.php";
 

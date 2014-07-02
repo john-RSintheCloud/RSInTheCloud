@@ -23,8 +23,10 @@ $mysql_db = 'RS';
 
 $mysql_bin_path = '/usr/bin';
 
-# Base URL of the installation
-$baseurl = 'http://rsitc.local';
+# Base URL of the installation is set dynamically
+// $baseurl = 'http://rsitc.local';
+#  but we may want to set a base folder, eg '/RS' (leading /)
+$baseFolder = '';
 
 # Email settings
 $email_from = 'resourcespace@rsinthecloud.com';
