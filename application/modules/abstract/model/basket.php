@@ -60,7 +60,7 @@ class abstract_model_basket
         foreach ($this->things as $thing){
             if (is_string($thing)){
                 $ret[] = $thing;
-            }elseif ($this instanceof abstract_model_abstract){
+            }elseif ($this instanceof abstract_model_dataAbstract){
                 $ret[] = $thing->toArray();
             } elseif ( null !== $thing->ref) {
                 $ret[] = (string) $thing->ref;
@@ -81,9 +81,9 @@ class abstract_model_basket
      *
      * @return  database_table_abstract
      */
-    public function __construct(array $options = array())
+    public function __construct(array $options = null)
     {
-        $this->setOptions($options);
+        return parent::$this;
     }
 
     /**
@@ -163,7 +163,7 @@ class abstract_model_basket
     }
 
 
-    public function addOne(abstract_model_abstract $thing)
+    public function addOne(abstract_model_dataAbstract $thing)
     {
         $this->things[] = $thing;
 
@@ -174,7 +174,7 @@ class abstract_model_basket
     {
         foreach ($this->things as $thing) {
 
-            if (! $thing instanceof abstract_model_abstract){
+            if (! $thing instanceof abstract_model_dataAbstract){
                 throw new RuntimeException ('Invalid thing stored in a basket!');
             }
             //  check the thing is populated

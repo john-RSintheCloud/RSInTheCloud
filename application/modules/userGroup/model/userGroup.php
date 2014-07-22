@@ -5,7 +5,7 @@
  *
  * @author John
  */
-class userGroup_model_userGroup extends abstract_model_abstract
+class userGroup_model_userGroup extends abstract_model_dataAbstract
 {
     protected $_userGroupname = '' ;
     protected $_permissions = '' ;

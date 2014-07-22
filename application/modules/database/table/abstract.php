@@ -218,7 +218,7 @@ class database_table_abstract
         //  Clear any existing data
         $this->clearParams();
 
-        if ($options instanceof abstract_model_abstract){
+        if ($options instanceof abstract_model_dataAbstract){
             $options = $options->toArray();
         }
 

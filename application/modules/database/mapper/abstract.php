@@ -64,10 +64,10 @@ class database_mapper_abstract
      * If Ref / Slug are missing, insert the row;
      * otherwise update it.
      *
-     * @param abstract_model_abstract $model
+     * @param abstract_model_dataAbstract $model
      * @return array model data with new ref / slug if appropriate
      */
-    public function save(abstract_model_abstract $model)
+    public function save(abstract_model_dataAbstract $model)
     {
         //  overload to validate input type - should be appropriate model
 
@@ -175,10 +175,10 @@ class database_mapper_abstract
     /**
      * Legacy code expects field names from the table, so map them back
      *
-     * @param abstract_model_abstract $model
+     * @param abstract_model_dataAbstract $model
      * @return array
      */
-    public function toLegacyArray(abstract_model_abstract $model)
+    public function toLegacyArray(abstract_model_dataAbstract $model)
     {
         return $this->switchArrays($model->toArray());
     }

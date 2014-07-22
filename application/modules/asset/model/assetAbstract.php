@@ -5,7 +5,7 @@
  *
  * @author John
  */
-class asset_model_assetAbstract extends abstract_model_abstract
+class asset_model_assetAbstract extends abstract_model_dataAbstract
 {
 
     /**

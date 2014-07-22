@@ -91,7 +91,9 @@ function get_usergroups($usepermissions = false, $find = "")
 
 function get_usergroup($ref)
 {
-    # Returns the user group corresponding to the $ref. A standard user group name is translated using $lang. A custom user group name is i18n translated.
+    # Returns the user group corresponding to the group ref. 
+    # A standard user group name is translated using $lang. 
+    # A custom user group name is i18n translated.
 
     $return = sql_query("select * from usergroup where ref='$ref'");
     if (count($return) == 0) {
