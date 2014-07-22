@@ -81,9 +81,9 @@ class abstract_model_basket
      *
      * @return  database_table_abstract
      */
-    public function __construct(array $options = null)
+    public function __construct(array $options = array())
     {
-        return parent::$this;
+        $this->setOptions($options);
     }
 
     /**

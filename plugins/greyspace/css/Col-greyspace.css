@@ -672,11 +672,6 @@ input[readonly] {color: #E0E0E0;} /* Read-only form fields */
     color: #E0E0E0;
     }
 
-.CodeMirror-wrapping /* Code editor (e.g. config.php) */
-    {
-    color: #252525; background: #FFFFFF;
-    }
-
 
 /* Icon definitions ******************************************************** */
 .ASC {background: url(../gfx/interface/ASC.png) no-repeat; background-position: center;}
