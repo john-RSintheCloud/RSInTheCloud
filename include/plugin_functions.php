@@ -2,7 +2,7 @@
 /**
  * Functions related to the management of plugins.
  *
- * @package ResourceSpace
+ * @package Legacy
  * @subpackage Includes
  * @author Brian Adams <wreality@gmail.com>
  */

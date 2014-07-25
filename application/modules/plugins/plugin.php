@@ -2,7 +2,7 @@
 /***
  * plugin.php - Maps requests to plugin pages to requested plugin.
  *
- * @package ResourceSpace
+ * @package RS - generic
  * @subpackage Plugins
  *
  ***/

@@ -1,6 +1,6 @@
 <?php
 $productname="OO RS"; # Product name. Do not change.
-$productversion="alpha";
+$productversion="Alpha";
 
 # External items reload key
 # Increment the below value to force a reload of the CSS, JavaScripts and other included items.

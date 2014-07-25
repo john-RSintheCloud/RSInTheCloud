@@ -83,7 +83,7 @@ input[readonly] {color: #000000;}
 .NoFind {border: 1px solid #BBBBBB;background: #FFFFFF;}
 .NoFind .highlight {color:#000000;font-weight: bold;}
 .NoFind a:link, .NoFind a:visited, .NoFind a:hover, .NoFind a:active {color:#000000;text-decoration:underline;}
-.RecordPanel .Title,  {	border-bottom: 1px solid #BBBBBB;}
+.RecordPanel .Title  {	border-bottom: 1px solid #BBBBBB;}
 .RecordPanel .RecordDownload {background-color: #eee;	border: 1px solid #BBBBBB;}
 .RecordPanel .RecordDownload .DownloadDBlend td {border: 1px solid #E2E2E2;color: #FFFFFF;}
 .RecordPanel .RecordDownloadSpace .DownloadDBlend .DownloadButton {background: #000 url(../gfx/whitegry/interface/CollectBack.gif?nc=1);background-position: 0 -8px;}
@@ -105,7 +105,7 @@ input[readonly] {color: #000000;}
 
 .Tab a {border: 1px solid #BBBBBB;border-bottom-style: none;color: #aaaaaa;  }
 .StyledTabbedPanel 
-    {
+{
     background: #fefefe; /* Old browsers */
     background: -moz-linear-gradient(top, #fff 0%, #eee 100%); /* FF3.6+ */
     background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#fff), color-stop(100%,#eee)); /* Chrome,Safari4+ */
@@ -114,18 +114,18 @@ input[readonly] {color: #000000;}
     background: -ms-linear-gradient(top, #fff 0%,#eee 100%); /* IE10+ */
     background: linear-gradient(to bottom, #fff 0%,#eee 100%); /* W3C */
     filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#eeeeee',GradientType=0 ); /* IE6-9 */
-	border: 1px solid #BBBBBB;
-	
+    border: 1px solid #BBBBBB;
 
-    }
+
+}
 .TabSelected  
-    { 
+{ 
     background: #ffffff;  
     border-bottom: 1px solid #ffffff; 
     border-top: 1px solid #ffffff;
     border-left: #bbbbbb;
     margin-right: 5px; 
-    }
+}
 .TabSelected a { margin: 0; color: #666666; }
 
 .InfoTable {border-collapse:collapse;}
@@ -153,59 +153,59 @@ input[readonly] {color: #000000;}
 .treetext a:active {color: #000000; background: none;}
 
 .proptitle
-	{
-	color: #FFFFFF;
-	background: rgb(119,119,119);
-	}	
+{
+    color: #FFFFFF;
+    background: rgb(119,119,119);
+}	
 .propbox
-	{
-	color: #000000;
-	background: #FFFFFF;
-	}
+{
+    color: #000000;
+    background: #FFFFFF;
+}
 .propbox a:link {color: rgb(115,115,115); background: none;}
 .propbox a:visited {color: rgb(115,115,115); background: none;}
 .propbox a:hover {color: #000000; background: none;}
 .propbox a:active {color: #000000; background: none;}
 
 .permissionstable tr td.permheader
-	{
-	color: #000000;
-	background: rgb(221,221,221)
-	}
+{
+    color: #000000;
+    background: rgb(221,221,221)
+}
 .permissionstable tbody
-	{
-	color: #000000;
-	}
+{
+    color: #000000;
+}
 
 .CodeMirror-wrapping
-	{
-	color: #000000;
-	background: #FFFFFF;
-	}
-	
+{
+    color: #000000;
+    background: #FFFFFF;
+}
+
 /* Additional CSS effects from WhiteSpace */
 
 #ThemeBoxPanel, #SearchBoxPanel, #ResearchBoxPanel, .HomePanelIN,  .RecordPanel, .ResourcePanel, .ResourcePanelSmall, .ResourcePanelLarge
-	{
-	border: 1px solid #d0d0d0;
-	background: #eee;
-	}
-	
+{
+    border: 1px solid #d0d0d0;
+    background: #eee;
+}
+
 .PanelShadow
-	{
-	background: none;
-	}
+{
+    background: none;
+}
 .collapsed
-    {
+{
     background: url(../gfx/whitegry/interface/HomeArrow.gif) no-repeat top left;
     background-position:3px 8px;  
-    }
+}
 .expanded
-    {
+{
     background: url(../gfx/whitegry/interface/HomeArrowDown.gif) no-repeat top left;    
-     background-position:0px 12px; 
-    }
-	
+    background-position:0px 12px; 
+}
+
 .CommentFlag { background-image: url('../gfx/whitegry/interface/FlagOff.png'); }
 
 .CommentEntryInfoCommenterName { color: #3070bf; }

@@ -5,7 +5,7 @@
  *
  * @author John
  */
-class user_model_user extends abstract_model_abstract
+class user_model_user extends abstract_model_dataAbstract
 {
 
     //  User specific methods

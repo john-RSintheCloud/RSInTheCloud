@@ -2,8 +2,7 @@
 
 $theme=((isset($userfixedtheme) && $userfixedtheme!=""))?$userfixedtheme:getval("colourcss",$defaulttheme);
 
-hook ("preheaderoutput");
- 
+
 # Do not display header / footer when dynamically loading CentralSpace contents.
 $ajax=getval("ajax","");
 if ($ajax=="") { 
@@ -29,22 +28,18 @@ if (getval("thumbs", "")=="")
     {
     rs_setcookie("thumbs", $thumbs_default, 1000);
     }
-?><!DOCTYPE html>
-<html>	<?php if ($include_rs_header_info){?>
-<!--<?php hook("copyrightinsert");?>
-ResourceSpace version <?php echo $productversion?>
 
-Copyright Oxfam GB, Montala, WWF International, Tom Gleason, David Dwiggins, Historic New England, Colorhythm LLC, Worldcolor, Henrik Frizén 2006-2013
-http://www.resourcespace.org/
--->
-<?php } ?>
+    
+?><!DOCTYPE html>
+<html>
+<!-- OO RS version <?php echo $productversion . PHP_EOL?>
+Copyright Oxfam GB, Montala, RS in the Cloud and others, 2006-2014  -->
 <head>
-<?php if(!hook("customhtmlheader")): ?>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-<META HTTP-EQUIV="CACHE-CONTROL" CONTENT="NO-CACHE">
-<META HTTP-EQUIV="PRAGMA" CONTENT="NO-CACHE">
-<title><?php echo htmlspecialchars($applicationname)?></title>
+<meta http-equiv="Cache-Control" content="no-cache">
+<meta http-equiv="Pragma" content="no-cache">
+<title><?php echo $applicationname?></title>
 <link rel="icon" type="image/png" href="<?php echo $baseurl."/".$header_favicon?>" />
 
 <!-- Load jQuery and jQueryUI -->
@@ -129,13 +124,13 @@ jQuery(document).ready(function() {
 
 <script src="<?php echo $baseurl;?>/lib/js/ajax_collections.js?css_reload_key=<?php echo $css_reload_key?>" type="text/javascript"></script>
 
-<link href="<?php echo $baseurl_short;?>lib/plupload/jquery.plupload.queue/css/jquery.plupload.queue.css?<?php echo $css_reload_key;?>" rel="stylesheet" type="text/css" media="screen,projection,print"  />
-<script type="text/javascript" src="<?php echo $baseurl_short;?>lib/js/browserplus-min.js?<?php echo $css_reload_key;?>"></script>
-<script type="text/javascript" src="<?php echo $baseurl_short;?>lib/plupload/plupload.full.js?<?php echo $css_reload_key;?>"></script>
-<script type="text/javascript" src="<?php echo $baseurl_short;?>lib/plupload/jquery.plupload.queue/jquery.plupload.queue.js?<?php echo $css_reload_key;?>"></script>
+<link href="<?php echo $baseurl;?>/lib/plupload/jquery.plupload.queue/css/jquery.plupload.queue.css?<?php echo $css_reload_key;?>" rel="stylesheet" type="text/css" media="screen,projection,print"  />
+<script type="text/javascript" src="<?php echo $baseurl;?>/lib/js/browserplus-min.js?<?php echo $css_reload_key;?>"></script>
+<script type="text/javascript" src="<?php echo $baseurl;?>/lib/plupload/plupload.full.js?<?php echo $css_reload_key;?>"></script>
+<script type="text/javascript" src="<?php echo $baseurl;?>/lib/plupload/jquery.plupload.queue/jquery.plupload.queue.js?<?php echo $css_reload_key;?>"></script>
 
 <script type="text/javascript">
-var baseurl_short="<?php echo $baseurl_short?>";
+var baseurl_short="<?php echo $baseurl?>";
 var baseurl="<?php echo $baseurl?>";
 var pagename="<?php echo $pagename?>";
 var errorpageload = "<h1><?php echo $lang["error"] ?></h1><p><?php echo $lang["error-pageload"] ?></p>" ;
@@ -144,7 +139,7 @@ var branch_limit="<?php echo $cat_tree_singlebranch?>";
 var global_cookies = "<?php echo $global_cookies?>";
 </script>
 
-<script src="<?php echo $baseurl_short?>lib/js/global.js?css_reload_key=<?php echo $css_reload_key?>" type="text/javascript"></script>
+<script src="<?php echo $baseurl?>/lib/js/global.js?css_reload_key=<?php echo $css_reload_key?>" type="text/javascript"></script>
 
 <script type="text/javascript">
 jQuery(document).ready(function() {
@@ -252,11 +247,10 @@ if ($infobox)
 	<script type="text/javascript">
 	var InfoBoxImageMode=<?php echo ($infobox_image_mode?"true":"false")?>;
 	</script>
-	<script src="<?php echo $baseurl_short;?>lib/js/infobox.js?css_reload_key=<?php echo $css_reload_key ?>" type="text/javascript"></script>
+	<script src="<?php echo $baseurl;?>/lib/js/infobox.js?css_reload_key=<?php echo $css_reload_key ?>" type="text/javascript"></script>
 <?php
 	}
 ?>
-<?php endif; # !hook("customhtmlheader") ?>
 </head>
 
 <body lang="<?php echo $language ?>" <?php if (isset($bodyattribs)) { ?><?php echo $bodyattribs?><?php } if($infobox) {?> onmousemove="InfoBoxMM(event);"<?php } ?>>
@@ -374,7 +368,7 @@ else {$div="CentralSpace";}
 <?php if (($pagename!="login") && ($pagename!="user_password") && ($pagename!="user_request")) { ?><div id="CentralSpaceContainer"><?php } ?>
 
 <!-- Loading graphic -->
-<div id="LoadingBox"><?php echo $lang["pleasewait"] ?><img src="<?php echo $baseurl_short ?>gfx/interface/loading.gif"></div>
+<div id="LoadingBox"><?php echo $lang["pleasewait"] ?><img src="<?php echo $baseurl ?>/gfx/interface/loading.gif"></div>
 
 <div id="<?php echo $div?>">
 
@@ -403,4 +397,3 @@ if ($use_theme_bar && (getval("k","")=="") && !in_array($pagename,array("themes"
 
 // Ajax specific hook
 if ($ajax) {hook("afterheaderajax");}
-?>

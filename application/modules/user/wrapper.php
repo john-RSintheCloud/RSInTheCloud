@@ -172,19 +172,6 @@ function get_usergroups($usepermissions = false, $find = "")
     return $return;
 }
 
-function get_usergroup($ref)
-{
-# Returns the user group corresponding to the $ref. A standard user group name is translated using $lang. A custom user group name is i18n translated.
-
-    $return = sql_query("select * from usergroup where ref='$ref'");
-    if (count($return) == 0) {
-        return false;
-    } else {
-        $return[0]["name"] = lang_or_i18n_get_translated($return[0]["name"],
-                "usergroup-");
-        return $return[0];
-    }
-}
 
 function email_user_welcome($email, $username, $password, $usergroup)
 {
@@ -269,11 +256,6 @@ function new_user($newuser)
     return $newref;
 }
 
-function get_active_users()
-{
-# Returns a list of active users, i.e. users still logged on with a last-active time within the last 2 hours.
-    return sql_query("select username,round((unix_timestamp(now())-unix_timestamp(last_active))/60,0) t from user where logged_in=1 and unix_timestamp(now())-unix_timestamp(last_active)<(3600*2) order by t;");
-}
 
 function change_password($password)
 {

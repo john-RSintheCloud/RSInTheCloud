@@ -4,7 +4,7 @@
  * 
  * Functions to allow upload and resizing of images.
  * 
- * @package ResourceSpace
+ * @package RS Generic
  * @subpackage Includes
  * @todo Document
  */

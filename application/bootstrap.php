@@ -5,7 +5,7 @@
  * PHP Version  PHP 5.3.10
  *
  * @author John Brookes <john@RSintheCloud.com>
- * @package RSintheClouds
+ * @package RS - generic
  * @subpackage Refactor
 */
 
@@ -19,7 +19,7 @@ defined('APPLICATION_ENV')
 
 set_include_path(implode(PATH_SEPARATOR, array(
     //  put application path into include
-    realpath(APPLICATION_PATH ),
+    realpath(APPLICATION_PATH),
     //  Put new library into include path
     realpath(APPLICATION_PATH . '../library/'),
     //  Put old include files in last
@@ -27,8 +27,14 @@ set_include_path(implode(PATH_SEPARATOR, array(
     get_include_path()
 )));
 
-//  Set baseURL  TODO
-
+//  Set baseURL  - the host name.
+//  If the application is running in a folder, set this in the config file as $baseFolder
+if (!defined('BASE_URL')) {
+    $root = (isset($_SERVER['HTTPS']) ? "https://" : "http://")
+        . $_SERVER['HTTP_HOST'];
+//        . str_replace(basename($_SERVER['SCRIPT_NAME']), '', $_SERVER['SCRIPT_NAME']);
+    define('BASE_URL', $root);
+}
 
 //  start timer
 require_once 'timer.php';
@@ -69,13 +75,10 @@ require_once 'modules/processLock/wrapper.php';
 require_once 'views/helpers/wrapper.php';
 
 //  DIC Plugins
-// require_once 'modules/organisation/wrapper.php';
+require_once 'modules/organisation/wrapper.php';
 
 # Initialise hook for plugins
-hook("initialise");
-
+//  hook("initialise");
 //  pull in the old includes
-//  DEAD!  require_once "db.php";
-//  DEAD!  require_once "general2.php";
 require_once "collections_functions2.php";
 

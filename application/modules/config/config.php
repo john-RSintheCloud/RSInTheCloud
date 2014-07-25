@@ -25,6 +25,22 @@ class config_config
             }
         }
         fclose($handle);
+        if (($handle = fopen(APPLICATION_PATH . $secure_config_location, "r")) === FALSE) {
+            throw new InvalidArgumentException ("Don't forget the secure config file");
+        }
+        while (($data = fgetcsv($handle, 1000, "=")) !== FALSE) {
+            $num = count($data);
+            $prefix = '';
+            if ($num == 2){
+                $this->setVar ( $data[0], $data[1]);
+
+            }
+        }
+        fclose($handle);
+        
+        //  set base_url
+        $this->baseurl = BASE_URL;
+        
         return $this;
    }
 

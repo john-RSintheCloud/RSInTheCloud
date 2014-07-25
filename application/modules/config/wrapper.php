@@ -26,18 +26,27 @@ require_once APPLICATION_PATH . "../_config/config.default.php";
 require_once APPLICATION_PATH . "../_config/config.php";
 require_once APPLICATION_PATH . $secure_config_location;
 
+
 # Set the storage directory and URL if not already set.
+#  This will not be needed once we get S3 upload working properly
 if (!isset($storagedir)) {die('Storage dir not set in config');}
 
 
 # Set time limit from config value
 set_time_limit($php_time_limit);
 
-# Set a base URL part consisting of the part after the server name, i.e. for absolute URLs and cookie paths.
+//  set base_url
+//  BASE_URL  is the host name.
+//  If the application is running in a folder, set this in the config file as $baseFolder
+
+$baseurl = BASE_URL . $baseFolder;
+
+# Set a short base URL  consisting of the part after the server name, i.e. for absolute URLs and cookie paths.
 $baseurl=str_replace(" ","%20",$baseurl);
-$bs=explode("/",$baseurl);
-$bs=array_slice($bs,3);
-$baseurl_short="/" . join("/",$bs) . (count($bs)>0?"/":"");
+//$bs=explode("/",$baseurl);
+//$bs=array_slice($bs,3);
+//$baseurl_short="/" . implode("/",$bs) . (count($bs)>0?"/":"");
+$baseurl_short=$baseFolder . '/';
 
 
 $pagename=str_replace(".php","",  basename($_SERVER["PHP_SELF"]));
