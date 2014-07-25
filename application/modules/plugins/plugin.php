@@ -2,7 +2,7 @@
 /***
  * plugin.php - Maps requests to plugin pages to requested plugin.
  *
- * @package RS in the Cloud
+ * @package RS - generic
  * @subpackage Plugins
  *
  ***/

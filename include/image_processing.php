@@ -4,7 +4,7 @@
  * 
  * Functions to allow upload and resizing of images.
  * 
- * @package RS in the Cloud
+ * @package RS Generic
  * @subpackage Includes
  * @todo Document
  */

@@ -1,5 +1,5 @@
 
-RS in the Cloud uses extension-based preview icons based on icons from the Crystal Project.
+Generic RS uses extension-based preview icons based on icons from the Crystal Project.
 
 License
 The Crystal Project are released under LGPL.
