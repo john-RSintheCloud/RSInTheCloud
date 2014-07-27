@@ -6,5 +6,5 @@ CREATE TABLE IF NOT EXISTS `basket` (
   `type` char(2) DEFAULT NULL,
   PRIMARY KEY (`ref`),
   UNIQUE KEY `asset` (`asset`,`slug`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_general_cs ;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci ;
 
