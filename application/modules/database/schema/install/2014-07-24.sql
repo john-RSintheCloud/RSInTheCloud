@@ -1,12 +1,9 @@
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
 
-/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
-/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
-/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8 */;
+SET NAMES utf8;
 
-CREATE DATABASE IF NOT EXISTS `RS` DEFAULT CHARACTER SET latin1 COLLATE latin1_swedish_ci;
+CREATE DATABASE IF NOT EXISTS `RS` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
 USE `RS`;
 
 DROP TABLE IF EXISTS `collection`;
@@ -30,7 +27,7 @@ CREATE TABLE IF NOT EXISTS `collection` (
   KEY `theme` (`theme`),
   KEY `public` (`public`),
   KEY `user` (`user`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8;
 
 INSERT INTO `collection` (`ref`, `name`, `user`, `created`, `public`, `theme`, `theme2`, `theme3`, `allow_changes`, `cant_delete`, `keywords`, `savedsearch`, `home_page_publish`, `home_page_text`, `home_page_image`) VALUES
 (1, 'My Collection', 1, '2008-01-01 10:00:00', 0, NULL, '0', '1', NULL, 1, NULL, NULL, NULL, NULL, NULL);
@@ -41,7 +38,7 @@ CREATE TABLE IF NOT EXISTS `collection_keyword` (
   `keyword` int(11) DEFAULT NULL,
   KEY `collection` (`collection`),
   KEY `keyword` (`keyword`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 DROP TABLE IF EXISTS `collection_log`;
 CREATE TABLE IF NOT EXISTS `collection_log` (
@@ -51,7 +48,7 @@ CREATE TABLE IF NOT EXISTS `collection_log` (
   `type` char(1) DEFAULT NULL,
   `resource` int(11) DEFAULT NULL,
   `notes` varchar(255) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 DROP TABLE IF EXISTS `collection_resource`;
 CREATE TABLE IF NOT EXISTS `collection_resource` (
@@ -67,7 +64,7 @@ CREATE TABLE IF NOT EXISTS `collection_resource` (
   `sortorder` int(11) DEFAULT NULL,
   KEY `collection` (`collection`),
   KEY `resource_collection` (`collection`,`resource`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 DROP TABLE IF EXISTS `collection_savedsearch`;
 CREATE TABLE IF NOT EXISTS `collection_savedsearch` (
@@ -80,7 +77,7 @@ CREATE TABLE IF NOT EXISTS `collection_savedsearch` (
   `created` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `result_limit` int(11) DEFAULT NULL,
   PRIMARY KEY (`ref`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 DROP TABLE IF EXISTS `comment`;
 CREATE TABLE IF NOT EXISTS `comment` (
@@ -99,7 +96,7 @@ CREATE TABLE IF NOT EXISTS `comment` (
   KEY `ref_parent` (`ref_parent`),
   KEY `collection_ref` (`collection_ref`),
   KEY `resource_ref` (`resource_ref`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 DROP TABLE IF EXISTS `daily_stat`;
 CREATE TABLE IF NOT EXISTS `daily_stat` (
@@ -115,20 +112,9 @@ CREATE TABLE IF NOT EXISTS `daily_stat` (
   KEY `stat_usergroup` (`usergroup`),
   KEY `stat_day_activity` (`year`,`month`,`day`,`activity_type`),
   KEY `stat_day_activity_ref` (`year`,`month`,`day`,`activity_type`,`object_ref`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 INSERT INTO `daily_stat` (`year`, `month`, `day`, `usergroup`, `activity_type`, `object_ref`, `count`) VALUES
-(2014, 6, 1, 0, 'User session', 1, 1),
-(2014, 6, 2, 3, 'User session', 1, 1),
-(2014, 6, 20, 3, 'User session', 1, 2),
-(2014, 6, 21, 3, 'User session', 1, 1),
-(2014, 6, 25, 3, 'User session', 1, 1),
-(2014, 6, 27, 3, 'User session', 1, 1),
-(2014, 6, 28, 0, 'User session', 1, 3),
-(2014, 6, 28, 3, 'User session', 1, 2),
-(2014, 7, 2, 0, 'User session', 1, 6),
-(2014, 7, 2, 3, 'User session', 1, 1),
-(2014, 7, 3, 3, 'User session', 1, 1),
 (2014, 7, 4, 3, 'User session', 1, 1);
 
 DROP TABLE IF EXISTS `dynamic_tree_node`;
@@ -140,7 +126,7 @@ CREATE TABLE IF NOT EXISTS `dynamic_tree_node` (
   PRIMARY KEY (`ref`),
   KEY `parent` (`parent`),
   KEY `resource_type_field` (`resource_type_field`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 DROP TABLE IF EXISTS `external_access_keys`;
 CREATE TABLE IF NOT EXISTS `external_access_keys` (
@@ -156,7 +142,7 @@ CREATE TABLE IF NOT EXISTS `external_access_keys` (
   `expires` datetime DEFAULT NULL,
   KEY `resource` (`resource`),
   KEY `resource_key` (`resource`,`access_key`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 DROP TABLE IF EXISTS `ip_lockout`;
 CREATE TABLE IF NOT EXISTS `ip_lockout` (
@@ -164,7 +150,7 @@ CREATE TABLE IF NOT EXISTS `ip_lockout` (
   `tries` int(11) DEFAULT '0',
   `last_try` datetime DEFAULT NULL,
   PRIMARY KEY (`ip`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 DROP TABLE IF EXISTS `keyword`;
 CREATE TABLE IF NOT EXISTS `keyword` (
@@ -175,13 +161,13 @@ CREATE TABLE IF NOT EXISTS `keyword` (
   PRIMARY KEY (`ref`),
   KEY `keyword` (`keyword`),
   KEY `keyword_hit_count` (`hit_count`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 DROP TABLE IF EXISTS `keyword_related`;
 CREATE TABLE IF NOT EXISTS `keyword_related` (
   `keyword` int(11) DEFAULT NULL,
   `related` int(11) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 DROP TABLE IF EXISTS `plugins`;
 CREATE TABLE IF NOT EXISTS `plugins` (
@@ -197,7 +183,7 @@ CREATE TABLE IF NOT EXISTS `plugins` (
   `enabled_groups` varchar(200) DEFAULT NULL,
   `priority` int(11) DEFAULT '999',
   PRIMARY KEY (`name`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 DROP TABLE IF EXISTS `preview_size`;
 CREATE TABLE IF NOT EXISTS `preview_size` (
@@ -211,7 +197,7 @@ CREATE TABLE IF NOT EXISTS `preview_size` (
   `allow_preview` int(11) DEFAULT '0',
   `allow_restricted` int(11) DEFAULT '0',
   PRIMARY KEY (`ref`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8;
 
 INSERT INTO `preview_size` (`ref`, `id`, `width`, `height`, `padtosize`, `name`, `internal`, `allow_preview`, `allow_restricted`) VALUES
 (1, 'thm', 150, 150, 0, 'Thumbnail', 1, 0, 0),
@@ -227,7 +213,7 @@ CREATE TABLE IF NOT EXISTS `report` (
   `name` varchar(100) DEFAULT NULL,
   `query` text,
   PRIMARY KEY (`ref`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8;
 
 INSERT INTO `report` (`ref`, `name`, `query`) VALUES
 (1, 'Keywords used in resource edits', 'select k.keyword ''Keyword'',sum(count) ''Entered Count'' from keyword k,daily_stat d where k.ref=d.object_ref and d.activity_type=''Keyword added to resource''\n\n# --- date ranges\n# Make sure date is greater than FROM date\nand \n(\nd.year>[from-y]\nor \n(d.year=[from-y] and d.month>[from-m])\nor\n(d.year=[from-y] and d.month=[from-m] and d.day>=[from-d])\n)\n# Make sure date is less than TO date\nand\n(\nd.year<[to-y]\nor \n(d.year=[to-y] and d.month<[to-m])\nor\n(d.year=[to-y] and d.month=[to-m] and d.day<=[to-d])\n)\n\n\ngroup by k.ref order by ''Entered Count'' desc limit 100;\n'),
@@ -255,7 +241,7 @@ CREATE TABLE IF NOT EXISTS `report_periodic_emails` (
   `email_days` int(11) DEFAULT NULL,
   `last_sent` datetime DEFAULT NULL,
   PRIMARY KEY (`ref`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 DROP TABLE IF EXISTS `request`;
 CREATE TABLE IF NOT EXISTS `request` (
@@ -271,7 +257,7 @@ CREATE TABLE IF NOT EXISTS `request` (
   `reason` text,
   `reasonapproved` text,
   PRIMARY KEY (`ref`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 DROP TABLE IF EXISTS `research_request`;
 CREATE TABLE IF NOT EXISTS `research_request` (
@@ -292,7 +278,7 @@ CREATE TABLE IF NOT EXISTS `research_request` (
   `collection` int(11) DEFAULT NULL,
   PRIMARY KEY (`ref`),
   KEY `research_collections` (`collection`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 DROP TABLE IF EXISTS `resource`;
 CREATE TABLE IF NOT EXISTS `resource` (
@@ -350,7 +336,7 @@ CREATE TABLE IF NOT EXISTS `resource` (
   KEY `geo_long` (`geo_long`),
   KEY `disk_usage` (`disk_usage`),
   KEY `created_by` (`created_by`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 INSERT INTO `resource` (`ref`, `title`, `resource_type`, `has_image`, `is_transcoding`, `hit_count`, `new_hit_count`, `creation_date`, `rating`, `user_rating`, `user_rating_count`, `user_rating_total`, `country`, `file_extension`, `preview_extension`, `image_red`, `image_green`, `image_blue`, `thumb_width`, `thumb_height`, `archive`, `access`, `colour_key`, `created_by`, `file_path`, `file_modified`, `file_checksum`, `request_count`, `expiry_notification_sent`, `preview_tweaks`, `geo_lat`, `geo_long`, `mapzoom`, `disk_usage`, `disk_usage_last_updated`, `file_size`, `preview_attempts`, `field12`, `field8`, `field3`) VALUES
 (-1, NULL, 1, 0, 0, 0, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, 0, NULL, 1, NULL, NULL, NULL, 0, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
@@ -369,7 +355,7 @@ CREATE TABLE IF NOT EXISTS `resource_alt_files` (
   `alt_type` varchar(100) DEFAULT NULL,
   `page_count` int(11) DEFAULT NULL,
   PRIMARY KEY (`ref`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 DROP TABLE IF EXISTS `resource_custom_access`;
 CREATE TABLE IF NOT EXISTS `resource_custom_access` (
@@ -381,7 +367,7 @@ CREATE TABLE IF NOT EXISTS `resource_custom_access` (
   KEY `resource` (`resource`),
   KEY `usergroup` (`usergroup`),
   KEY `user` (`user`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 DROP TABLE IF EXISTS `resource_data`;
 CREATE TABLE IF NOT EXISTS `resource_data` (
@@ -389,7 +375,7 @@ CREATE TABLE IF NOT EXISTS `resource_data` (
   `resource_type_field` int(11) DEFAULT NULL,
   `value` mediumtext,
   KEY `resource` (`resource`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 DROP TABLE IF EXISTS `resource_dimensions`;
 CREATE TABLE IF NOT EXISTS `resource_dimensions` (
@@ -401,7 +387,7 @@ CREATE TABLE IF NOT EXISTS `resource_dimensions` (
   `unit` varchar(11) DEFAULT '0',
   `page_count` int(11) DEFAULT NULL,
   KEY `resource` (`resource`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 DROP TABLE IF EXISTS `resource_keyword`;
 CREATE TABLE IF NOT EXISTS `resource_keyword` (
@@ -416,7 +402,7 @@ CREATE TABLE IF NOT EXISTS `resource_keyword` (
   KEY `keyword` (`keyword`),
   KEY `resource_type_field` (`resource_type_field`),
   KEY `rk_all` (`resource`,`keyword`,`resource_type_field`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 DROP TABLE IF EXISTS `resource_log`;
 CREATE TABLE IF NOT EXISTS `resource_log` (
@@ -436,7 +422,7 @@ CREATE TABLE IF NOT EXISTS `resource_log` (
   PRIMARY KEY (`ref`),
   KEY `resource` (`resource`),
   KEY `type` (`type`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8;
 
 INSERT INTO `resource_log` (`ref`, `date`, `user`, `resource`, `type`, `resource_type_field`, `notes`, `diff`, `usageoption`, `purchase_size`, `purchase_price`, `access_key`, `previous_value`) VALUES
 (1, '2014-06-01 10:15:14', 1, 0, 'l', NULL, NULL, NULL, NULL, NULL, 0.00, NULL, NULL),
@@ -456,7 +442,7 @@ CREATE TABLE IF NOT EXISTS `resource_related` (
   `related` int(11) DEFAULT NULL,
   KEY `resource_related` (`resource`),
   KEY `related` (`related`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 DROP TABLE IF EXISTS `resource_type`;
 CREATE TABLE IF NOT EXISTS `resource_type` (
@@ -466,7 +452,7 @@ CREATE TABLE IF NOT EXISTS `resource_type` (
   `order_by` int(11) DEFAULT NULL,
   `config_options` text,
   PRIMARY KEY (`ref`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8;
 
 INSERT INTO `resource_type` (`ref`, `name`, `allowed_extensions`, `order_by`, `config_options`) VALUES
 (1, 'Photo', NULL, NULL, NULL),
@@ -512,7 +498,7 @@ CREATE TABLE IF NOT EXISTS `resource_type_field` (
   `onchange_macro` text,
   PRIMARY KEY (`ref`),
   KEY `resource_type` (`resource_type`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8;
 
 INSERT INTO `resource_type_field` (`ref`, `name`, `title`, `type`, `options`, `order_by`, `keywords_index`, `partial_index`, `resource_type`, `resource_column`, `display_field`, `use_for_similar`, `iptc_equiv`, `display_template`, `tab_name`, `required`, `smart_theme_name`, `exiftool_field`, `advanced_search`, `simple_search`, `help_text`, `display_as_dropdown`, `external_user_access`, `autocomplete_macro`, `hide_when_uploading`, `hide_when_restricted`, `value_filter`, `exiftool_filter`, `omit_when_copying`, `tooltip_text`, `regexp_filter`, `sync_field`, `display_condition`, `onchange_macro`) VALUES
 (1, 'keywords', 'Keywords', 1, NULL, 30, 1, 0, 0, NULL, 1, 1, '2#025', NULL, NULL, 0, NULL, 'Keywords,Subject', 1, 0, NULL, 0, 1, NULL, 0, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
@@ -540,7 +526,103 @@ CREATE TABLE IF NOT EXISTS `site_text` (
   `specific_to_group` int(11) DEFAULT NULL,
   `custom` int(11) DEFAULT NULL,
   PRIMARY KEY (`ref`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8;
+
+DROP TABLE IF EXISTS `sysvars`;
+CREATE TABLE IF NOT EXISTS `sysvars` (
+  `name` varchar(50) DEFAULT NULL,
+  `value` text
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+DROP TABLE IF EXISTS `user`;
+CREATE TABLE IF NOT EXISTS `user` (
+  `ref` int(11) NOT NULL AUTO_INCREMENT,
+  `username` varchar(50) DEFAULT NULL,
+  `password` varchar(50) DEFAULT NULL,
+  `fullname` varchar(100) DEFAULT NULL,
+  `email` varchar(100) DEFAULT NULL,
+  `usergroup` int(11) DEFAULT NULL,
+  `last_active` datetime DEFAULT NULL,
+  `logged_in` int(11) DEFAULT NULL,
+  `last_browser` text,
+  `last_ip` varchar(100) DEFAULT NULL,
+  `current_collection` int(11) DEFAULT NULL,
+  `accepted_terms` int(11) DEFAULT '0',
+  `account_expires` datetime DEFAULT NULL,
+  `comments` text,
+  `session` varchar(50) DEFAULT NULL,
+  `ip_restrict` text,
+  `password_last_change` datetime DEFAULT NULL,
+  `login_tries` int(11) DEFAULT '0',
+  `login_last_try` datetime DEFAULT NULL,
+  `approved` int(11) DEFAULT '1',
+  `lang` varchar(11) DEFAULT NULL,
+  `created` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`ref`),
+  KEY `session` (`session`),
+  UNIQUE (`username`),
+  UNIQUE (`email`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8;
+
+INSERT INTO `user` (`ref`, `username`, `password`, `fullname`, `email`, `usergroup`, `last_active`, `logged_in`, `last_browser`, `last_ip`, `current_collection`, `accepted_terms`, `account_expires`, `comments`, `session`, `ip_restrict`, `password_last_change`, `login_tries`, `login_last_try`, `approved`, `lang`, `created`) VALUES
+(1, 'admin', 'b936db334b981b2ec826dd3a5ef21b0b', 'Admin User', 'john@rsintheclouds.com', 3, '2014-07-04 21:02:26', 1, 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/35.0.1916.153 Safari/537.36', '127.0.0.1', 1, 1, NULL, NULL, '8ec18e5ed9ec2a7f77a70298f730dbd6', NULL, '2014-06-28 15:15:56', 0, '2014-06-28 16:26:23', 1, 'en', '2014-05-28 18:32:01');
+
+DROP TABLE IF EXISTS `usergroup`;
+CREATE TABLE IF NOT EXISTS `usergroup` (
+  `ref` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(100) DEFAULT NULL,
+  `permissions` text,
+  `fixed_theme` varchar(50) DEFAULT NULL,
+  `parent` varchar(50) DEFAULT NULL,
+  `search_filter` text,
+  `edit_filter` text,
+  `ip_restrict` text,
+  `resource_defaults` text,
+  `config_options` text,
+  `welcome_message` text,
+  `request_mode` int(11) DEFAULT '0',
+  `allow_registration_selection` int(11) DEFAULT '0',
+  PRIMARY KEY (`ref`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8;
+
+INSERT INTO `usergroup` (`ref`, `name`, `permissions`, `fixed_theme`, `parent`, `search_filter`, `edit_filter`, `ip_restrict`, `resource_defaults`, `config_options`, `welcome_message`, `request_mode`, `allow_registration_selection`) VALUES
+(1, 'Administrators', 's,g,c,e,t,h,r,u,i,e-2,e-1,e0,e1,e3,v,o,m,q,n,f*,j*,k,R,Ra,Rb', NULL, '0', NULL, NULL, NULL, NULL, NULL, NULL, 0, 0),
+(2, 'General Users', 's,e-1,e-2,g,d,q,n,f*,j*', NULL, '0', NULL, NULL, NULL, NULL, NULL, NULL, 1, 1),
+(3, 'Super Admin', 's,g,c,e,a,t,h,u,r,i,e-2,e-1,e0,e1,e2,e3,o,m,g,v,q,n,f*,j*,k,R,Ra', NULL, '0', NULL, NULL, NULL, NULL, NULL, NULL, 0, 0),
+(4, 'Archivists', 's,g,c,e,t,h,r,u,i,e1,e2,e3,v,q,n,f*,j*', NULL, '0', NULL, NULL, NULL, NULL, NULL, NULL, 0, 0),
+(5, 'Restricted User - Requests Emailed', 's,f*,j*,q', NULL, '0', NULL, NULL, NULL, NULL, NULL, NULL, 0, 0),
+(6, 'Restricted User - Requests Managed', 's,f*,j*,q', NULL, '0', NULL, NULL, NULL, NULL, NULL, NULL, 1, 0),
+(7, 'Restricted User - Payment Immediate', 's,f*,j*,q', NULL, '0', NULL, NULL, NULL, NULL, NULL, NULL, 2, 0),
+(8, 'Restricted User - Payment Invoice', 's,f*,j*,q', NULL, '0', NULL, NULL, NULL, NULL, NULL, NULL, 3, 0);
+
+DROP TABLE IF EXISTS `user_collection`;
+CREATE TABLE IF NOT EXISTS `user_collection` (
+  `user` int(11) DEFAULT NULL,
+  `collection` int(11) DEFAULT NULL,
+  `request_feedback` int(11) DEFAULT '0',
+  KEY `collection` (`collection`),
+  KEY `user` (`user`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+INSERT INTO `user_collection` (`user`, `collection`, `request_feedback`) VALUES
+(1, 1, 0);
+
+DROP TABLE IF EXISTS `user_rating`;
+CREATE TABLE IF NOT EXISTS `user_rating` (
+  `user` int(11) DEFAULT '0',
+  `rating` int(11) DEFAULT '0',
+  `ref` int(11) DEFAULT '0',
+  KEY `ref` (`ref`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+DROP TABLE IF EXISTS `user_userlist`;
+CREATE TABLE IF NOT EXISTS `user_userlist` (
+  `ref` int(11) NOT NULL AUTO_INCREMENT,
+  `user` int(11) DEFAULT NULL,
+  `userlist_name` varchar(50) DEFAULT NULL,
+  `userlist_string` text,
+  PRIMARY KEY (`ref`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 INSERT INTO `site_text` (`page`, `name`, `text`, `ref`, `language`, `ignore_me`, `specific_to_group`, `custom`) VALUES
 ('collection_public', 'introtext', 'Public collections are created by other users.', 1, 'en', NULL, NULL, NULL),
@@ -944,100 +1026,3 @@ INSERT INTO `site_text` (`page`, `name`, `text`, `ref`, `language`, `ignore_me`,
 ('all', 'emailcollectionexternal', '[img_gfx/whitegry/titles/title.gif]<br />\n[fromusername] [lang_emailcollectionmessageexternal] <br /><br /> \n[lang_message] : [message]<br /><br /> \n[lang_clicklinkviewcollection] [list]\n', 100123, 'en', NULL, NULL, 1),
 ('collection_email', 'introtextthemeshare', 'Complete the form below to e-mail the themes in this theme category. The recipients will receive an email containing links to each of the themes.', 100124, 'en', NULL, NULL, NULL);
 
-DROP TABLE IF EXISTS `sysvars`;
-CREATE TABLE IF NOT EXISTS `sysvars` (
-  `name` varchar(50) DEFAULT NULL,
-  `value` text
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
-DROP TABLE IF EXISTS `user`;
-CREATE TABLE IF NOT EXISTS `user` (
-  `ref` int(11) NOT NULL AUTO_INCREMENT,
-  `username` varchar(50) DEFAULT NULL,
-  `password` varchar(50) DEFAULT NULL,
-  `fullname` varchar(100) DEFAULT NULL,
-  `email` varchar(100) DEFAULT NULL,
-  `usergroup` int(11) DEFAULT NULL,
-  `last_active` datetime DEFAULT NULL,
-  `logged_in` int(11) DEFAULT NULL,
-  `last_browser` text,
-  `last_ip` varchar(100) DEFAULT NULL,
-  `current_collection` int(11) DEFAULT NULL,
-  `accepted_terms` int(11) DEFAULT '0',
-  `account_expires` datetime DEFAULT NULL,
-  `comments` text,
-  `session` varchar(50) DEFAULT NULL,
-  `ip_restrict` text,
-  `password_last_change` datetime DEFAULT NULL,
-  `login_tries` int(11) DEFAULT '0',
-  `login_last_try` datetime DEFAULT NULL,
-  `approved` int(11) DEFAULT '1',
-  `lang` varchar(11) DEFAULT NULL,
-  `created` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  PRIMARY KEY (`ref`),
-  KEY `session` (`session`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1;
-
-INSERT INTO `user` (`ref`, `username`, `password`, `fullname`, `email`, `usergroup`, `last_active`, `logged_in`, `last_browser`, `last_ip`, `current_collection`, `accepted_terms`, `account_expires`, `comments`, `session`, `ip_restrict`, `password_last_change`, `login_tries`, `login_last_try`, `approved`, `lang`, `created`) VALUES
-(1, 'admin', 'b936db334b981b2ec826dd3a5ef21b0b', 'Admin User', 'john@rsintheclouds.com', 3, '2014-07-04 21:02:26', 1, 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/35.0.1916.153 Safari/537.36', '127.0.0.1', 1, 1, NULL, NULL, '8ec18e5ed9ec2a7f77a70298f730dbd6', NULL, '2014-06-28 15:15:56', 0, '2014-06-28 16:26:23', 1, 'en', '2014-05-28 18:32:01');
-
-DROP TABLE IF EXISTS `usergroup`;
-CREATE TABLE IF NOT EXISTS `usergroup` (
-  `ref` int(11) NOT NULL AUTO_INCREMENT,
-  `name` varchar(100) DEFAULT NULL,
-  `permissions` text,
-  `fixed_theme` varchar(50) DEFAULT NULL,
-  `parent` varchar(50) DEFAULT NULL,
-  `search_filter` text,
-  `edit_filter` text,
-  `ip_restrict` text,
-  `resource_defaults` text,
-  `config_options` text,
-  `welcome_message` text,
-  `request_mode` int(11) DEFAULT '0',
-  `allow_registration_selection` int(11) DEFAULT '0',
-  PRIMARY KEY (`ref`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1;
-
-INSERT INTO `usergroup` (`ref`, `name`, `permissions`, `fixed_theme`, `parent`, `search_filter`, `edit_filter`, `ip_restrict`, `resource_defaults`, `config_options`, `welcome_message`, `request_mode`, `allow_registration_selection`) VALUES
-(1, 'Administrators', 's,g,c,e,t,h,r,u,i,e-2,e-1,e0,e1,e3,v,o,m,q,n,f*,j*,k,R,Ra,Rb', NULL, '0', NULL, NULL, NULL, NULL, NULL, NULL, 0, 0),
-(2, 'General Users', 's,e-1,e-2,g,d,q,n,f*,j*', NULL, '0', NULL, NULL, NULL, NULL, NULL, NULL, 1, 1),
-(3, 'Super Admin', 's,g,c,e,a,t,h,u,r,i,e-2,e-1,e0,e1,e2,e3,o,m,g,v,q,n,f*,j*,k,R,Ra', NULL, '0', NULL, NULL, NULL, NULL, NULL, NULL, 0, 0),
-(4, 'Archivists', 's,g,c,e,t,h,r,u,i,e1,e2,e3,v,q,n,f*,j*', NULL, '0', NULL, NULL, NULL, NULL, NULL, NULL, 0, 0),
-(5, 'Restricted User - Requests Emailed', 's,f*,j*,q', NULL, '0', NULL, NULL, NULL, NULL, NULL, NULL, 0, 0),
-(6, 'Restricted User - Requests Managed', 's,f*,j*,q', NULL, '0', NULL, NULL, NULL, NULL, NULL, NULL, 1, 0),
-(7, 'Restricted User - Payment Immediate', 's,f*,j*,q', NULL, '0', NULL, NULL, NULL, NULL, NULL, NULL, 2, 0),
-(8, 'Restricted User - Payment Invoice', 's,f*,j*,q', NULL, '0', NULL, NULL, NULL, NULL, NULL, NULL, 3, 0);
-
-DROP TABLE IF EXISTS `user_collection`;
-CREATE TABLE IF NOT EXISTS `user_collection` (
-  `user` int(11) DEFAULT NULL,
-  `collection` int(11) DEFAULT NULL,
-  `request_feedback` int(11) DEFAULT '0',
-  KEY `collection` (`collection`),
-  KEY `user` (`user`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
-INSERT INTO `user_collection` (`user`, `collection`, `request_feedback`) VALUES
-(1, 1, 0);
-
-DROP TABLE IF EXISTS `user_rating`;
-CREATE TABLE IF NOT EXISTS `user_rating` (
-  `user` int(11) DEFAULT '0',
-  `rating` int(11) DEFAULT '0',
-  `ref` int(11) DEFAULT '0',
-  KEY `ref` (`ref`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
-DROP TABLE IF EXISTS `user_userlist`;
-CREATE TABLE IF NOT EXISTS `user_userlist` (
-  `ref` int(11) NOT NULL AUTO_INCREMENT,
-  `user` int(11) DEFAULT NULL,
-  `userlist_name` varchar(50) DEFAULT NULL,
-  `userlist_string` text,
-  PRIMARY KEY (`ref`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
-/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
-/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
-/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
