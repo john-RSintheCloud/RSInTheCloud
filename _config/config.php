@@ -1,16 +1,33 @@
 <?php
+####################################
+## OORS
+## Application Configuration Script
+####################################
+
 
 ##    DEBUG and test
 
 $config_show_performance_footer = true;
 
-###############################
-## OORS
-## Local Configuration Script
-###############################
+# External items reload key
+# Increment the below value to force a reload of the CSS, JavaScripts and other included items.
+# This is intended for developer use when altering such files. 
+# It will force a reload on all client browsers.
+#
+#TODO - tie in with dev environment variable
+#  and tie in with file date/time stamp to automate reload
 
-# All custom settings should be entered in this file.
-# Options may be copied from config.default.php and configured here.
+$css_reload_key=00;
+
+
+##  APPLICATION SETTINGS
+
+$applicationname="OO RS"; #  implementation name, eg 'Bioquell'
+                        #  can be overridden in secure.config
+$productname="OO RS"; # Product name. Please do not over-ride
+$productversion="Alpha";
+
+
 
 ##  Passwords and keys should be stored in the secure config at
 $secure_config_location = '../_config/secure.config.php';
@@ -21,7 +38,6 @@ $mysql_username = 'RS';
 $mysql_password = 'overwrittenBySecureConfig';
 $mysql_db = 'RS';
 
-$mysql_bin_path = '/usr/bin';
 
 # Base URL of the installation is set dynamically
 #  but we may want to set a base folder, eg '/RS' (leading /)
@@ -50,7 +66,7 @@ $storageurl = 'http://filestore.local';
 $tempdir = '/var/www/RS/filestore/tmp';
 $tempUrl = 'http://filestore.local/tmp';
 
-//  These are workrounds for the lack of adequate database design!
+//  These are legacy workrounds for the lack of adequate database design!
 $thumbs_display_fields = array(8,3);
 $list_display_fields = array(8,3,12);
 $sort_fields = array(12);
