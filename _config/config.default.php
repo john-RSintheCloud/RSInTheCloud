@@ -1,63 +1,110 @@
 <?php
 /**
- * This file contains the default configuration settings.
+ * This file contains the default configuration settings
+ * for OORS and RSitC configurations
  *
- * **** DO NOT ALTER THIS FILE! ****
+ * **** DO NOT PUT APPLICATION SPECIFIC OPTIONS IN THIS FILE! ****
  *
  * If you need to change any of the below values, copy
- * them to config.php and change them there.
+ * them to config.php or secure.config.php and change them there.
  *
- * This file will be overwritten when you upgrade and
+ *  config.php is application specific config (OORS or RSitC)
+ *  and is committed to the appropriate repo
+ *  secure.config.php is instance specific and should not be committed
+ *   or made available in any public forum
+ *
+ * This file may be overwritten when you upgrade and
  * ensures that any new configuration options are set to
  * a sensible default value.
  *
- * @package RS in the Cloud
+ * @package RS Generic
  * @subpackage Configuration
  */
 
 
 /* ---------------------------------------------------
-BASIC PARAMETERS
+SECURITY PARAMETERS
 ------------------------------------------------------ */
+
+#  The following parameters should be stored in secure.config.php and 
+#  excluded from repo commits / pushes
+
 $mysql_server="";	# Use 'localhost' if MySQL is installed on the same server as your web server.
 $mysql_username="";		# MySQL username
 $mysql_password="";			# MySQL password
 $mysql_db="";			# MySQL database name
 
-# The path to the MySQL client binaries - e.g. mysqldump
-# (only needed if you plan to use the export tool)
-$mysql_bin_path="/usr/bin"; # Note: no trailing slash
+# the MySQL export tool is no longer supported
 
 
+# $baseurl is now generated dynamically - see additional 'path' setting in secure.config.php
 
-$baseurl="http://my.site/resourcespace"; # The 'base' web address for this installation. Note: no trailing slash
-$email_from="resourcespace@my.site"; # Where system e-mails appear to come from
-$email_notify="resourcespace@my.site"; # Where resource/research/user requests are sent
+#  email settings must go in secure.config 
+#  if left blank, emails will not be sent.
+$email_from=""; # Where system e-mails appear to come from
+$email_notify=""; # Where resource/research/user requests are sent
 
 $spider_password=""; # The password required for spider.php - IMPORTANT - randomise this for each new installation. Your resources will be readable by anyone that knows this password.
 $spider_usergroup=2; # The user group that will be used to access the resource list for the spider index.
 $spider_access=array(0,1); # Which access level(s) are required when producing the index (0=Open, 1=Restricted, 2=Confidential/Hidden).
-
-$email_from_user=true; #enable user-to-user emails to come from user's address by default (for better reply-to), with the user-level option of reverting to the system address
 
 # Scramble resource paths? If this is a public installation then this is a very wise idea.
 # Set the scramble key to be a hard-to-guess string (similar to a password).
 # To disable, set to the empty string ("").
 $scramble_key="";
 
-# If you agree to send occasional statistics to Montala, leave this set to 'yes'.
-# The following two numeric metrics alone will be sent every 7 days:
-# - Number of resources
-# - Number of users
-# The information will only be used to provide totals on the Montala site, e.g
-# global number of installations, users and resources.
-$send_statistics=true;
+#  date_default_timezone_set is in bootstrap
 
-# Enable work-arounds required when installed on Microsoft Windows systems
+
+/* ----------------------------------------------
+	APPLICATION SETTINGS
+  these should be set in config.php
+  and committed to the application specific repo
+  ------------------------------------------------ */
+
+
+# set next two lines to configure storage locations and url (to use another server for file storage)
+#
+#$storagedir="/path/to/filestore"; # Where to put the media files. Can be absolute (/var/www/blah/blah) or relative to the installation. Note: no trailing slash
+#$storageurl="http://my.storage.server/filestore"; # Where the storagedir is available. Can be absolute (http://files.example.com) or relative to the installation. Note: no trailing slash
+
+
+$applicationdesc=""; # Subtitle (i18n translated) if $header_text_title=true;
+$header_favicon="gfx/interface/favicon.png";
+$header_text_title=false; //replace header logo with text, application name and description above
+// alternatively, for custom header gfx:
+$header_link=false; // turn on to create a clickable area over a logo graphic (to go to home page).
+# Uncomment the line below to set a header link different from the default home
+# $header_link_url=http://my-alternative-header-link
+
+# FTP settings for batch upload
+# Only necessary if you plan to use the FTP upload feature.
+$ftp_server="my.ftp.server";
+$ftp_username="my_username";
+$ftp_password="my_password";
+$ftp_defaultfolder="temp/";
+
+
+/* ----------------------------------------------
+	LEGACY SETTINGS
+  these should not be used, but areleft here
+  because the legacy stuff would fall over.
+  ------------------------------------------------ */
+
+#  The RS developers just stick options in here, with no organisation
+#  so don't expect to try to understand it.
+
+$email_from_user=true; #enable user-to-user emails to
+# come from user's address by default (for better reply-to), with the user-level option of reverting to the system address
+
+# We do not spy on your activity, so statistics collection is disabled.
+$send_statistics=false;
+
+# We do not support windows work-arounds - use Linux!
 $config_windows=false;
 
-# Server charset (needed when dealing with filenames in some situations, e.g. at collection download).
-#$server_charset = ''; # E.g. 'UTF-8', 'ISO-8859-1' or 'Windows-1252'.
+# Server charset (only change this if you know what you are doing!).
+$server_charset = 'UTF-8';
 
 # ---- Paths to various external utilities ----
 
@@ -93,11 +140,6 @@ $ghostscript_executable='gs';
 # $archiver_executable = '7z';
 # $archiver_listfile_argument = "@";
 
-# Example given for Windows with the 7z utility:
-# $archiver_path = 'C:\Program\7-Zip';
-# $archiver_executable = '7z.exe';
-# $archiver_listfile_argument = "@";
-
 $use_zip_extension=false; //use php-zip extension instead of $archiver or $zipcommand
 
 
@@ -111,27 +153,8 @@ and running.
 ------------------------------------------------------ */
 
 
-# Uncomment and set next two lines to configure storage locations (to use another server for file storage)
-#
-# Note - these are really only useful on Windows systems where mapping filestore to a remote drive or other location is not trivial.
-# On Unix based systems it's usually much easier just to make '/filestore' a symbolic link to another location.
-#
-#$storagedir="/path/to/filestore"; # Where to put the media files. Can be absolute (/var/www/blah/blah) or relative to the installation. Note: no trailing slash
-#$storageurl="http://my.storage.server/filestore"; # Where the storagedir is available. Can be absolute (http://files.example.com) or relative to the installation. Note: no trailing slash
-
-include "version.php";
-
-$applicationname="RS In The Cloud"; # The name of your implementation / installation (e.g. 'MyCompany Resource System')
-$applicationdesc=""; # Subtitle (i18n translated) if $header_text_title=true;
-$header_favicon="gfx/interface/favicon.png";
-$header_text_title=false; //replace header logo with text, application name and description above
-// alternatively, for custom header gfx:
-$header_link=false; // turn on to create a clickable area over a logo graphic (to go to home page).
-# Uncomment the line below to set a header link different from the default home
-# $header_link_url=http://my-alternative-header-link
-
 # Include ResourceSpace version header in View Source
-$include_rs_header_info=true;
+$include_rs_header_info=false;
 
 # Available languages
 # If $defaultlanguage is not set, the brower's default language will be used instead
@@ -166,37 +189,41 @@ $disable_languages=false;
 # Show the language chooser on the bottom of each page
 $show_language_chooser=true;
 
-# FTP settings for batch upload
-# Only necessary if you plan to use the FTP upload feature.
-$ftp_server="my.ftp.server";
-$ftp_username="my_username";
-$ftp_password="my_password";
-$ftp_defaultfolder="temp/";
-
 # Can users change passwords?
 $allow_password_change=true;
 
 # search params
 # Common keywords to ignore both when searching and when indexing.
-# Copy this block to config.php and uncomment the languages you would like to use.
-
-$noadd=array();
+#  Just be careful when using multiple languages - these are used to set keywords
 
 # English stop words
-$noadd=array_merge($noadd, array("", "a","the","this","then","another","is","with","in","and","where","how","on","of","to", "from", "at", "for", "-", "by", "be"));
+$noadd= array("", "a","the","this","then","another","is","with","in","and","where","how","on","of","to", 
+        "from", "at", "for", "-", "by", "be");
 
 # Swedish stop words (copied from http://snowball.tartarus.org/algorithms/swedish/stop.txt 20101124)
-#$noadd=array_merge($noadd, array("och", "det", "att", "i", "en", "jag", "hon", "som", "han", "på", "den", "med", "var", "sig", "för", "så", "till", "är", "men", "ett", "om", "hade", "de", "av", "icke", "mig", "du", "henne", "då", "sin", "nu", "har", "inte", "hans", "honom", "skulle", "hennes", "där", "min", "man", "ej", "vid", "kunde", "något", "från", "ut", "när", "efter", "upp", "vi", "dem", "vara", "vad", "över", "än", "dig", "kan", "sina", "här", "ha", "mot", "alla", "under", "någon", "eller", "allt", "mycket", "sedan", "ju", "denna", "själv", "detta", "åt", "utan", "varit", "hur", "ingen", "mitt", "ni", "bli", "blev", "oss", "din", "dessa", "några", "deras", "blir", "mina", "samma", "vilken", "er", "sådan", "vår", "blivit", "dess", "inom", "mellan", "sånt", "varför", "varje", "vilka", "ditt", "vem", "vilket", "sitta", "sådana", "vart", "dina", "vars", "vårt", "våra", "ert", "era", "vilkas"));
+#$noadd=array_merge($noadd, 
+//        array("och", "det", "att", "i", "en", "jag", "hon", "som", "han", "på", "den", "med", "var", "sig",
+//        "för", "så", "till", "är", "men", "ett", "om", "hade", "de", "av", "icke",
+//	"mig", "du", "henne", "då", "sin", "nu", "har", "inte", "hans", "honom", 
+//	"skulle", "hennes", "där", "min", "man", "ej", "vid", "kunde", "något", "från", 
+//	"ut", "när", "efter", "upp", "vi", "dem", "vara", "vad", "över", "än", "dig", "kan", 
+//	"sina", "här", "ha", "mot", "alla", "under", "någon", "eller", "allt", "mycket", 
+//	"sedan", "ju", "denna", "själv", "detta", "åt", "utan", "varit", "hur", "ingen", 
+//	"mitt", "ni", "bli", "blev", "oss", "din", "dessa", "några", "deras", "blir", "mina",
+//	"samma", "vilken", "er", "sådan", "vår", "blivit", "dess", "inom", "mellan", "sånt",
+//	"varför", "varje", "vilka", "ditt", "vem", "vilket", "sitta", "sådana", "vart", "dina", 
+//	"vars", "vårt", "våra", "ert", "era", "vilkas"));
 
 
 # How many results trigger the 'suggestion' feature, -1 disables the feature
-# WARNING - there is a significant performance penalty for enabling this feature as it attempts to find the most popular keywords for the entire result set.
+# WARNING - there is a significant performance penalty for enabling this feature 
+# as it attempts to find the most popular keywords for the entire result set.
 # It is not recommended for large systems.
 $suggest_threshold=-1;
 
 
 $max_results=200000;
-$minyear=1980; # The year of the earliest resource record, used for the date selector on the search form. Unless you are adding existing resources to the system, probably best to set this to the current year at the time of installation.
+$minyear=2010; # The year of the earliest resource record, used for the date selector on the search form. Unless you are adding existing resources to the system, probably best to set this to the current year at the time of installation.
 
 # Set folder for home images. Ex: "gfx/homeanim/mine/"
 # Files should be numbered sequentially, and will be auto-counted.
@@ -212,8 +239,6 @@ $homeanim_folder="gfx/homeanim/gfx";
 # Note: Unix systems only.
 # $disksize=150;
 
-# Set your time zone below (default GMT)
-if (function_exists("date_default_timezone_set")) {date_default_timezone_set("GMT");}
 
 # IPTC header - Character encoding auto-detection
 # If using IPTC headers, specify any non-ascii characters used in your local language
