@@ -47,7 +47,7 @@ function DrawOption($permission,$description,$reverse=false,$reload=false)
 	}
 
 # Load group data / permissions
-$group=get_usergroup($ref);
+$group=getUsergroupName($ref);
 $permissions=trim_array(explode(",",$group["permissions"]));
 $permissions_done=array();
 

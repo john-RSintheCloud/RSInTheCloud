@@ -26,10 +26,17 @@ class containers_Dic extends Pimple
          * Bucket for Plupload
          */
         $this['Bucket'] = $this->share( function ($c) {
-            return new s3_model_bucket();
+            return new s3_model_bucket(['config' => $c['config']]);
 
         });
 
+        /**
+         * simple timer - uses an array to hold multiple start times
+         */
+        $this['timer'] = $this->share( function ($c) {
+            return new timer;
+
+        });
 
 
     }

@@ -51,7 +51,7 @@ hook('modifyusersearch');
 
 # Fetch rows
 $users=get_users($group,$find,$order_by,true,$offset+$per_page);
-$groups=get_usergroups(true);
+$groups=getUsergroups(true);
 $results=count($users);
 $totalpages=ceil($results/$per_page);
 $curpage=floor($offset/$per_page)+1;

@@ -32,7 +32,7 @@ if (getval("thumbs", "")=="")
     
 ?><!DOCTYPE html>
 <html>
-<!-- OO RS version <?php echo $productversion . PHP_EOL?>
+<!-- <?php echo $productname; ?> version <?php echo $productversion . PHP_EOL?>
 Copyright Oxfam GB, Montala, RS in the Cloud and others, 2006-2014  -->
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />

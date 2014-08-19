@@ -513,7 +513,7 @@ function save_collection($ref)
 		if (($users)!="")
 			{
 			# Build a new list and insert
-			$users=resolve_userlist_groups($users);
+			$users=resolveUserlistGroups($users);
 			$ulist=array_unique(trim_array(explode(",",$users)));
 			$urefs=sql_array("select ref value from user where username in ('" . join("','",$ulist) . "')");
 			if (count($urefs)>0)
@@ -813,7 +813,7 @@ function email_collection($colrefs,$collectionname,$fromusername,$userlist,$mess
 	if ($useremail==""){$useremail=$email_from;}
 	
 	if (trim($userlist)=="") {return ($lang["mustspecifyoneusername"]);}
-	$userlist=resolve_userlist_groups($userlist);
+	$userlist=resolveUserlistGroups($userlist);
 	$ulist=trim_array(explode(",",$userlist));
 	$emails=array();
 	$key_required=array();

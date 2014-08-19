@@ -141,7 +141,7 @@ if (!in_array($userref,$checkmail_users)){
 	
 // check that the user can create resources
 if (isset($fromuser['groupref'])){ 
-	$fromusergroup=get_usergroup($fromuser['groupref']);
+	$fromusergroup=getUsergroupName($fromuser['groupref']);
 	
 	$permissions=explode(",",$fromusergroup['permissions']);
 	if (! (in_array("c",$permissions) || in_array("d",$permissions))){

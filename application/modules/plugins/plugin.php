@@ -1,8 +1,11 @@
 <?php
 /***
  * plugin.php - Maps requests to plugin pages to requested plugin.
+ * 
+ * 2nd generation plugin system - this partially superceded hooks
+ * but it is just more spaghetti code.
  *
- * @package RS - generic
+ * @package RS - Legacy
  * @subpackage Plugins
  *
  ***/

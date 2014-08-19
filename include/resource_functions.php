@@ -832,7 +832,7 @@ function email_resource($resource,$resourcename,$fromusername,$userlist,$message
 	$userlist=str_replace("\\r\\n",",",$userlist);
 
 	if (trim($userlist)=="") {return ($lang["mustspecifyoneusername"]);}
-	$userlist=resolve_userlist_groups($userlist);
+	$userlist=resolveUserlistGroups($userlist);
 	$ulist=trim_array(explode(",",$userlist));
 	$ulist=array_filter($ulist);
 	$ulist=array_values($ulist);

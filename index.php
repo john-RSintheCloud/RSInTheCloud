@@ -3,7 +3,7 @@
  * index.php
  *
  * @author John Brookes <john@RSintheCloud.com>
- * @package RSintheClouds
+ * @package RS legacy
  * @subpackage Refactor
 */
 

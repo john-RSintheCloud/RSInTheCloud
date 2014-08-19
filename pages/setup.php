@@ -1,8 +1,10 @@
 <?php
 /**
  * Initial setup page.
+ * 
+ * Large parts of this are not applicable to OORS / RSitC
  *
- * @package ResourceSpace
+ * @package RS Legacy
  * @subpackage Pages_Misc
  */
 defined('APPLICATION_PATH')

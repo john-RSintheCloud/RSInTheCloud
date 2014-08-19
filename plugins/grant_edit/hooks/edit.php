@@ -30,7 +30,7 @@ function HookGrant_editEditeditbeforeheader()
 		{
 		
 		# Build a new list and insert
-		$users=resolve_userlist_groups($users);
+		$users=resolveUserlistGroups($users);
 		$ulist=array_unique(trim_array(explode(",",$users)));
 		$urefs=sql_array("select ref value from user where username in ('" . join("','",$ulist) . "')");
 		

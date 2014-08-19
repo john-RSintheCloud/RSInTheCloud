@@ -40,7 +40,7 @@ $container['userGroup'] =  function ($c) {
 
 ///////////////////////////////////////////  LEGACY CODE
 
-function get_usergroups($usepermissions = false, $find = "")
+function getUsergroups($usepermissions = false, $find = "")
 {
     # Returns a list of user groups. The standard user groups are translated using $lang. Custom user groups are i18n translated.
     # Puts anything starting with 'General Staff Users' - in the English default names - at the top (e.g. General Staff).
@@ -89,7 +89,7 @@ function get_usergroups($usepermissions = false, $find = "")
     return $return;
 }
 
-function get_usergroup($ref)
+function getUsergroupName($ref)
 {
     # Returns the user group corresponding to the group ref. 
     # A standard user group name is translated using $lang. 
@@ -106,7 +106,7 @@ function get_usergroup($ref)
 }
 
 
-function resolve_userlist_groups($userlist)
+function resolveUserlistGroups($userlist)
 {
     # Given a comma separated user list (from the user select include file) turn all Group: entries into fully resolved list of usernames.
     # Note that this function can't decode default groupnames containing special characters.

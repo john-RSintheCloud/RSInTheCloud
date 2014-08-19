@@ -23,7 +23,7 @@ for ($n=0;$n<count($users) && $n<=20;$n++)
 	}
 ?>
 <?php
-$groups=get_usergroups(true,$find);
+$groups=getUsergroups(true,$find);
 
 for ($n=0;$n<count($groups) && $n<=20;$n++)
 	{

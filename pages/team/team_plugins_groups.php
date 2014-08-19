@@ -17,7 +17,7 @@ $access=sql_value("select enabled_groups value from plugins where name='$plugin'
 
 
 # Fetch user groups
-$groups=get_usergroups();
+$groups=getUsergroups();
 
 # Save group activation options
 if (getval("save","")!="")
