@@ -1,0 +1,22 @@
+###############################
+## OORS SECURE config TEST
+
+*  this is not a .PHP file so we do not need to 
+*  use normal php conventions.
+
+# only requirement is that comments start
+< with one of the comment or special characters
+/ and active lines start with $ and end with ; 
+
+/ lets test some arrays
+
+# MySQL database settings
+$mysql_server = 'localhost';  anything after the ; is ignored.
+$mysql_username = 'RS';
+$mysql_password = 'bob';
+$mysql_db = 'RS';
+
+$s3_key = 'AKIAIHCX';
+$s3_secret = '/HMdyMdh';
+$s3_bucket = 'rsinthecloud-upload';
+
