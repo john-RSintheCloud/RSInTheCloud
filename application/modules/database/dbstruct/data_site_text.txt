@@ -2,7 +2,7 @@ collection_public,introtext,"Public collections are created by other users.",1,e
 all,searchpanel,"Search using descriptions, keywords and resource numbers",2,en,,,
 home,themes,"The very best resources, hand picked and grouped.",3,en,,,
 home,mycollections,"Organise, collaborate & share your resources. Use these tools to help you work more effectively.",4,en,,,
-home,help,"Help and advice to get the most out of ResourceSpace.",5,en,,,
+home,help,"Help and advice to get the most out of OORS.",5,en,,,
 home,welcometitle,"Welcome to OORS",6,en,,,
 home,welcometext,"Your introductory text here.",7,en,,,
 themes,introtext,"Themes are groups of resources that have been selected by the administrators to provide an example of the resources available in the system.",8,en,,,

@@ -17,7 +17,7 @@ function bulk_mail($userlist, $subject, $text, $html = false) {
     if (trim($userlist) == "") {
         return ($lang["mustspecifyoneuser"]);
     }
-    $userlist = resolve_userlist_groups($userlist);
+    $userlist = resolveUserlistGroups($userlist);
     $ulist = trim_array(explode(",", $userlist));
 
     $emails = resolve_user_emails($ulist);
