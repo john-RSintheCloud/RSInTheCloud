@@ -14,11 +14,16 @@ class abstract_model_abstract
 {
 
     /**
-     * @param array $options
+     * constructor
+     *
+     * @param array $options Options sent to the constructor
+     *
+     * @return  this
      */
-    public function __construct(array $options = [])
+    public function __construct($options = [])
     {
-        $this->setOptions($options);
+        
+        return $this->setOptions($options);
     }
 
 
@@ -37,6 +42,11 @@ class abstract_model_abstract
      */
     public function __set($name, $value)
     {
+        //  handle the possibility of a variable being called 'options'
+        //  otherwise $this->options will call setOptions
+        if (ucfirst($name) == 'Options'){
+            $name = '__Options';
+        }
         $method = 'set' . ucfirst($name);
 
         if (method_exists($this, $method)) {
@@ -56,6 +66,11 @@ class abstract_model_abstract
      */
     public function __get($name)
     {
+        //  handle the possibility of a variable being called 'options'
+        if (ucfirst($name) == 'Options'){
+            $name = '__Options';
+        }
+        
         $method = 'get' . ucfirst($name);
 
         if (method_exists($this, $method)) {
@@ -75,12 +90,16 @@ class abstract_model_abstract
      *
      * @return  database_table_abstract
      */
-    public function setOptions(array $options = [])
+    public function setOptions($options = null)
     {
-        if (empty($options)) {
+        // we are expecting an array, so see if we can get one
+        if(!is_array($options)) {
+            $options = $options->toArray();
+        }
+        
+        if (!is_array($options)) {
             return $this;
         }
-
         foreach ($options as $key => $value) {
             $this->$key = $value;
         }

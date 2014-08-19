@@ -234,7 +234,7 @@ if (($user["login_tries"] >= $max_login_attempts_per_username) && (strtotime($us
         <?php if (!hook("replaceusergroups")) { ?>
                 <select class="stdwidth" name="usergroup">
                 <?php
-                $groups = get_usergroups(true);
+                $groups = getUsergroups(true);
                 for ($n = 0; $n < count($groups); $n++) {
                     if (($groups[$n]["ref"] == 3) && ($usergroup != 3)) {
                         #Do not show

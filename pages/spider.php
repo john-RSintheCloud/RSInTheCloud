@@ -1,10 +1,21 @@
 <?php
-include "../application/bootstrap.php";
-
-include "../include/resource_functions.php";
 
 # Spider.php - provide a spiderable set of pages. Designed for the Google Appliance but should work with other
 # search engines / appliances.
+
+#  
+# Sample robots.txt file - ensures that a Google Appliance can still access the spider page (if configured)
+# and assumes an installation in the site root. For sites in a subfolder you must move the robots.txt file
+# to the site root and alter the paths accordingly.
+#
+//User-agent: *
+//Crawl-delay: 10
+//Allow: /pages/spider.php
+//Disallow: /
+
+include "../application/bootstrap.php";
+
+include "../include/resource_functions.php";
 
 $password=getvalescaped("password",""); if ($password!=$spider_password) {exit ("Incorrect password.");}
 $ref=getvalescaped("ref","",true);
@@ -13,7 +24,7 @@ $lower=getvalescaped("lower","");
 
 # Log in as '$spider_usergroup' so only specific fields are shown.
 $usergroup=$spider_usergroup;
-$usergroup_data=get_usergroup($usergroup);
+$usergroup_data=getUsergroupName($usergroup);
 $usersearchfilter=$usergroup_data["search_filter"];
 $userpermissions=array_merge(explode(",",trim($global_permissions)),explode(",",trim($usergroup_data["permissions"]))); 
 
@@ -117,9 +128,16 @@ if ($ref!="")
 	<title><?php echo trim($resource["field".$view_title_field])?></title></head>
 	<body><h1><?php echo trim($resource["field".$view_title_field])?></h1>
 	<?php echo $textblock?>
-	</body></html><?php
+	</body></html>
+        
+    <?php
 	}
 	
 	
+function get_max_resource_ref()
+	{
+	# Returns the highest resource reference in use.
+	return sql_value("select max(ref) value from resource",0);
+	}
 	
 	

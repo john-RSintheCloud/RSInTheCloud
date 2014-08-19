@@ -123,7 +123,7 @@ function get_users_with_permission($permission)
     return $return;
 }
 
-function get_usergroups($usepermissions = false, $find = "")
+function getUsergroups($usepermissions = false, $find = "")
 {
 # Returns a list of user groups. The standard user groups are translated using $lang. Custom user groups are i18n translated.
 # Puts anything starting with 'General Staff Users' - in the English default names - at the top (e.g. General Staff).
@@ -203,6 +203,7 @@ function email_reminder($email)
 {
 # Send a password reminder.
     global $password_brute_force_delay;
+    global $devMode;
     if ($email == "") {
         return false;
     }
@@ -230,6 +231,8 @@ function email_reminder($email)
     $message = $lang["newlogindetails"] . "\n\n" . $lang["username"] . ": " . $templatevars['username'] . "\n" . $lang["password"] . ": " . $templatevars['password'] . "\n\n" . $templatevars['url'];
     send_mail($email, $applicationname . ": " . $lang["newpassword"], $message,
             "", "", "emailreminder", $templatevars);
+    
+    if($devMode) die($password);
     return true;
 }
 
@@ -353,7 +356,7 @@ function get_user_log($user, $fetchrows = -1)
     return $return;
 }
 
-function resolve_userlist_groups($userlist)
+function resolveUserlistGroups($userlist)
 {
 # Given a comma separated user list (from the user select include file) turn all Group: entries into fully resolved list of usernames.
 # Note that this function can't decode default groupnames containing special characters.

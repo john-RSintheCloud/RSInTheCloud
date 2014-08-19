@@ -80,7 +80,7 @@ include "../../include/header.php";
 <select class="stdwidth" name="editgroup" onchange="document.getElementById('groupswitch').value='yes';document.getElementById('mainform').submit();">
 <option value=""></option>
 <?php 
-$groups=get_usergroups();
+$groups=getUsergroups();
 for ($n=0;$n<count($groups);$n++) { ?>
 <option value="<?php echo $groups[$n]["ref"]?>" <?php if ($editgroup==$groups[$n]["ref"]) { ?>selected<?php } ?>><?php echo $groups[$n]["name"]?></option>
 <?php } ?>

@@ -152,8 +152,11 @@ class database_mapper_abstract
 
             if (is_array($inValue)){
                 $retArray[$inKey] = $this->switchArrays($inValue);
-            } else {
+            } elseif(array_key_exists($inKey, $this->mapArray)) {
                 $retArray[$this->mapArray[$inKey]] = $inValue;
+            } else {
+                $retArray[$inKey] = $inValue;
+                
             }
         }
 

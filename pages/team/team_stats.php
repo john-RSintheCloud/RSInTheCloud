@@ -42,7 +42,7 @@ if (checkperm("U"))
 		{
 		# No groups selected, add to groups array.
 		$groups=array();
-		$grouplist=get_usergroups(true);
+		$grouplist=getUsergroups(true);
 		for ($n=0;$n<count($grouplist);$n++)
 			{
 			$groups[]=$grouplist[$n]["ref"];
@@ -114,7 +114,7 @@ else {document.getElementById('groupselector').style.display='block';}">
 <div class="clearerleft"> </div>
 	<table id="groupselector" cellpadding=3 cellspacing=3 style="padding-left:150px;<?php if ($groupselect=="viewall") { ?>display:none;<?php } ?>">
 	<?php
-	$grouplist=get_usergroups(true);
+	$grouplist=getUsergroups(true);
 	for ($n=0;$n<count($grouplist);$n++)
 		{
 		?>

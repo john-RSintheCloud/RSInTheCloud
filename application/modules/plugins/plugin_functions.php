@@ -981,7 +981,7 @@ function config_multi_group_select($name, $label, $current=array(), $width=300)
     <label for="<?php echo $name?>" title="<?php echo str_replace('%cvn', $name, $lang['plugins-configvar'])?>"><?php echo $label?></label>
     <select name="<?php echo $name?>[]" id="<?php echo $name?>" multiple="multiple" size="7" style="width:<?php echo $width ?>px">
 <?php
-    $usergroups=get_usergroups();
+    $usergroups=getUsergroups();
     foreach ($usergroups as $usergroup)
         {
         echo '    <option value="' . $usergroup['ref'] . '"' . ((in_array($usergroup['ref'],$current))?' selected':'') . '>' . $usergroup['name'] . '</option>';

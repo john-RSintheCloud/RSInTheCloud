@@ -1,10 +1,10 @@
 <?php
-
-die ('do not attempt setup on this system, as it is now secure');
 /**
  * Initial setup page.
+ * 
+ * Large parts of this are not applicable to OORS / RSitC
  *
- * @package ResourceSpace
+ * @package RS Legacy
  * @subpackage Pages_Misc
  */
 defined('APPLICATION_PATH')

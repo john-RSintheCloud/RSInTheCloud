@@ -7,52 +7,42 @@
  *
  * @author John
  */
-class s3_model_bucket extends abstract_model_abstract
+class s3_model_bucket extends abstract_model_arrayAbstract
 {
 
-    protected $runtimes = 'html5,flash';
-    protected $pluploadPath = '/library/Plupload/';
+    protected $runtimes = 'html5';
+    protected $pluploadPath = '/library/Plupload/'; //  where to find the javascript
     
     /**
      * @var string  org name to use for creating buckets, folders, etc.
-     * default for now
+     * can be fed in when we start using organisations
      */
     protected $orgName = 'RSitC';
     
-    protected $conf = array();
+    protected $conf ;  //  injected
 
 
 
     protected function getBucket()
     {
-        return $this->conf['bucket'];
+        return $this->conf->bucket;
     }
 
     protected function getAccessKeyId()
     {
-        return $this->conf['accessKeyId'];
+        return $this->conf->key;
     }
 
     protected function getSecret()
     {
-        return $this->conf['secret'];
+        return $this->conf->secret;
     }
 
 
-    public function setBucket($bucket)
-    {
-        $this->conf['bucket'] = $bucket;
-        return $this;
-    }
 
-    public function setAccessKeyId($accessKeyId)
+    public function setConf($conf)
     {
-        $this->conf['accessKeyId'] = $accessKeyId;
-        return $this;
-    }
-
-    public function setSecret($secret)
-    {
+        var_dump($conf) ; die('99');
         $this->conf['secret'] = $secret;
         return $this;
     }
@@ -60,7 +50,7 @@ class s3_model_bucket extends abstract_model_abstract
     protected function getPolicy()
     {
         return base64_encode(json_encode(array(
-            // ISO 8601 - date('c'); generates uncompatible date, so better do it manually
+            // ISO 8601 - date('c'); generates incompatible date, so better do it manually
             'expiration' => date('Y-m-d\TH:i:s.000\Z', strtotime('+1 day')),
             'conditions' => array(
                 array('bucket' => $this->getBucket()),
@@ -91,8 +81,8 @@ class s3_model_bucket extends abstract_model_abstract
 <<<HeredocBlock
 \$("#{$uploaderId}").plupload({
     // General settings
-    runtimes : '{$this->getRuntimes()}',
-    flash_swf_url : '{$this->getPluploadPath()}js/Moxie.swf',
+    runtimes : '{$this->runtimes}',
+    flash_swf_url : '{$this->pluploadPath}js/Moxie.swf',
 
     // S3 specific settings
     url : "https://{$this->getBucket() }.s3.amazonaws.com:443/",

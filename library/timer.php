@@ -1,7 +1,7 @@
 <?php
 /**
  * timer class
- * for timing things - trivially - and counting things.
+ * for timing things - trivially 
  *
  * @author John Brookes <john@RSintheCloud.com>
  * @package RSintheClouds
@@ -15,16 +15,21 @@
  */
 class timer {
 
-protected $start;
 
-    public function __construct() {
-        $this->start = microtime(true);
-        return$this;
+    /**
+     *
+     * @var array of start times
+     */
+    protected $start;
+
+
+    public function start($id='first') {
+        $this->start[$id] = microtime(true);
+        return $this ;
     }
-
-    public function show() {
+    public function show($id = 'first') {
         $time = microtime(true);
-        $total_time = round(($time - $this->start), 4);
+        $total_time = round(($time - $this->start[$id]), 4);
         return $total_time ;
     }
 }
