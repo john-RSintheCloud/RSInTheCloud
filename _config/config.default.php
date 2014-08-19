@@ -1,48 +1,32 @@
 <?php
 /**
- * This file contains the default configuration settings
- * for OORS and RSitC configurations
+ * This file contains the LEGACY configuration settings
+ * for RS 
  *
- * **** DO NOT PUT APPLICATION SPECIFIC OPTIONS IN THIS FILE! ****
+ * **** DO NOT PUT NEW OPTIONS IN THIS FILE! ****
  *
- * If you need to change any of the below values, copy
- * them to config.php or secure.config.php and change them there.
+ * CONFIG FILE TO USE:
+ * 
+ * config.default.php (this file) is legacy only - using global variables.
+ * It will eventually become redundant.
+ * 
+ * If you need to use any of the below settings in OORS or RSitC, move
+ * them to config.php or generic.config.php.
  *
+ *  generic.config.php is the new generic config for OORS and RSitC
+ *  and is committed to both repos.  
+ * Options are available through the DIC ['config']
+ * 
+ * 
  *  config.php is application specific config (OORS or RSitC)
  *  and is committed to the appropriate repo
  *  secure.config.php is instance specific and should not be committed
  *   or made available in any public forum
  *
- * This file may be overwritten when you upgrade and
- * ensures that any new configuration options are set to
- * a sensible default value.
  *
- * @package RS Generic
+ * @package RS Legacy
  * @subpackage Configuration
  */
-
-
-/* ---------------------------------------------------
-SECURITY PARAMETERS
------------------------------------------------------- */
-
-#  The following parameters should be stored in secure.config.php and 
-#  excluded from repo commits / pushes
-
-$mysql_server="";	# Use 'localhost' if MySQL is installed on the same server as your web server.
-$mysql_username="";		# MySQL username
-$mysql_password="";			# MySQL password
-$mysql_db="";			# MySQL database name
-
-# the MySQL export tool is no longer supported
-
-
-# $baseurl is now generated dynamically - see additional 'path' setting in secure.config.php
-
-#  email settings must go in secure.config 
-#  if left blank, emails will not be sent.
-$email_from=""; # Where system e-mails appear to come from
-$email_notify=""; # Where resource/research/user requests are sent
 
 $spider_password=""; # The password required for spider.php - IMPORTANT - randomise this for each new installation. Your resources will be readable by anyone that knows this password.
 $spider_usergroup=2; # The user group that will be used to access the resource list for the spider index.
@@ -53,8 +37,6 @@ $spider_access=array(0,1); # Which access level(s) are required when producing t
 # To disable, set to the empty string ("").
 $scramble_key="";
 
-#  date_default_timezone_set is in bootstrap
-
 
 /* ----------------------------------------------
 	APPLICATION SETTINGS
@@ -62,11 +44,10 @@ $scramble_key="";
   and committed to the application specific repo
   ------------------------------------------------ */
 
-
-# set next two lines to configure storage locations and url (to use another server for file storage)
-#
-#$storagedir="/path/to/filestore"; # Where to put the media files. Can be absolute (/var/www/blah/blah) or relative to the installation. Note: no trailing slash
-#$storageurl="http://my.storage.server/filestore"; # Where the storagedir is available. Can be absolute (http://files.example.com) or relative to the installation. Note: no trailing slash
+//  These are legacy workrounds for the lack of adequate database design!
+$thumbs_display_fields = array(8,3);
+$list_display_fields = array(8,3,12);
+$sort_fields = array(12);
 
 
 $applicationdesc=""; # Subtitle (i18n translated) if $header_text_title=true;
@@ -617,10 +598,6 @@ $available_themes=array("multi", "whitegry","greyblu","black");
 # Uncomment and set the next line to lock to one specific colour scheme (e.g. greyblu/whitegry).
 # $userfixedtheme="whitegry";
 
-# List of active plugins.
-# Note that multiple plugins must be specified within array() as follows:
-# $plugins=array("loader","rss","messaging","googledisplay");
-$plugins=array();
 
 # Uncomment and set the next line to allow anonymous access. The anonymous user will automatically be logged in
 # to the account with the username specified.

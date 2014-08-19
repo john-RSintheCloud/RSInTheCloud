@@ -3,20 +3,22 @@
 ## OORS
 ## Application Configuration Script
 ####################################
+ /**
+ *  config.php is the application specific config for OORS and RSitC
+ *  and is only committed to the relevant repo.  
+ * Options are available through the DIC ['config']
+ * and as globals for legacy
+ * 
+ *
+ * @package OORS
+ * @subpackage Configuration
+ */
 
 
-##    DEBUG and test
+##   Turn on DEBUG and test
 
+$devMode = 1;
 $config_show_performance_footer = true;
-
-# External items reload key
-# Increment the below value to force a reload of the CSS, JavaScripts and other included items.
-# This is intended for developer use when altering such files. 
-# It will force a reload on all client browsers.
-#
-#TODO - tie in with dev environment variable
-#  and tie in with file date/time stamp to automate reload
-
 $css_reload_key=00;
 
 
@@ -27,32 +29,11 @@ $applicationname="OO RS"; #  implementation name, eg 'Bioquell'
 $productname="OO RS"; # Product name. Please do not over-ride
 $productversion="Alpha";
 
-
-
 ##  Passwords and keys should be stored in the secure config at
-$secure_config_location = '../_config/secure.config.php';
-
-# MySQL database settings
-$mysql_server = 'localhost';
-$mysql_username = 'RS';
-$mysql_password = 'overwrittenBySecureConfig';
-$mysql_db = 'RS';
+$secureConfigLocation = '../_config/secure.config.php';
 
 
-# Base URL of the installation is set dynamically
-#  but we may want to set a base folder, eg '/RS' (leading /)
-$baseFolder = '';
-
-# Email settings
-$email_from = 'resourcespace@rsinthecloud.com';
-$email_notify = 'resourcespace@rsinthecloud.com';
-
-$spider_password = 'overwrittenBySecureConfig';
-$scramble_key = 'overwrittenBySecureConfig';
-
-$api_scramble_key = 'overwrittenBySecureConfig';
-
-# Paths 
+# Paths - if not using cloud transcode
 $imagemagick_path = '/usr/bin';
 $ghostscript_path = '/usr/bin';
 $ffmpeg_path = '/usr/bin';
@@ -66,7 +47,7 @@ $storageurl = 'http://filestore.local';
 $tempdir = '/var/www/RS/filestore/tmp';
 $tempUrl = 'http://filestore.local/tmp';
 
-//  These are legacy workrounds for the lack of adequate database design!
-$thumbs_display_fields = array(8,3);
-$list_display_fields = array(8,3,12);
-$sort_fields = array(12);
+#  optional plugins to load in dic
+#  OORS does not currently have any.
+//  $diPlugins = 'organisation';
+$diPlugins = '';
