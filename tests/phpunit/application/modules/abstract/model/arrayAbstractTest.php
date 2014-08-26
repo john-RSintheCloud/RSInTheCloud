@@ -12,7 +12,7 @@ class abstract_model_arrayAbstractTest extends PHPUnit_Framework_TestCase
 
     protected function setUp()
     {
-        $this->object = new abstract_model_abstract();
+        $this->object = new abstract_model_arrayAbstract();
     }
 
     protected function tearDown()
@@ -32,9 +32,14 @@ class abstract_model_arrayAbstractTest extends PHPUnit_Framework_TestCase
         $this->assertEquals('boo', $tester->bob);
     }
     
+    
+    /**
+     * This is a copy of the parent test, just to ensure it works the same.
+     * The only difference in this setter is with arrays which are tested
+     * in testGet below
+     */
     public function testSet()
     {
-
         $this->object->bob = 'boo';
         $this->assertEquals('boo', $this->object->bob);
         
@@ -43,36 +48,79 @@ class abstract_model_arrayAbstractTest extends PHPUnit_Framework_TestCase
         $this->object->options = 'options';
         $this->assertEquals('options', $this->object->options);
         //  knowing how it is stored..
-        //  this breaks PHPunit!
         $this->assertEquals('options', $this->object->__Options);
         
     }
-
 
     public function testGet()
     {
         //  If you pass an array, it should be nested
         $this->object->bob = ['test' => 'true'];
         $this->assertEquals('true', $this->object->bob->test);
-        
-        $this->assertNull( $this->object->nonexistantname);
-        $this->assertNull( $this->object->CSS->reload_key);
-
-        
-        
-        
     }
 
+
+    public function testCount()
+    {
+        $this->assertEquals( 0, $this->object->count());
+        
+        $this->object->bob = ['test' => 'true'];
+        $this->assertEquals( 1, $this->object->count());
+        $this->assertEquals( 1, $this->object->bob->count());
+        $this->assertTrue( is_string($this->object->bob->test));
+        
+        $this->assertEquals( 0, $this->object->booo->count());
+
+    }
+
+    public function testIsset()
+    {
+        $this->assertTrue( isset($this->object));
+        $this->assertFalse( isset($this->object->nonexistantname));
+        $this->assertFalse( isset($this->object->nonexistantname->boo));
+
+    }
+
+    public function testEmpty()
+    {
+        $this->assertTrue( $this->object->isEmpty());
+        $this->object->bob = ['test' => 'true'];
+        $this->assertFalse( $this->object->isEmpty());
+        $this->assertFalse( $this->object->bob->isEmpty());
+        $this->assertTrue( $this->object->nonexistantname->isEmpty());
+        $this->assertTrue( $this->object->nonexistantname->boo->isEmpty());
+
+        $this->assertTrue( empty($this->object->nonexistantname));
+//        This one fails though!
+//        While the magic 'isset' above returns false 
+//        The magic getter returns an object which is not 'empty'
+//        $this->assertEmpty( $this->object->nonexistantname);
+    }
+
+    /**
+     * This is very similar to the parent test, except there is a nested array
+     * 
+     * setOptions adds and overrides options but does not delete them
+     */
     public function testSetOptions()
     {
-        $this->object->setOptions(['test' => 'true']);
+        $this->object->setOptions([
+            'test' => 'true',
+            'ayyay' => [
+                'test' => 'bob',
+                'fpp' => 'baz'
+            ]]);
         $this->assertEquals('true', $this->object->test);
+        $this->assertEquals('bob', $this->object->ayyay->test);
+        $this->assertEquals('baz', $this->object->ayyay->fpp);
+        
 
         $this->object->setOptions([
             'test' => 'changed',
             'bob' => 'boo']);
         $this->assertEquals('changed', $this->object->test);
         $this->assertEquals('boo', $this->object->bob);
+        $this->assertTrue(isset($this->object->ayyay));
 
     }
 
@@ -80,8 +128,8 @@ class abstract_model_arrayAbstractTest extends PHPUnit_Framework_TestCase
      * Merge new values from array -
      * if key is already set ignore array value
      *
-     * @param array $options
-     * @return \abstract_model_abstract
+     * This is a copy of the parent test - but this one caught a problem
+     * so it is being left in.
      */
     public function testMerge()
     {
@@ -92,6 +140,7 @@ class abstract_model_arrayAbstractTest extends PHPUnit_Framework_TestCase
             'test' => 'changed',
             'bob' => 'boo']);
         $this->assertEquals('true', $this->object->test);
+//    var_dump($this->object);
         $this->assertEquals('boo', $this->object->bob);
 
     }
@@ -100,10 +149,34 @@ class abstract_model_arrayAbstractTest extends PHPUnit_Framework_TestCase
     
     public function testToArray()
     {
+        $this->object->setOptions([
+            'test' => 'true',
+            'ayyay' => [
+                'test' => 'bob',
+                'fpp' => 'baz'
+            ]]);
+        $this->assertEquals('true', $this->object->test);
+        $this->assertEquals('bob', $this->object->ayyay->test);
+        $this->assertEquals('baz', $this->object->ayyay->fpp);
+        
+        $toArray = $this->object->toArray();
+        $this->assertEquals('true', $toArray['test']);
+        $this->assertEquals('bob', $toArray['ayyay']['test']);
+        $this->assertEquals('baz', $toArray['ayyay']['fpp']);
     }
     //
     public function testToString()
     {
+        $this->object->setOptions([
+            'test' => 'true',
+            'ayyay' => [
+                'test' => 'bob',
+                'fpp' => 'baz'
+            ]]);
+        $this->assertEquals('true', (string) $this->object->test);
+        $this->assertEquals('', (string) $this->object->ayyay);
+        $this->assertEquals('', $this->object);
+        
     }
 
     public function testPrintRecursive($indent = 1)

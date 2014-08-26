@@ -77,8 +77,6 @@ class abstract_model_abstractTest extends PHPUnit_Framework_TestCase
      * Merge new values from array -
      * if key is already set ignore array value
      *
-     * @param array $options
-     * @return \abstract_model_abstract
      */
     public function testMerge()
     {

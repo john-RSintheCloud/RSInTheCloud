@@ -19,7 +19,9 @@ class abstract_model_arrayAbstract extends abstract_model_abstract
      */
     public function __set($name, $value)
     {
+//    echo $name . " ###### \n";
         if (is_array($value)){
+            
             $this->$name = new abstract_model_arrayAbstract($value);
             return $this;
         }
@@ -46,8 +48,6 @@ class abstract_model_arrayAbstract extends abstract_model_abstract
         return $value;
     }
 
-    
-    
     public function toArray()
     {
         $ret = [];
@@ -62,7 +62,30 @@ class abstract_model_arrayAbstract extends abstract_model_abstract
         }
         return $ret;
     }
-    //
+
+    public function count()
+    {
+        $ret = 0;
+        foreach($this as $key => $value) {
+                $ret ++;
+        }
+        return $ret;
+    }
+    
+    public function __isSet($name)
+    {
+        $value = parent::__get($name);
+        if (is_null($value)){
+            return false;
+        }
+    }
+
+    public function isEmpty()
+    {
+        return ($this->count() == 0);
+    }
+
+    
     public function __toString()
     {
         return '';

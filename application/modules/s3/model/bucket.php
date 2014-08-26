@@ -25,7 +25,7 @@ class s3_model_bucket extends abstract_model_arrayAbstract
 
     protected function getBucket()
     {
-        var_dump($this->conf) ; die('t');  return $this->conf->bucket;
+        return $this->conf->bucket;
     }
 
     protected function getAccessKeyId()

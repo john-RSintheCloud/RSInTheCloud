@@ -122,7 +122,7 @@ class abstract_model_abstract
 
         foreach ($options as $key => $value) {
 
-            if($this->$key ) {  //  magic getter
+            if(isset($this->$key) ) { 
                 continue;
             }
             

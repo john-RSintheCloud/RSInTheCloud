@@ -19,14 +19,14 @@ class config_config extends abstract_model_arrayAbstract
     * key is the name of a variable (eg $s3_bucket) and 
     * the result is nested ($this->s3->bucket)
     * 
-    * @param string $var
+    * @param string $var->getDbConfig()
     * @param any $val
     * @return \config_config
     */
    protected function setVar($key, $val)
    {
         $var = trim($key, ' $');
-        $val = trim($val, "<' ;\"");
+        $val = $this->fixVal($val);
         if (empty($var)) die('invalid config key: ' . $key);
         //  empty value is ok
         // if (empty($val)) die('invalid config value:' . $key);
@@ -53,14 +53,6 @@ class config_config extends abstract_model_arrayAbstract
         return $this;
    }
 
-   public function __get($name)
-   {
-       if (isset($this->$name)){
-           return ($this->$name);
-       } else {
-           return '';
-       }
-   }
 
    public function getDbConfig()
    {
@@ -139,4 +131,14 @@ class config_config extends abstract_model_arrayAbstract
         return false;
     }
 
+    protected function fixVal($val)
+    {
+        $val = trim($val, "<' ;\"");
+        //  fix booleans
+        if ($val == 'true') $val = true;
+        if ($val == 'false') $val = false;
+
+        return $val;
+
+    }
 }

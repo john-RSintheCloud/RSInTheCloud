@@ -17,11 +17,18 @@
     /**
     * Database Connector
     */
-    $container['PdoConnector'] = $container->share( function ($c) {
-        $conn = new database_PdoConnector(
+    $container['pdoConfig'] = $container->share( function ($c) {
+        $conn = new database_PdoConfig(
             $c['config']->getDbConfig()
             );
-        return $conn->getConnection();
+            var_dump($c['config']); die;
+        return $conn;
+    });
+    $container['PdoConnector'] = $container->share( function ($c) {
+        $conn = new PDO( $c['pdoConfig']->getConfig(), 
+                $c['pdoConfig']->getUsername(), $c['pdoConfig']->getPassword());
+        $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        return $conn ;
     });
 
     /**

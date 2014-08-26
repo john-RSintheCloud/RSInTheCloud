@@ -24,7 +24,7 @@ class config_configTest extends PHPUnit_Framework_TestCase
      * @expectedException        RuntimeException
      * @expectedExceptionMessage Where has 'bob' gone?
      */
-    public function testReadConfigBob()
+    public function testReadMissingConfig()
     {
         $testFile = 'tests/phpunit/application/modules/config/testcase.php';
         $this->object->readConfig('bob');
@@ -78,15 +78,9 @@ class config_configTest extends PHPUnit_Framework_TestCase
         $this->assertEquals('00', $this->object->css->reload_key);
         
         //  and one last test
-        $this->assertEquals('', $this->object->nonexistantname);
+        $this->assertEquals('', (string) $this->object->nonexistantname);
         $this->assertEquals('', $this->object->CSS->reload_key);
-        
-        
-
-        
-        
-        
-        
+         
     }
     
     
@@ -102,67 +96,26 @@ class config_configTest extends PHPUnit_Framework_TestCase
    {
        $var = '$bob';
        $val = 'boo';
-       $var = trim($var, ' $');
-       $val = trim($val, "<' ;\"");
-
+       $this->object->setVar ($var, $val);
+       $this->assertEquals('boo', $this->object->bob);
        
    }
 
-   public function __get($name)
+   public function testGetDbConfig()
    {
-       if (isset($this->$name)){
-           return ($this->$name);
-       } else {
-           return '';
-       }
+        $testFile = 'tests/phpunit/application/modules/config/testcase.php';
+        $this->object->readConfig($testFile);
+        $this->assertEquals(
+                'tests/phpunit/application/modules/config/testsec.sec', 
+                $this->object->secureConfigLocation);
+        $this->object->readSecureConfig();
+        $testSql = $this->object->getDbConfig();
+        
+        $this->assertEquals( 'localhost', $testSql->server);
+        $this->assertEquals( 'bob', $testSql->password);
+        $this->assertEquals( 'RS', $testSql->db);
+
    }
 
-   public function getDbConfig()
-   {
-       return $this->mysql;
-   }
-
-   public function readSecureConfig()
-    {
-        $this->readConfig($this->secureConfigLocation);
-        
-    }
-    
-    
-    protected function readLine($line)
-    {
-
-        //  read in the config files
-            //  typical line is 
-            //  $applicationname="OO RS"; #  implementation name, eg 'Bioquell'
-            //  so we need to parse it.
-            $data = trim($line);
-            //  skip empty lines or lines starting with # or //
-            if (empty($data) || !is_string($data)) return false;
-            $c0 = $data[0];
-            switch ($c0) {
-                case '#':
-                case '/':
-                case '*':
-                case '<':
-                    return false;
-                break;
-                case '$':
-                    //  find ; - ignore anything after it
-                    $parts = explode(';', $data);
-                    $keyVal = trim($parts[0]);
-                    //  find =
-                    $parts = explode('=', $keyVal);
-                    $this->setVar ( $key, $val);
-                break;
-                default:
-                    //  if it's not any of the above, it needs checking.
-                    die('invalid config option:' . $data);
-                break;
-            }
-        
-        return $this;
-    }
-   
 
 }

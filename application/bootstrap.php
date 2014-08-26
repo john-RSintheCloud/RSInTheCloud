@@ -42,6 +42,7 @@ spl_autoload_register(
 );
 //  Dependency Injection
 $container = new containers_Dic();
+$container['ApplicationPath'] = APPLICATION_PATH;
 $container->init();
 
 //  start timer

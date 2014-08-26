@@ -15,11 +15,17 @@ class containers_Dic extends Pimple
     {
 
         /**
+         * Application path is set in bootstrap before calling init
+         */
+        
+        /**
          * Configuration
          */
+        $this['configFilePath'] = $this['applicationPath'] . "../_config/config.php";
         $this['config'] = $this->share( function ($c) {
 
-            return new config_config();
+            $conf = new config_config();
+            $conf->readConfig($c['configFilePath']);
         });
 
         /**
