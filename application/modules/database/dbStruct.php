@@ -3,86 +3,83 @@
 /**
  * RS uses dbStruct files to manage schema changes.  It's not perfect,
  * but it works and we will carry on using it for now.
+ * 
+ * As they hold the definitive structure, we will use the dbstruct files 
+ * in our mappers so we can make them generic
+ * 
+ * This is a factory class to create, cache and manage tableStruct objects
  *
- * This class encapulates their creation and use.
+ * 
+ * $this->description holds a cached set of tableStruct objects
+ * format $this->description->tableName->object
  *
  * @author John
  */
-class database_dbStruct
+class database_dbStruct extends abstract_model_arrayAbstract
 {
 
-    /**
-     *
-     * @var string default dbstruct file path
-     */
-    static protected $_structPath = 'modules/database/dbstruct/';
 
     /**
      *
-     * @var string - full path to dbstruct
+     * @var string - full path to dbstruct - injected
      */
-    protected $dbstructPath = '';
-
-    /**
-     *
-     * @var string - table name to look up
-     */
-    protected $table = '';
-
-    /**
-     *
-     * @var array of arrays - table description pulled from dbstruct
-     */
-    protected $description = array();
-
-
-    public function __construct($param = array())
-    {
-        $this->dbstructPath = APPLICATION_PATH . self::$_structPath;
-        foreach ($param as $pkey => $pvalue) {
-            $this->$pkey = $pvalue;
-        }
-    }
+    protected $dbStructPath = '';
 
 
     public function getDbStruct($table = '')
     {
-        if (!empty($table)){
-            $this->table = (string) $table;
+        $table = (string) $table;
+        if (empty($table)){
+            throw new \InvalidArgumentException ('no table name given in getDbStruct');
+            
         }
 
-        $f = fopen($this->dbstructPath . "table_" . $this->table . ".txt", "r");
+        if (! isset($this->description)){
+            $this->description = new abstract_model_arrayAbstract();
+        }
+        //  see if already loaded
+        if (isset($this->description->$table)){
+            return $this->description->$table;
+        } 
+        
+        
+        $path = $this->dbStructPath . "table_" . $table . ".txt";
+        $f = @fopen($path, "r");
+        if ($f === false) {
+            throw new \InvalidArgumentException ('File: ' . $path . ' not found');
+        }
 
-        $describe = array();
-        while ( ($describe[] = fgetcsv($f)) !== false);
+        $fields = array();
+        while ( ($fields[] = fgetcsv($f)) !== false){
+//            load the csv into the array
+        }
 
         fclose($f);
-        array_pop($describe); //  take the false off the end
-
-        $this->description = $describe;
-
-        return $this;
+        
+        $this->description->$table = new database_tableStruct(['fields' => $fields]);
+       return $this->description->$table;
 
     }
 
-    public function getFieldNames()
+    public function getTableNames()
     {
         if (empty($this->description)){
-            throw new RuntimeException('no table loaded to get field names');
+            throw new RuntimeException('no tables loaded to get table names');
         }
         $names = array();
-        foreach ($this->description as $field) {
-            $names[] = $field[0];
+        foreach ($this->description as $tableName => $table) {
+            $names[] = $tableName;
         }
 
         return $names;
     }
 
-    static public function createDbStruct($param = array())
+
+    public function createDbStruct($param = array())
     {
         //  Defaults
 
-        $dbstructPath = APPLICATION_PATH . self::$_structPath;
+        $dbstructPath = $this->dbStructPath . 'xx';
 
         # Specify whether you want to have table_* and index_* files created
         $createTableStructure = true;
@@ -96,14 +93,17 @@ class database_dbStruct
         $indicesFor = array();
 
         //  db must be injected
-        $db = new database_Db();
+        $db = null;
 
-        //  overwrite defaults
+        //  overwrite defaults - including db
 
         foreach ($param as $pkey => $pvalue) {
             $$pkey = $pvalue;
         }
 
+        if ($db instanceof database_Db){
+            return 'No database injected';
+        }
 
         # Fetch all tables
         if (! $db->sqlQuery("show tables")){

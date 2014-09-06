@@ -30,7 +30,7 @@ $productname="OO RS"; # Product name. Please do not over-ride
 $productversion="Alpha";
 
 ##  Passwords and keys should be stored in the secure config at
-$secureConfigLocation = '../_config/secure.config.php';
+$secureConfigLocation = '_config/secure.config.php';
 
 
 # Paths - if not using cloud transcode

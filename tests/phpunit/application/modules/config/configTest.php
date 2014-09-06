@@ -64,7 +64,7 @@ class config_configTest extends PHPUnit_Framework_TestCase
         $this->assertEquals(
                 'tests/phpunit/application/modules/config/testsec.sec', 
                 $this->object->secureConfigLocation);
-        $this->object->readSecureConfig();
+        $this->object->readConfig($this->object->secureConfigLocation);
         //  ok, we have the file, now see if it has worked
         
         $this->assertEquals('localhost', $this->object->mysql->server);
@@ -108,7 +108,7 @@ class config_configTest extends PHPUnit_Framework_TestCase
         $this->assertEquals(
                 'tests/phpunit/application/modules/config/testsec.sec', 
                 $this->object->secureConfigLocation);
-        $this->object->readSecureConfig();
+        $this->object->readConfig($this->object->secureConfigLocation);
         $testSql = $this->object->getDbConfig();
         
         $this->assertEquals( 'localhost', $testSql->server);

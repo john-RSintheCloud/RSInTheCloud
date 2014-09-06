@@ -11,25 +11,18 @@
 
 error_reporting(E_ALL);
 
-
-//  Make sure app path is defined.
-defined('APPLICATION_PATH')
-    || define('APPLICATION_PATH', realpath(dirname(__FILE__) ) . '/');
-
-// Define application environment
-//defined('APPLICATION_ENV')
-//    || define('APPLICATION_ENV', (getenv('APPLICATION_ENV') ? getenv('APPLICATION_ENV') : 'production'));
-
-
+$basePath = realpath(dirname(__FILE__).'/../' ) . '/';
 set_include_path(implode(PATH_SEPARATOR, array(
     //  put application path into include
-    realpath(APPLICATION_PATH),
+    $basePath . 'application/',
     //  Put modules into include path
-    APPLICATION_PATH . 'modules/',
+    $basePath . 'application/modules/',
     //  Put new library into include path
-    realpath(APPLICATION_PATH . '../library/'),
+    $basePath . 'library/',
     //  Put old include files in last
-    realpath(APPLICATION_PATH . '../include/'),
+    $basePath . 'include/',
+    //  Put basepath itself in
+    $basePath,
     //  and current folder
     '.'
 )));
@@ -40,9 +33,9 @@ spl_autoload_register(
     require_once ( str_replace("_", "/", $pClassName) . '.php');
   }
 );
+
 //  Dependency Injection
 $container = new containers_Dic();
-$container['ApplicationPath'] = APPLICATION_PATH;
 $container->init();
 
 //  start timer

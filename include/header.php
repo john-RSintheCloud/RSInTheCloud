@@ -130,7 +130,7 @@ jQuery(document).ready(function() {
 <script type="text/javascript" src="<?php echo $baseurl;?>/lib/plupload/jquery.plupload.queue/jquery.plupload.queue.js?<?php echo $css_reload_key;?>"></script>
 
 <script type="text/javascript">
-var baseurl_short="<?php echo $baseurl?>";
+var baseurl_short="<?php echo $baseurl?>/";
 var baseurl="<?php echo $baseurl?>";
 var pagename="<?php echo $pagename?>";
 var errorpageload = "<h1><?php echo $lang["error"] ?></h1><p><?php echo $lang["error-pageload"] ?></p>" ;

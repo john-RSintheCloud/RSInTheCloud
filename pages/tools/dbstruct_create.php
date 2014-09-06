@@ -16,7 +16,7 @@ $param = array(
     'dataFor' => array(),
     'tableFor' => array(),
     'indicesFor' => array(),
-    'dbstructPath' => APPLICATION_PATH . 'modules/database/dbstructxx/',
+    'dbstructPath' => realpath(dirname(__FILE__) . '/../../application/modules/database/dbstructxx/'),
     'db' => $container['db']
 );
 if (getval("execute", "") != "") {
@@ -28,7 +28,8 @@ if (getval("execute", "") != "") {
     <p>It (re)creates the database structures defined in the 'dbstruct' folder
         using the current database as a master. Do not run this unless you are
         sure you want to recreate the files.</p>
-    <p>Do not commit the changed dbstruct files to live
+    <p>This creates the struct files in the dbstructxx folder, to avoid losing the originals.
+        Do not commit the changed dbstruct files to live
         unless you intend to alter the database structure for all installations.</p>
     <p>Set to write files to <?php echo $param['dbstructPath']; ?> </p>
     <?php

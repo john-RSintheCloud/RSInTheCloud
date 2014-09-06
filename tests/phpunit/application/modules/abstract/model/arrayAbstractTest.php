@@ -181,8 +181,18 @@ class abstract_model_arrayAbstractTest extends PHPUnit_Framework_TestCase
 
     public function testPrintRecursive($indent = 1)
     {
-//  need to get this working!       
-        
+
+        $this->object->setOptions([
+            'test' => 'true',
+            'ayyay' => [
+                'test' => 'bob',
+                'fpp' => 'baz'
+            ]]);
+        $string = $this->object->printRecursive();
+//        echo $string;
+        $this->assertEquals(
+            '<br>1: _ _ _->test = true<br>1: _ _ _->ayyay=><br>2: _ _ __ _ _->test = bob<br>2: _ _ __ _ _->fpp = baz',
+            $string);
     }
 
 }

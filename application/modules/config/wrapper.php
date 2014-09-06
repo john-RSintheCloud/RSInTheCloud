@@ -13,18 +13,20 @@
 
 # *** LOAD CONFIG ***
 # This is legacy - all new code should be using the config class from the DIC
+# We have got rid of the APPLICATION_PATH definition, and rely on 
+# basepath being in the include path
 # 
 # Load the default config first
 # so all settings are present 
 # Throw an exception if not found
-require_once APPLICATION_PATH . "../_config/config.default.php";
+require_once  "_config/config.default.php";
 # Load the real config
 //if (!file_exists(APPLICATION_PATH . "../_config/config.php")) {
 ////  DON'T TRY TO ENTER SETUP    header ("Location: pages/setup.php" );
 //    die;
 //}
-require_once APPLICATION_PATH . "../_config/config.php";
-require_once APPLICATION_PATH . $secureConfigLocation;
+require_once "_config/config.php";
+require_once  $secureConfigLocation;
 
 
 # Set the storage directory and URL if not already set.

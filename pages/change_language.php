@@ -1,9 +1,9 @@
 <?php
 require_once "../application/bootstrap.php";
 
-require_once "../include/authenticate.php";
+require_once "authenticate.php";
 
-require_once APPLICATION_PATH . 'modules/view/wrapper.php';
+require_once 'view/wrapper.php';
 
 if (getval("save","")!="")
 	{
@@ -12,7 +12,7 @@ if (getval("save","")!="")
     rs_setcookie("language", getval("language", ""), 1000, $baseurl_short . "pages");
 	redirect(getval("uri",$baseurl_short."pages/" . ($use_theme_as_home?'themes.php':$default_home_page)));
 	}
-require_once "../include/header.php";
+require_once "header.php";
 ?>
 
 <h1><?php echo $lang["languageselection"]?></h1>
@@ -42,5 +42,5 @@ require_once "../include/header.php";
 
 
 <?php
-require_once "../include/footer.php";
+require_once "footer.php";
 ?>

@@ -12,8 +12,25 @@
  */
 class config_config extends abstract_model_arrayAbstract
 {
+    
+    public function __construct($options = array())
+    {
+        parent::__construct($options);
+        
+        if (!empty($this->genericConfigFilePath)){
+            $this->readConfig($this->genericConfigFilePath);
+        }
+        if (!empty($this->configFilePath)){
+            $this->readConfig($this->configFilePath);
+        }
+        if (!empty($this->secureConfigLocation)){
+            $this->readConfig($this->secureConfigLocation);
+        }
+        
+        return $this;
+    }
 
-   /**
+    /**
     * Takes a key / value pair and sets $this->$key = $value
     * except
     * key is the name of a variable (eg $s3_bucket) and 
@@ -41,7 +58,6 @@ class config_config extends abstract_model_arrayAbstract
 
         if ($prefix){
             $prefArray = $this->$prefix;
-//      var_dump($prefArray);
             if (empty($prefArray)){
                 $prefArray = new abstract_model_arrayAbstract();
             }
@@ -59,37 +75,26 @@ class config_config extends abstract_model_arrayAbstract
        return $this->mysql;
    }
 
-   /**
-    * Read the secure config from the location
-    * just loaded in config!
-    * This allows for the file to be kept outside the repo.
-    */
-   public function readSecureConfig()
-    {
-        $this->readConfig($this->secureConfigLocation);
-        
-    }
-    
-    
+  
     public function readConfig($fileName)
     {
         //  read in the config files
-        $path = realpath(APPLICATION_PATH . $fileName );
-        if ($path == ''){
+        
+        //  $fileName may be absolute or relative
+        //  so use include path
+        
+        $fileContents = @file_get_contents($fileName, true);
+        if (! $fileContents){             
             throw new \RuntimeException ("Where has '" . $fileName . "' gone?");
             //  not sure error page is loaded here, so just in case...
             die ("Where has $fileName gone?");
         }
-        if (($handle = @fopen($path , "r")) === FALSE) {
-            throw new \RuntimeException ("Cannot open config file: '$path' ");
-            //  not sure error page is loaded here, so just in case...
-            die ("Where has $fileName gone?");
-        }
-        while (($line = @fgets($handle, 1000)) !== FALSE) {
+        
+        //  Reading it in as a single string, so we need to break it up
+        $lines = explode("\n", $fileContents);
+        foreach ($lines as $line) {
             $this->readLine($line);
         }
-        
-        fclose($handle);
         
         return $this;
     }

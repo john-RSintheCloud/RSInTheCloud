@@ -7,10 +7,8 @@
  * @package RS Legacy
  * @subpackage Pages_Misc
  */
-defined('APPLICATION_PATH')
-    || define('APPLICATION_PATH', realpath(dirname(__FILE__) . '/../application') . '/');
 
-require_once APPLICATION_PATH . 'modules/setup/setup.php';
+require_once realpath(dirname(__FILE__) . '/../application/modules/setup/setup.php');
 
 ?>
 <html>

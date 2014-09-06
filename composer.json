@@ -1,0 +1,13 @@
+{
+    "require": {
+        "aura/router": "2.0.*@dev",
+        "aura/web": "2.0.*@dev",
+        "pimple/pimple": "3.0.0",
+        "phpmailer/phpmailer": "5.2.8",
+        "phpunit/phpunit": "4.2.*",
+        "phpunit/php-invoker": "*",
+        "phpunit/dbunit": ">=1.2",
+        "phpunit/phpunit-selenium": ">=1.2"
+    }
+}
+

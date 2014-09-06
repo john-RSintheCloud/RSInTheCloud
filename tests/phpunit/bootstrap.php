@@ -2,24 +2,26 @@
 // turn on all errors
 error_reporting(E_ALL);
 
-defined('APPLICATION_PATH')
-    || define('APPLICATION_PATH', realpath(dirname(__FILE__)  . '/../..') . '/');
+$basePath = realpath(dirname(__FILE__)  . '/../..') . '/';
 
-//  echo APPLICATION_PATH; //  /var/www/RS/OORS
+//  echo $basePath; //  /var/www/RS/OORS
 
 set_include_path(implode(PATH_SEPARATOR, array(
     //  put application path into include
-    realpath(APPLICATION_PATH ),
+    $basePath ,
     //  Put application code into include path
-    realpath(APPLICATION_PATH . 'application/'),
+    $basePath . 'application/',
     //  put shared library in include path
-    realpath(APPLICATION_PATH . 'application/modules/'),
+    $basePath . 'application/modules/',
     //  Put framework into include path
-    realpath(APPLICATION_PATH . 'library/'),
+    $basePath . 'library/',
     //  put include in include path - for legacy
-    realpath(APPLICATION_PATH . 'include/'),
+    $basePath . 'include/',
+    //vendor
+    $basePath . 'vendor/',
     //phpunit path
-//    '/usr/share/php/',
+    $basePath . 'vendor/phpunit/phpunit/src/',
+    //  current folder
     '.'
 
 )));
@@ -28,12 +30,27 @@ date_default_timezone_set('Europe/London');
 	
 //  Autoloader
 
-spl_autoload_register(
-  function ($pClassName) {
-    require_once ( str_replace("_", "/", $pClassName) . '.php');
-  }
+spl_autoload_register( function ($pClassName) {
+    //  for framework:
+    $class = $pClassName;
+    $path = str_replace("_", "/", $class) . '.php';
+    @include_once ($path);
+    // Check to see whether the include found the class
+    if (!class_exists($pClassName, false)) {
+        //  try again
+        $pathBits = explode('\\', $pClassName);
+        //  Namespaces and Classes are UpperCamelCase
+        //  Diirectories and files are camelCase
+        //  so use lcFirst to convert
+        $path = implode("/", array_map('lcfirst', $pathBits)) . '.php';
+        include_once ($path);
+        //  drop through to composer autoloader
+//        if (!class_exists($pClassName, false)) {
+//            throw new RuntimeException("Unable to load class: $pClassName");
+//        }
+}}
 );
 //  composer autoload (vendor)
-// require 'autoload.php';
+require 'autoload.php';
 
 

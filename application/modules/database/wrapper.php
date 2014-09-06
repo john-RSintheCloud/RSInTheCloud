@@ -21,7 +21,7 @@
         $conn = new database_PdoConfig(
             $c['config']->getDbConfig()
             );
-            var_dump($c['config']); die;
+//            var_dump($c['config']); die;
         return $conn;
     });
     $container['PdoConnector'] = $container->share( function ($c) {
@@ -39,13 +39,12 @@
 
     });
 
-    /**
-     * DB structure manager
-     */
-    $container['dbStruct'] = $container->share( function ($c) {
-        return new database_dbStruct();
-
-    });
+        $container['dbStruct'] = $container->share( function ($c) {
+            return new database_dbStruct([
+                'dbStructPath' => $c['basePath'] . '/application/modules/database/dbstruct/'
+            ]);
+        });
+        
 
     //  ALL TABLES AND MAPPERS ARE DEFINED IN HERE
     //

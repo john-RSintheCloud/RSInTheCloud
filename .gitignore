@@ -1,2 +1,4 @@
 
 /_config/secure.config.php
+/vendor/
+/composer.lock
